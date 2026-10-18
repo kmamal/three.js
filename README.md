@@ -88,6 +88,19 @@ Use `createCanvasElement()` or `platform.createElement('canvas')` to create one,
 * Addons that create canvases through `platform.createElement()` include `GLTFExporter`, `USDZExporter`, `SVGLoader`, `Lut`, `FlakesTexture`, `UVsDebug`, `ViewHelper`, `LUTImageLoader`, `LightProbeGenerator`, `VolumeSlice` and the shadow map viewers.
 * Addons that need a real DOM do not work: `HTMLMesh`, `AsciiEffect`, `Text2D`, and the helpers that draw a renderer's own canvas into a 2D canvas.
 
+## GUI
+
+`examples/jsm/libs/lil-gui.module.js` implements the [lil-gui](https://lil-gui.georgealways.com/) API (`add`, `addColor`, `addFolder`, `onChange`, `listen`, `save`/`load` and so on) for SDL.
+Each root `new GUI()` opens its own window, drawn with `@napi-rs/canvas` and presented with `window.render()`.
+Folders share their root's window. The window is sized to its content and scrolls when the content does not fit.
+
+* Sliders, number fields (drag or type, arrow keys, shift/alt multipliers), text fields (selection, clipboard), checkboxes, buttons, dropdowns and a color picker all respond to SDL mouse and keyboard events.
+* Under i3 the window is made floating through `i3-msg` when `I3SOCK` is set. Pass `x` and `y` to place it, otherwise it opens in the top right of the primary display.
+* `GUI.destroyAll()` closes every GUI window. They keep the process alive, like any SDL window.
+* Without a display `new GUI()` logs a warning and the controls still work, they are just not shown. `autoPlace: false` skips the window.
+* `domElement` is a stub, so code that sets `gui.domElement.style.visibility` or `display` shows and hides the window, and everything else is ignored.
+* `GUI.backend` can be replaced to supply another window or canvas implementation, as the unit tests do.
+
 ## How it works
 
 `src/platform/Platform.js` is a registry of everything three.js used to take from browser globals: `requestAnimationFrame`, `navigator.gpu`, `fetch`, presenting a frame, canvas and element creation, and the browser classes (`platform.Image`, `ImageBitmap`, `OffscreenCanvas`, `ImageData`, `DOMParser`, `FileReader`, `Worker`, `ProgressEvent`) and `navigator.clipboard` (`platform.clipboard`, backed by the SDL clipboard). Ported code replaces a global with the same name on `platform`, for example `new DOMParser()` becomes `new platform.DOMParser()` and `window.innerWidth` becomes `platform.window.innerWidth`. The `GPUBufferUsage`, `GPUTextureUsage` and `GPUMapMode` constants are plain numbers in `WebGPUConstants.js`, so importing the WebGPU renderer does not load `@kmamal/gpu` until it is used.
