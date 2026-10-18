@@ -67,6 +67,7 @@
 
 import { Fn, If, Stack, instanceIndex, instancedArray, float, vec4 } from 'three/tsl';
 import { WebGPURenderer, Node } from 'three/webgpu';
+import { createRequire } from 'node:module';
 
 export const Kind = {
 	EQ: 'eq',
@@ -253,12 +254,21 @@ export async function getSharedRenderer( backend ) {
 
 	if ( sharedRenderers[ backend ] === undefined ) {
 
-		const renderer = new WebGPURenderer( { antialias: false, ...BACKEND_OPTIONS[ backend ] } );
+		const sdl = createRequire( import.meta.url )( '@kmamal/sdl' );
+		const window = sdl.video.createWindow( { visible: false, width: 16, height: 16, webgpu: backend === 'webgpu', opengl: backend !== 'webgpu' } );
+		const renderer = new WebGPURenderer( { antialias: false, window, ...BACKEND_OPTIONS[ backend ] } );
 
 		try {
 
 			await renderer.init();
 			sharedRenderers[ backend ] = renderer;
+
+			QUnit.done( () => {
+
+				renderer.dispose();
+				window.destroy();
+
+			} );
 
 		} catch ( error ) {
 

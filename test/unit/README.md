@@ -1,33 +1,27 @@
 ## Setup
 
-- Execute `npm install` from the root folder
+- Execute `npm install` from the root folder.
 
 ## Run
 
-You can run the unit tests in two ways:
+The unit tests run using [QUnit](https://qunitjs.com/).
 
-- Headless: Execute `npm run test-unit`, `npm run test-unit-addons` from the root folder.  
-  In headless mode the tests will run in a headless browser.
-- Headful: Execute `npm run test-unit-headful`, `npm run test-unit-addons-headful` from the root folder.  
-  In headful mode, a browser window will open, and you can see the tests running.  
-  While the headful mode is running you can also use any browser to navigate to http://localhost:8080/test/unit/UnitTests.html or http://localhost:8080/test/unit/UnitTestsAddons.html to run the tests in that browser.  
-  Further changes to the library will not be reflected until the page is refreshed.
+- `npm run test-unit` runs the tests for `src/`.
+- `npm run test-unit-addons` runs the tests for `examples/jsm/` that don't need a GPU.
+- `npm run test-unit-gpu` runs the TSL tests that execute shaders, on `WebGPURenderer` with WebGPU and with the WebGL2 fallback. Each backend renders into a hidden SDL window, so a display and a GPU are needed.
 
-See [Installation](https://threejs.org/docs/#manual/introduction/Installation) for more information.
+`test/unit/setup.mjs` is loaded before the tests. It makes `fetch` read local files, resolving paths starting with `/` from the repository root. The `@kmamal/three` imports resolve to `src/` through the package's own `exports`.
 
-## Notes
+To run a single file, pass it to QUnit directly:
 
-A small number of tests can only be run in a browser environment.
+```shell
+npx qunit --require ./test/unit/setup.mjs test/unit/src/math/Vector3.tests.js
+```
 
-For browser tests, further changes to the library will not be reflected until the page is refreshed.
+## Layout
 
-## Troubleshooting
-
-When adding or updating tests, the most common cause of test failure is forgetting to change `QUnit.todo` to `QUnit.test` when the test is ready.
-
-An error that indicates "no tests were found" means that an import statement could not be resolved. This is usually caused by a typo in the import path.
-
-## Debugging
-
-To debug a test, add `debugger;` to the test code. Then, run the test in a browser and open the developer tools. The test will stop at the `debugger` statement and you can inspect the code.
+- `three.source.unit.js` imports all the tests for `src/`.
+- `three.addons.node.unit.js` imports the addon tests that run in Node.
+- `three.addons.gpu.unit.js` imports the TSL tests under `addons/tsl/` that use `gpu-test-utils.js`.
+- `utils/` has the custom QUnit assertions and the console wrapper.
 
