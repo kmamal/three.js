@@ -109,4 +109,5 @@ There is no browser implementation: `platform` is backed by `src/platform/sdl/`,
 ## Limitations
 
 * The window surface for `WebGPURenderer` is `bgra8unorm`, like a browser canvas.
+* Audio runs on `@kmamal/audio`, a Web Audio API implementation over `@kmamal/sdl`. `platform.AudioContext` and `platform.Audio` come from it, `createWindow()` installs its globals (`AudioContext`, `OfflineAudioContext`, `Audio`, `navigator.mediaDevices`, the node classes), and its `fetch` is routed through the platform so `new Audio('sounds/x.mp3')` resolves like the other example assets. Rendering happens on the main thread, so long stalls cause dropouts. There are no video textures, no XR, no `HTMLTexture` and no CSS renderers.
 * `@kmamal/gl` exposes the S3TC, ETC2, ASTC, BPTC and RGTC compressed texture extensions that the GPU driver supports, so `KTX2Loader` picks a compressed format. Without support it falls back to uncompressed RGBA.
