@@ -52,7 +52,9 @@
     "test-e2e-cov": "node test/e2e/check-coverage.js",
     "test-e2e-webgpu": "node test/e2e/puppeteer.js --webgpu",
     "make-screenshot": "node test/e2e/puppeteer.js --make",
-    "make-tsl-reference": "node test/unit/tsl/make.js"
+    "make-tsl-reference": "node test/unit/tsl/make.js",
+    "port-examples": "node utils/port-examples.js",
+    "port-examples-check": "node utils/port-examples.js --check"
   },
   "keywords": [
     "@kmamal/three",
