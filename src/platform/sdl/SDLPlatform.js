@@ -186,6 +186,22 @@ const sdlPlatform = {
 
 	animationContext,
 
+	clipboard: {
+
+		async writeText( text ) {
+
+			require( '@kmamal/sdl' ).clipboard.setText( String( text ) );
+
+		},
+
+		async readText() {
+
+			return require( '@kmamal/sdl' ).clipboard.text;
+
+		}
+
+	},
+
 	get audio() {
 
 		return loadAudio();
