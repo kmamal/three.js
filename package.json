@@ -34,7 +34,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "npm run lint && npm run test-unit && npm run test-unit-addons",
+    "test": "npm run lint && npm run test-unit && npm run test-unit-addons && npm run test-platform",
     "lint-core": "eslint src",
     "lint-addons": "eslint examples/jsm",
     "lint-examples": "eslint examples",
@@ -53,6 +53,8 @@
     "make-tsl-reference": "node test/unit/tsl/make.js",
     "port-examples": "node utils/port-examples.js",
     "port-examples-check": "node utils/port-examples.js --check",
+    "test-platform": "node --test --test-timeout=60000 test/platform/unit",
+    "test-platform-window": "node --test --test-timeout=120000 --test-concurrency=1 test/platform/window",
     "test-unit-gpu": "qunit --require ./test/unit/setup.mjs test/unit/three.addons.gpu.unit.js"
   },
   "keywords": [

@@ -141,3 +141,16 @@ There is no browser implementation: `platform` is backed by `src/platform/sdl/`,
 * The window surface for `WebGPURenderer` is `bgra8unorm`, like a browser canvas.
 * Audio runs on `@kmamal/audio`, a Web Audio API implementation over `@kmamal/sdl`. `platform.AudioContext` and `platform.Audio` come from it, `createWindow()` installs its globals (`AudioContext`, `OfflineAudioContext`, `Audio`, `navigator.mediaDevices`, the node classes), and its `fetch` is routed through the platform so `new Audio('sounds/x.mp3')` resolves like the other example assets. Rendering happens on the main thread, so long stalls cause dropouts. There are no video textures, no XR, no `HTMLTexture` and no CSS renderers.
 * `@kmamal/gl` exposes the S3TC, ETC2, ASTC, BPTC and RGTC compressed texture extensions that the GPU driver supports, so `KTX2Loader` picks a compressed format. Without support it falls back to uncompressed RGBA.
+
+## Tests
+
+```sh
+npm test                       # lint, upstream unit tests, platform unit tests
+npm run test-platform          # the SDL platform layer and the GUI, no display or GPU needed
+npm run test-platform-window   # real windows: resizing, controls driven by SDL events, context loss
+npm run test-unit-gpu          # the TSL/GPU unit tests, on WebGPU and the WebGL2 fallback in hidden windows
+```
+
+The window tests need a display and a GPU, and skip themselves otherwise.
+On a tiling window manager, windows are made floating through `i3-msg` when `I3SOCK` is set, so the resize tests can run.
+Tests for `@kmamal/gl` and `@kmamal/gpu` features live in those packages.

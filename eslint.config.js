@@ -37,7 +37,7 @@ export default [
 	// base rules
 	{
 		name: 'base rules',
-		files: [ '**/*.js', 'examples/**/*.mjs' ],
+		files: [ '**/*.js', 'examples/**/*.mjs', 'test/**/*.mjs' ],
 		plugins: {
 			compat,
 			jsdoc
