@@ -70,6 +70,7 @@ SDL captures the mouse while a button is held, so a drag that leaves the window 
 * Images are decoded with [`sharp`](https://sharp.pixelplumbing.com/), so `TextureLoader`, `ImageLoader`, `CubeTextureLoader` and `GLTFLoader` read PNG, JPEG, WebP, GIF, TIFF, SVG and HEIF from `http(s):`, `file:`, `data:` and `blob:` URLs, and from plain file paths relative to the current directory.
 * `FileLoader` reads local files too.
 * `ImageBitmapLoader` works and `GLTFLoader` uses it. Bitmaps are decoded by `sharp` and honor `imageOrientation: 'flipY'` and `premultiplyAlpha: 'premultiply'`; `platform.createImageBitmap` and `platform.isImageBitmap` are the hooks.
+* `new platform.Worker(url)`, `platform.fetch(url, init)` and the other hooks are exported as `platform` from `'@kmamal/three'`.
 * `platform.setFetchRoot(dir)` makes `platform.fetch` resolve paths starting with `/`, such as `/models/a.glb`, under `dir`, like a web server root. The real absolute path is not tried while a root is set. `file:` URLs and relative paths are unaffected. `platform.setFetchRoot(null)` turns this off again.
 
 ## 2D canvas
@@ -82,8 +83,8 @@ Use `createCanvasElement()` or `platform.createElement('canvas')` to create one,
 
 ## How it works
 
-`src/platform/Platform.js` is a registry of everything three.js used to take from browser globals: `requestAnimationFrame`, `navigator.gpu`, `fetch`, presenting a frame, canvas and element creation and the browser classes (`platform.Image`, `ImageBitmap`, `OffscreenCanvas`, `ImageData`, `DOMParser`, `ProgressEvent`). Ported code replaces a global with the same name on `platform`, for example `new DOMParser()` becomes `new platform.DOMParser()` and `window.innerWidth` becomes `platform.window.innerWidth`. The `GPUBufferUsage`, `GPUTextureUsage` and `GPUMapMode` constants are plain numbers in `WebGPUConstants.js`, so importing the WebGPU renderer does not load `@kmamal/gpu` until it is used.
-There is no browser implementation: `platform` is backed by `src/platform/sdl/`, which provides an `SDLCanvas`, the event bridge, image decoding and a `fetch` for local files. `setPlatform()` can still override individual hooks, for example to stub them in tests. The package entry points (`@kmamal/three`, `@kmamal/three/webgpu`, `@kmamal/three/tsl`) resolve straight to `src/`, so addons that import `'@kmamal/three'` always share this one instance.
+`src/platform/Platform.js` is a registry of everything three.js used to take from browser globals: `requestAnimationFrame`, `navigator.gpu`, `fetch`, presenting a frame, canvas and element creation and the browser classes (`platform.Image`, `ImageBitmap`, `OffscreenCanvas`, `ImageData`, `DOMParser`, `Worker`, `ProgressEvent`). Ported code replaces a global with the same name on `platform`, for example `new DOMParser()` becomes `new platform.DOMParser()` and `window.innerWidth` becomes `platform.window.innerWidth`. The `GPUBufferUsage`, `GPUTextureUsage` and `GPUMapMode` constants are plain numbers in `WebGPUConstants.js`, so importing the WebGPU renderer does not load `@kmamal/gpu` until it is used.
+There is no browser implementation: `platform` is backed by `src/platform/sdl/`, which provides an `SDLCanvas`, the event bridge, image decoding, a `fetch` for local files, and a worker shim. `setPlatform()` can still override individual hooks, for example to stub them in tests. The package entry points (`@kmamal/three`, `@kmamal/three/webgpu`, `@kmamal/three/tsl`) resolve straight to `src/`, so addons that import `'@kmamal/three'` always share this one instance.
 
 ## Limitations
 
