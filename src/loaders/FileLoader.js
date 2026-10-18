@@ -240,7 +240,7 @@ class FileLoader extends Loader {
 						return response.text()
 							.then( text => {
 
-								const parser = new DOMParser();
+								const parser = new platform.DOMParser();
 								return parser.parseFromString( text, mimeType );
 
 							} );

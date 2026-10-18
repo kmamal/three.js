@@ -4,6 +4,7 @@ import { createElement, getDocument, getPrimaryDocument } from './SDLDocument.js
 import { animationContext } from './SDLFrames.js';
 import { SDLImage, SDLImageBitmap, createImageBitmapFromBlob } from './SDLImage.js';
 import { sdlFetch, setFetchRoot } from './SDLFetch.js';
+import { SDLDOMParser } from './SDLDOMParser.js';
 import * as canvas2D from './SDLCanvas2D.js';
 
 const require = createRequire( import.meta.url );
@@ -152,6 +153,8 @@ const sdlPlatform = {
 	Image: SDLImage,
 
 	ImageBitmap: SDLImageBitmap,
+
+	DOMParser: SDLDOMParser,
 
 	ProgressEvent: globalThis.ProgressEvent ?? SDLProgressEvent,
 
