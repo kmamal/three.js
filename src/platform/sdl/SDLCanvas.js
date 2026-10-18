@@ -258,6 +258,8 @@ class SDLCanvas extends SDLEventTarget {
 
 			this._presentPending = false;
 
+			if ( this.window.destroyed ) return;
+
 			if ( this._gl !== null ) {
 
 				this._gl.swap();
