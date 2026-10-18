@@ -1,4 +1,4 @@
-import { GPUInputStepMode } from './WebGPUConstants.js';
+import { GPUInputStepMode, GPUBufferUsage, GPUMapMode } from './WebGPUConstants.js';
 import { submit } from './WebGPUUtils.js';
 import GPUBufferDescriptor from '../descriptors/GPUBufferDescriptor.js';
 import GPUCommandEncoderDescriptor from '../descriptors/GPUCommandEncoderDescriptor.js';

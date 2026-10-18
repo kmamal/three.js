@@ -1,5 +1,5 @@
 import {
-	GPUTextureFormat, GPUAddressMode, GPUFilterMode, GPUTextureDimension, GPUFeatureName, GPUTextureViewDimension
+	GPUTextureFormat, GPUAddressMode, GPUFilterMode, GPUTextureDimension, GPUFeatureName, GPUTextureViewDimension, GPUBufferUsage, GPUTextureUsage, GPUMapMode
 } from './WebGPUConstants.js';
 import { ColorManagement } from '../../../math/ColorManagement.js';
 

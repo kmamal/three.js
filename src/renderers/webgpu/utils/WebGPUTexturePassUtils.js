@@ -1,5 +1,5 @@
 import DataMap from '../../common/DataMap.js';
-import { GPUFilterMode, GPULoadOp, GPUStoreOp } from './WebGPUConstants.js';
+import { GPUFilterMode, GPULoadOp, GPUStoreOp, GPUBufferUsage, GPUTextureUsage } from './WebGPUConstants.js';
 import { submit } from './WebGPUUtils.js';
 import GPUBindGroupDescriptor from '../descriptors/GPUBindGroupDescriptor.js';
 import GPUBufferDescriptor from '../descriptors/GPUBufferDescriptor.js';

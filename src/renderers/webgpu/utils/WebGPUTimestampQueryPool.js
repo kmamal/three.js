@@ -1,3 +1,4 @@
+import { GPUBufferUsage, GPUMapMode } from './WebGPUConstants.js';
 import { error } from '../../../utils.js';
 import TimestampQueryPool from '../../common/TimestampQueryPool.js';
 import { submit } from './WebGPUUtils.js';

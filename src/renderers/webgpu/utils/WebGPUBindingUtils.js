@@ -1,6 +1,6 @@
 import {
 	GPUTextureAspect, GPUTextureViewDimension, GPUTextureSampleType, GPUBufferBindingType, GPUStorageTextureAccess,
-	GPUSamplerBindingType, GPUShaderStage
+	GPUSamplerBindingType, GPUShaderStage, GPUBufferUsage
 } from './WebGPUConstants.js';
 
 import { FloatType, IntType, UnsignedIntType, Compatibility, UnsignedShortType, ShortType } from '../../../constants.js';
