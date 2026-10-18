@@ -1,4 +1,4 @@
-const AMMO_PATH = 'https://cdn.jsdelivr.net/gh/kripken/ammo.js@79190a1f03845794b1bba1777f30037349967658/builds/ammo.wasm.js';
+const AMMO_PATH = '../libs/ammo.global.js';
 
 /**
  * @classdesc Can be used to include Ammo.js as a Physics engine into
@@ -6,8 +6,7 @@ const AMMO_PATH = 'https://cdn.jsdelivr.net/gh/kripken/ammo.js@79190a1f03845794b
  * ```js
  * const physics = await AmmoPhysics();
  * ```
- * The component automatically imports Ammo.js from a CDN so make sure
- * to use the component with an active Internet connection.
+ * The component loads the Ammo.js build bundled in `libs/ammo.wasm.cjs`.
  *
  * @name AmmoPhysics
  * @class
@@ -18,15 +17,7 @@ async function AmmoPhysics() {
 
 	if ( typeof Ammo === 'undefined' ) {
 
-		await new Promise( ( resolve, reject ) => {
-
-			const script = document.createElement( 'script' );
-			script.src = AMMO_PATH;
-			script.onload = resolve;
-			script.onerror = reject;
-			document.head.appendChild( script );
-
-		} );
+		await import( AMMO_PATH );
 
 	}
 
