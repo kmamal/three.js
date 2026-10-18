@@ -13,7 +13,8 @@ import {
 	Vector2,
 	Vector3,
 	Matrix4,
-	MathUtils
+	MathUtils,
+	platform
 } from '@kmamal/three';
 
 //trackball state
@@ -457,14 +458,14 @@ class ArcballControls extends Controls {
 
 		super.connect( element );
 
-		this._devPxRatio = window.devicePixelRatio;
+		this._devPxRatio = this.domElement.ownerDocument.defaultView.devicePixelRatio;
 
 		this.domElement.addEventListener( 'contextmenu', this._onContextMenu );
 		this.domElement.addEventListener( 'wheel', this._onWheel, { passive: false } );
 		this.domElement.addEventListener( 'pointerdown', this._onPointerDown );
 		this.domElement.addEventListener( 'pointercancel', this._onPointerCancel );
 
-		window.addEventListener( 'resize', this._onWindowResize );
+		this.domElement.ownerDocument.defaultView.addEventListener( 'resize', this._onWindowResize );
 
 		this.domElement.style.touchAction = 'none'; // Disable touch scroll
 
@@ -477,10 +478,10 @@ class ArcballControls extends Controls {
 		this.domElement.removeEventListener( 'wheel', this._onWheel );
 		this.domElement.removeEventListener( 'contextmenu', this._onContextMenu );
 
-		window.removeEventListener( 'pointermove', this._onPointerMove );
-		window.removeEventListener( 'pointerup', this._onPointerUp );
+		this.domElement.ownerDocument.defaultView.removeEventListener( 'pointermove', this._onPointerMove );
+		this.domElement.ownerDocument.defaultView.removeEventListener( 'pointerup', this._onPointerUp );
 
-		window.removeEventListener( 'resize', this._onWindowResize );
+		this.domElement.ownerDocument.defaultView.removeEventListener( 'resize', this._onWindowResize );
 
 		this.domElement.style.touchAction = ''; // Restore touch scroll
 
@@ -506,7 +507,7 @@ class ArcballControls extends Controls {
 
 					if ( this._animationId != - 1 ) {
 
-						cancelAnimationFrame( this._animationId );
+						this.domElement.ownerDocument.defaultView.cancelAnimationFrame( this._animationId );
 						this._animationId = - 1;
 						this._timeStart = - 1;
 
@@ -536,7 +537,7 @@ class ArcballControls extends Controls {
 
 					if ( this._animationId != - 1 ) {
 
-						cancelAnimationFrame( this._animationId );
+						this.domElement.ownerDocument.defaultView.cancelAnimationFrame( this._animationId );
 						this._animationId = - 1;
 						this._timeStart = - 1;
 
@@ -569,7 +570,7 @@ class ArcballControls extends Controls {
 
 					if ( this._animationId != - 1 ) {
 
-						cancelAnimationFrame( this._animationId );
+						this.domElement.ownerDocument.defaultView.cancelAnimationFrame( this._animationId );
 						this._animationId = - 1;
 						this._timeStart = - 1;
 
@@ -593,7 +594,7 @@ class ArcballControls extends Controls {
 
 					if ( this._animationId != - 1 ) {
 
-						cancelAnimationFrame( this._animationId );
+						this.domElement.ownerDocument.defaultView.cancelAnimationFrame( this._animationId );
 						this._animationId = - 1;
 						this._timeStart = - 1;
 
@@ -863,7 +864,7 @@ class ArcballControls extends Controls {
 					const w = Math.abs( ( this._wPrev + this._wCurr ) / 2 );
 
 					const self = this;
-					this._animationId = window.requestAnimationFrame( function ( t ) {
+					this._animationId = this.domElement.ownerDocument.defaultView.requestAnimationFrame( function ( t ) {
 
 						self.updateTbState( STATE.ANIMATION_ROTATE, true );
 						const rotationAxis = self.calculateRotationAxis( self._cursorPosPrev, self._cursorPosCurr );
@@ -923,12 +924,12 @@ class ArcballControls extends Controls {
 				const self = this;
 				if ( this._animationId != - 1 ) {
 
-					window.cancelAnimationFrame( this._animationId );
+					this.domElement.ownerDocument.defaultView.cancelAnimationFrame( this._animationId );
 
 				}
 
 				this._timeStart = - 1;
-				this._animationId = window.requestAnimationFrame( function ( t ) {
+				this._animationId = this.domElement.ownerDocument.defaultView.requestAnimationFrame( function ( t ) {
 
 					self.updateTbState( STATE.ANIMATION_FOCUS, true );
 					self.onFocusAnim( t, hitP, self._cameraMatrixState, self._gizmoMatrixState );
@@ -1804,7 +1805,7 @@ class ArcballControls extends Controls {
 
 		if ( this._animationId != - 1 ) {
 
-			window.cancelAnimationFrame( this._animationId );
+			this.domElement.ownerDocument.defaultView.cancelAnimationFrame( this._animationId );
 
 		}
 
@@ -2107,7 +2108,7 @@ class ArcballControls extends Controls {
 
 				this.dispatchEvent( _changeEvent );
 				const self = this;
-				this._animationId = window.requestAnimationFrame( function ( t ) {
+				this._animationId = this.domElement.ownerDocument.defaultView.requestAnimationFrame( function ( t ) {
 
 					self.onFocusAnim( t, point, cameraMatrix, gizmoMatrix.clone() );
 
@@ -2158,7 +2159,7 @@ class ArcballControls extends Controls {
 				this.applyTransformMatrix( this.rotate( rotationAxis, this._angleCurrent ) );
 				this.dispatchEvent( _changeEvent );
 				const self = this;
-				this._animationId = window.requestAnimationFrame( function ( t ) {
+				this._animationId = this.domElement.ownerDocument.defaultView.requestAnimationFrame( function ( t ) {
 
 					self.onRotationAnim( t, rotationAxis, w0 );
 
@@ -2334,7 +2335,7 @@ class ArcballControls extends Controls {
 
 		}
 
-		navigator.clipboard.writeText( state );
+		platform.clipboard.writeText( state );
 
 	}
 
@@ -2345,7 +2346,7 @@ class ArcballControls extends Controls {
 	pasteState() {
 
 		const self = this;
-		navigator.clipboard.readText().then( function resolved( value ) {
+		platform.clipboard.readText().then( function resolved( value ) {
 
 			self.setStateFromJSON( value );
 
@@ -3083,8 +3084,8 @@ function onPointerDown( event ) {
 				this._input = INPUT.ONE_FINGER;
 				this.onSinglePanStart( event, 'ROTATE' );
 
-				window.addEventListener( 'pointermove', this._onPointerMove );
-				window.addEventListener( 'pointerup', this._onPointerUp );
+				this.domElement.ownerDocument.defaultView.addEventListener( 'pointermove', this._onPointerMove );
+				this.domElement.ownerDocument.defaultView.addEventListener( 'pointerup', this._onPointerUp );
 
 				break;
 
@@ -3126,8 +3127,8 @@ function onPointerDown( event ) {
 		this._mouseOp = this.getOpFromAction( event.button, modifier );
 		if ( this._mouseOp != null ) {
 
-			window.addEventListener( 'pointermove', this._onPointerMove );
-			window.addEventListener( 'pointerup', this._onPointerUp );
+			this.domElement.ownerDocument.defaultView.addEventListener( 'pointermove', this._onPointerMove );
+			this.domElement.ownerDocument.defaultView.addEventListener( 'pointerup', this._onPointerUp );
 
 			//singleStart
 			this._input = INPUT.CURSOR;
@@ -3254,8 +3255,8 @@ function onPointerUp( event ) {
 			case INPUT.ONE_FINGER_SWITCHED:
 
 				//singleEnd
-				window.removeEventListener( 'pointermove', this._onPointerMove );
-				window.removeEventListener( 'pointerup', this._onPointerUp );
+				this.domElement.ownerDocument.defaultView.removeEventListener( 'pointermove', this._onPointerMove );
+				this.domElement.ownerDocument.defaultView.removeEventListener( 'pointerup', this._onPointerUp );
 
 				this._input = INPUT.NONE;
 				this.onSinglePanEnd();
@@ -3278,8 +3279,8 @@ function onPointerUp( event ) {
 
 				if ( this._touchCurrent.length == 0 ) {
 
-					window.removeEventListener( 'pointermove', this._onPointerMove );
-					window.removeEventListener( 'pointerup', this._onPointerUp );
+					this.domElement.ownerDocument.defaultView.removeEventListener( 'pointermove', this._onPointerMove );
+					this.domElement.ownerDocument.defaultView.removeEventListener( 'pointerup', this._onPointerUp );
 
 					//multCancel
 					this._input = INPUT.NONE;
@@ -3293,8 +3294,8 @@ function onPointerUp( event ) {
 
 	} else if ( event.pointerType != 'touch' && this._input == INPUT.CURSOR ) {
 
-		window.removeEventListener( 'pointermove', this._onPointerMove );
-		window.removeEventListener( 'pointerup', this._onPointerUp );
+		this.domElement.ownerDocument.defaultView.removeEventListener( 'pointermove', this._onPointerMove );
+		this.domElement.ownerDocument.defaultView.removeEventListener( 'pointerup', this._onPointerUp );
 
 		this._input = INPUT.NONE;
 		this.onSinglePanEnd();

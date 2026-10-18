@@ -1036,7 +1036,7 @@ function onPointerDown( event ) {
 
 	if ( ! this.enabled ) return;
 
-	if ( ! document.pointerLockElement ) {
+	if ( ! this.domElement.ownerDocument.pointerLockElement ) {
 
 		this.domElement.setPointerCapture( event.pointerId );
 

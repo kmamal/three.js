@@ -294,8 +294,8 @@ class TrackballControls extends Controls {
 
 		super.connect( element );
 
-		window.addEventListener( 'keydown', this._onKeyDown );
-		window.addEventListener( 'keyup', this._onKeyUp );
+		this.domElement.ownerDocument.defaultView.addEventListener( 'keydown', this._onKeyDown );
+		this.domElement.ownerDocument.defaultView.addEventListener( 'keyup', this._onKeyUp );
 
 		this.domElement.addEventListener( 'pointerdown', this._onPointerDown );
 		this.domElement.addEventListener( 'pointercancel', this._onPointerCancel );
@@ -308,8 +308,8 @@ class TrackballControls extends Controls {
 
 	disconnect() {
 
-		window.removeEventListener( 'keydown', this._onKeyDown );
-		window.removeEventListener( 'keyup', this._onKeyUp );
+		this.domElement.ownerDocument.defaultView.removeEventListener( 'keydown', this._onKeyDown );
+		this.domElement.ownerDocument.defaultView.removeEventListener( 'keyup', this._onKeyUp );
 
 		this.domElement.removeEventListener( 'pointerdown', this._onPointerDown );
 		this.domElement.ownerDocument.removeEventListener( 'pointermove', this._onPointerMove );
@@ -337,8 +337,8 @@ class TrackballControls extends Controls {
 		// adjustments come from similar code in the jquery offset() function
 		const d = this.domElement.ownerDocument.documentElement;
 
-		this.screen.left = box.left + window.pageXOffset - d.clientLeft;
-		this.screen.top = box.top + window.pageYOffset - d.clientTop;
+		this.screen.left = box.left + this.domElement.ownerDocument.defaultView.pageXOffset - d.clientLeft;
+		this.screen.top = box.top + this.domElement.ownerDocument.defaultView.pageYOffset - d.clientTop;
 		this.screen.width = box.width;
 		this.screen.height = box.height;
 
@@ -845,7 +845,7 @@ function onKeyUp() {
 
 	this.keyState = _STATE.NONE;
 
-	window.addEventListener( 'keydown', this._onKeyDown );
+	this.domElement.ownerDocument.defaultView.addEventListener( 'keydown', this._onKeyDown );
 
 }
 
@@ -853,7 +853,7 @@ function onKeyDown( event ) {
 
 	if ( this.enabled === false ) return;
 
-	window.removeEventListener( 'keydown', this._onKeyDown );
+	this.domElement.ownerDocument.defaultView.removeEventListener( 'keydown', this._onKeyDown );
 
 	if ( this.keyState !== _STATE.NONE ) {
 

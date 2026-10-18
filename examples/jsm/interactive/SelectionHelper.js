@@ -22,7 +22,7 @@ class SelectionHelper {
 		 *
 		 * @type {HTMLDivElement}
 		 */
-		this.element = document.createElement( 'div' );
+		this.element = renderer.domElement.ownerDocument.createElement( 'div' );
 		this.element.classList.add( cssClassName );
 		this.element.style.pointerEvents = 'none';
 

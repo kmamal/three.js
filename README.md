@@ -62,6 +62,7 @@ Each event is a single object dispatched to the canvas, then `ownerDocument`, th
 
 `requestPointerLock()` on the canvas or on `document.body` turns on the window's relative mouse mode and sets `document.pointerLockElement`; pointer events then target the locked element and carry `movementX`/`movementY`. `document.exitPointerLock()`, Escape and losing focus release it, and `pointerlockchange` fires on the document each time.
 
+`OrbitControls`, `MapControls`, `TrackballControls`, `ArcballControls`, `FlyControls`, `FirstPersonControls` and `TransformControls` respond to SDL input. Dragging a `TransformControls` gizmo handle translates and scales objects along the picked axis, with snapping.
 Touch input arrives as single-pointer mouse events.
 SDL captures the mouse while a button is held, so a drag that leaves the window keeps delivering `pointermove` events (with coordinates outside the window) and ends with a `pointerup`. `setPointerCapture()` itself is a no-op.
 

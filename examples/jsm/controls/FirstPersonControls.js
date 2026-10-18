@@ -190,8 +190,8 @@ class FirstPersonControls extends Controls {
 
 		super.connect( element );
 
-		window.addEventListener( 'keydown', this._onKeyDown );
-		window.addEventListener( 'keyup', this._onKeyUp );
+		this.domElement.ownerDocument.defaultView.addEventListener( 'keydown', this._onKeyDown );
+		this.domElement.ownerDocument.defaultView.addEventListener( 'keyup', this._onKeyUp );
 
 		this.domElement.addEventListener( 'pointerdown', this._onPointerDown );
 		this.domElement.addEventListener( 'contextmenu', this._onContextMenu );
@@ -208,8 +208,8 @@ class FirstPersonControls extends Controls {
 
 	disconnect() {
 
-		window.removeEventListener( 'keydown', this._onKeyDown );
-		window.removeEventListener( 'keyup', this._onKeyUp );
+		this.domElement.ownerDocument.defaultView.removeEventListener( 'keydown', this._onKeyDown );
+		this.domElement.ownerDocument.defaultView.removeEventListener( 'keyup', this._onKeyUp );
 
 		this.domElement.removeEventListener( 'pointerdown', this._onPointerDown );
 		this.domElement.removeEventListener( 'contextmenu', this._onContextMenu );
@@ -379,7 +379,7 @@ class FirstPersonControls extends Controls {
 
 function onPointerDown( event ) {
 
-	if ( this.domElement !== document ) {
+	if ( this.domElement.ownerDocument !== null ) {
 
 		this.domElement.focus();
 

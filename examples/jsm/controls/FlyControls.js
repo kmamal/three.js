@@ -100,8 +100,8 @@ class FlyControls extends Controls {
 
 		super.connect( element );
 
-		window.addEventListener( 'keydown', this._onKeyDown );
-		window.addEventListener( 'keyup', this._onKeyUp );
+		this.domElement.ownerDocument.defaultView.addEventListener( 'keydown', this._onKeyDown );
+		this.domElement.ownerDocument.defaultView.addEventListener( 'keyup', this._onKeyUp );
 
 		this.domElement.addEventListener( 'pointermove', this._onPointerMove );
 		this.domElement.addEventListener( 'pointerdown', this._onPointerDown );
@@ -115,8 +115,8 @@ class FlyControls extends Controls {
 
 	disconnect() {
 
-		window.removeEventListener( 'keydown', this._onKeyDown );
-		window.removeEventListener( 'keyup', this._onKeyUp );
+		this.domElement.ownerDocument.defaultView.removeEventListener( 'keydown', this._onKeyDown );
+		this.domElement.ownerDocument.defaultView.removeEventListener( 'keyup', this._onKeyUp );
 
 		this.domElement.removeEventListener( 'pointermove', this._onPointerMove );
 		this.domElement.removeEventListener( 'pointerdown', this._onPointerDown );
@@ -189,7 +189,7 @@ class FlyControls extends Controls {
 
 	_getContainerDimensions() {
 
-		if ( this.domElement != document ) {
+		if ( this.domElement.ownerDocument !== null ) {
 
 			return {
 				size: [ this.domElement.offsetWidth, this.domElement.offsetHeight ],
@@ -199,7 +199,7 @@ class FlyControls extends Controls {
 		} else {
 
 			return {
-				size: [ window.innerWidth, window.innerHeight ],
+				size: [ this.domElement.defaultView.innerWidth, this.domElement.defaultView.innerHeight ],
 				offset: [ 0, 0 ]
 			};
 
