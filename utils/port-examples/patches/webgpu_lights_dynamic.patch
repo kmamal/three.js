@@ -1,0 +1,33 @@
+--- a/examples/webgpu_lights_dynamic.mjs
++++ b/examples/webgpu_lights_dynamic.mjs
+@@ -8,7 +8,7 @@
+ 
+ const sdlWindow = createWindow( { title: 'three.js webgpu - dynamic lights', api: 'webgpu' } );
+ 
+-let camera, scene, renderer, controls, timer, stats;
++let camera, scene, renderer, controls, timer, stats, gui;
+ 
+ const pointLights = [];
+ let autoAddInterval = null;
+@@ -49,7 +49,6 @@
+ 	// Stats
+ 
+ 	stats = new Stats();
+-
+ 	// Floor
+ 
+ 	const floorGeometry = new THREE.PlaneGeometry( 120, 120 );
+@@ -144,10 +143,11 @@
+ 	renderer.setPixelRatio( window.devicePixelRatio );
+ 	renderer.setSize( window.innerWidth, window.innerHeight );
+ 	renderer.setAnimationLoop( animate );
+-
+ 	if ( params.dynamic ) renderer.lighting = new DynamicLighting();
+ 
+-	const gui = new GUI( { title: 'Dynamic Lights' } );
++	if ( gui !== undefined ) gui.destroy();
++
++	gui = new GUI( { title: 'Dynamic Lights' } );
+ 
+ 	gui.add( params, 'dynamic' ).name( 'dynamic mode' ).onChange( () => {
+ 

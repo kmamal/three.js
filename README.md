@@ -101,6 +101,36 @@ Folders share their root's window. The window is sized to its content and scroll
 * `domElement` is a stub, so code that sets `gui.domElement.style.visibility` or `display` shows and hides the window, and everything else is ignored.
 * `GUI.backend` can be replaced to supply another window or canvas implementation, as the unit tests do.
 
+## Examples
+
+Ported examples are plain Node scripts next to the original HTML, for example `examples/webgl_geometry_cube.mjs`. Run them with `node examples/webgl_geometry_cube.mjs` from any directory.
+
+The `.mjs` files are generated from the untouched upstream HTML by `utils/port-examples.js`, plus small hand-written patches in `utils/port-examples/patches/` for examples that need more than the mechanical conversion (multiple windows, for example). `npm run port-examples` regenerates them and `npm run port-examples-check` fails if a file drifted; after editing an example by hand, run `node utils/port-examples.js --update-patches <name>`.
+Examples that use npm packages which import `three` (`three-mesh-bvh`, `postprocessing` and others) rely on `node_modules/three` being `utils/three-alias`, a package named `three` whose files are this package's, so both names load the same modules.
+
+They open their window through `examples/jsm/utils/SDLWindow.js`:
+
+```js
+import * as THREE from '@kmamal/three';
+import { createWindow, window } from '@kmamal/three/addons/utils/SDLWindow.js';
+
+const sdlWindow = createWindow( { title: 'three.js webgl - geometry - cube', api: 'webgl' } );
+
+const renderer = new THREE.WebGLRenderer( { antialias: true, window: sdlWindow } );
+renderer.setSize( window.innerWidth, window.innerHeight );
+
+window.addEventListener( 'resize', () => renderer.setSize( window.innerWidth, window.innerHeight ) );
+```
+
+* `createWindow()` takes `api: 'webgl'` for a `WebGLRenderer` and `api: 'webgpu'` for a `WebGPURenderer`. Pass `forceWebGL: true` if the `WebGPURenderer` is created with `forceWebGL`.
+* `window` and `document` are the same objects the renderer canvas dispatches input events to. `window` has `innerWidth`, `innerHeight`, `devicePixelRatio`, `requestAnimationFrame()`, fires `resize` when the SDL window changes size and `load` once the script has run, and calls `onresize`/`onload` style handlers. They refer to the first window created, like `platform.window` and `platform.document`.
+* `location.search` comes from the command line: `node examples/webgpu_compile_async.mjs count=10` sees `?count=10`. Assigning `location.href` or `location.search`, or calling `location.reload()`, restarts the script with the new arguments.
+* `alert()`, `confirm()` and `prompt()` print their message; `confirm()` returns `false` and `prompt()` its default value.
+* Relative asset paths resolve from the `examples/` directory and paths starting with `/` from the package root, as when the HTML was served from the repository root.
+* `Stats` from `libs/stats.module.js` keeps its API and shows the frame rate in the window title, for example `three.js webgl - geometry - cube - 60 fps, 16 ms`. `setStatus()` and `setTitle()` change the title directly.
+* `new GUI()` windows are closed and the process exits when any example window closes.
+* A `WebGLRenderer` window works together with GUI windows because the GUI uses a software renderer. Under i3 the example window stays tiled and the GUI windows float.
+
 ## How it works
 
 `src/platform/Platform.js` is a registry of everything three.js used to take from browser globals: `requestAnimationFrame`, `navigator.gpu`, `fetch`, presenting a frame, canvas and element creation, and the browser classes (`platform.Image`, `ImageBitmap`, `OffscreenCanvas`, `ImageData`, `DOMParser`, `FileReader`, `Worker`, `ProgressEvent`) and `navigator.clipboard` (`platform.clipboard`, backed by the SDL clipboard). Ported code replaces a global with the same name on `platform`, for example `new DOMParser()` becomes `new platform.DOMParser()` and `window.innerWidth` becomes `platform.window.innerWidth`. The `GPUBufferUsage`, `GPUTextureUsage` and `GPUMapMode` constants are plain numbers in `WebGPUConstants.js`, so importing the WebGPU renderer does not load `@kmamal/gpu` until it is used.

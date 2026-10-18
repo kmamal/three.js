@@ -1,0 +1,103 @@
+--- a/examples/webgpu_reversed_depth_buffer.mjs
++++ b/examples/webgpu_reversed_depth_buffer.mjs
+@@ -1,8 +1,18 @@
+ import * as THREE from '@kmamal/three/webgpu';
+ import { pass } from '@kmamal/three/tsl';
+-import { createWindow, window, document } from '@kmamal/three/addons/utils/SDLWindow.js';
++import { createWindow, viewOf, window } from '@kmamal/three/addons/utils/SDLWindow.js';
+ 
+-const sdlWindow = createWindow( { title: 'three.js webgpu - reverse depth buffer', api: 'webgpu' } );
++const sdlWindows = {
++	normal: createWindow( { title: 'three.js webgpu - reverse depth buffer - normal', api: 'webgpu' } ),
++	logarithmic: createWindow( { title: 'three.js webgpu - reverse depth buffer - logarithmic', api: 'webgpu' } ),
++	reverse: createWindow( { title: 'three.js webgpu - reverse depth buffer - reverse', api: 'webgpu' } )
++};
++
++const views = {
++	normal: viewOf( sdlWindows.normal ).window,
++	logarithmic: viewOf( sdlWindows.logarithmic ).window,
++	reverse: viewOf( sdlWindows.reverse ).window
++};
+ 
+ let camera, reversedCamera, scene;
+ let normalRenderer, logarithmicRenderer, reverseRenderer;
+@@ -13,7 +23,7 @@
+ 
+ async function init() {
+ 
+-	camera = new THREE.PerspectiveCamera( 72, 0.33 * window.innerWidth / window.innerHeight, 5, 9999 );
++	camera = new THREE.PerspectiveCamera( 72, views.normal.innerWidth / views.normal.innerHeight, 5, 9999 );
+ 	camera.position.z = 12;
+ 
+ 	reversedCamera = camera.clone();
+@@ -95,26 +105,17 @@
+ 
+ 	}
+ 
+-	const normalContainer = document.getElementById( 'container_normal' );
+-	normalRenderer = new THREE.WebGPURenderer( { window: sdlWindow } );
+-	normalRenderer.setPixelRatio( window.devicePixelRatio );
+-	normalRenderer.setSize( 0.33 * window.innerWidth, window.innerHeight );
+-	normalRenderer.domElement.style.position = 'relative';
+-	normalContainer.appendChild( normalRenderer.domElement );
+-
+-	const logarithmicContainer = document.getElementById( 'container_logarithmic' );
+-	logarithmicRenderer = new THREE.WebGPURenderer( { logarithmicDepthBuffer: true, window: sdlWindow } );
+-	logarithmicRenderer.setPixelRatio( window.devicePixelRatio );
+-	logarithmicRenderer.setSize( 0.33 * window.innerWidth, window.innerHeight );
+-	logarithmicRenderer.domElement.style.position = 'relative';
+-	logarithmicContainer.appendChild( logarithmicRenderer.domElement );
+-
+-	const reverseContainer = document.getElementById( 'container_reverse' );
+-	reverseRenderer = new THREE.WebGPURenderer( { reversedDepthBuffer: true, window: sdlWindow } );
+-	reverseRenderer.setPixelRatio( window.devicePixelRatio );
+-	reverseRenderer.setSize( 0.33 * window.innerWidth, window.innerHeight );
+-	reverseRenderer.domElement.style.position = 'relative';
+-	reverseContainer.appendChild( reverseRenderer.domElement );
++	normalRenderer = new THREE.WebGPURenderer( { window: sdlWindows.normal } );
++	normalRenderer.setPixelRatio( views.normal.devicePixelRatio );
++	normalRenderer.setSize( views.normal.innerWidth, views.normal.innerHeight );
++
++	logarithmicRenderer = new THREE.WebGPURenderer( { logarithmicDepthBuffer: true, window: sdlWindows.logarithmic } );
++	logarithmicRenderer.setPixelRatio( views.logarithmic.devicePixelRatio );
++	logarithmicRenderer.setSize( views.logarithmic.innerWidth, views.logarithmic.innerHeight );
++
++	reverseRenderer = new THREE.WebGPURenderer( { reversedDepthBuffer: true, window: sdlWindows.reverse } );
++	reverseRenderer.setPixelRatio( views.reverse.devicePixelRatio );
++	reverseRenderer.setSize( views.reverse.innerWidth, views.reverse.innerHeight );
+ 
+ 	//
+ 
+@@ -129,7 +130,7 @@
+ 
+ 	await Promise.all( [ normalRenderer.init(), logarithmicRenderer.init(), reverseRenderer.init() ] );
+ 
+-	window.addEventListener( 'resize', onWindowResize );
++	for ( const name in views ) views[ name ].addEventListener( 'resize', onWindowResize );
+ 	onWindowResize();
+ 
+ }
+@@ -162,17 +163,16 @@
+ 
+ function onWindowResize() {
+ 
+-	const width = 0.33 * window.innerWidth;
+-	const height = window.innerHeight;
++	normalRenderer.setSize( views.normal.innerWidth, views.normal.innerHeight );
++	logarithmicRenderer.setSize( views.logarithmic.innerWidth, views.logarithmic.innerHeight );
++	reverseRenderer.setSize( views.reverse.innerWidth, views.reverse.innerHeight );
+ 
+-	normalRenderer.setSize( width, height );
+-	logarithmicRenderer.setSize( width, height );
+-	reverseRenderer.setSize( width, height );
++	const aspect = views.normal.innerWidth / views.normal.innerHeight;
+ 
+-	camera.aspect = 0.33 * window.innerWidth / window.innerHeight;
++	camera.aspect = aspect;
+ 	camera.updateProjectionMatrix();
+ 
+-	reversedCamera.aspect = 0.33 * window.innerWidth / window.innerHeight;
++	reversedCamera.aspect = aspect;
+ 	reversedCamera.updateProjectionMatrix();
+ 
+ }

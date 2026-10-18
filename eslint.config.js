@@ -2,7 +2,6 @@ import js from '@eslint/js';
 import globals from 'globals';
 import mdcs from 'eslint-config-mdcs';
 import compat from 'eslint-plugin-compat';
-import html from 'eslint-plugin-html';
 import jsdoc from 'eslint-plugin-jsdoc';
 
 export default [
@@ -38,9 +37,8 @@ export default [
 	// base rules
 	{
 		name: 'base rules',
-		files: [ '**/*.js', '**/*.html' ],
+		files: [ '**/*.js', 'examples/**/*.mjs' ],
 		plugins: {
-			html,
 			compat,
 			jsdoc
 		},

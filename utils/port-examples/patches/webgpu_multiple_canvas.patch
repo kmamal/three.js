@@ -1,0 +1,62 @@
+--- a/examples/webgpu_multiple_canvas.mjs
++++ b/examples/webgpu_multiple_canvas.mjs
+@@ -4,9 +4,9 @@
+ import { OrbitControls } from '@kmamal/three/addons/controls/OrbitControls.js';
+ 
+ import WebGPU from '@kmamal/three/addons/capabilities/WebGPU.js';
+-import { createWindow, window, document } from '@kmamal/three/addons/utils/SDLWindow.js';
++import { createWindow, createCanvas, viewOf } from '@kmamal/three/addons/utils/SDLWindow.js';
+ 
+-const sdlWindow = createWindow( { title: 'three.js webgpu - multiple canvas', api: 'webgpu' } );
++const sdlWindows = Array.from( { length: 40 }, ( _, i ) => createWindow( { title: 'three.js webgpu - multiple canvas - scene ' + ( i + 1 ), api: 'webgpu', width: 200, height: 200, resizable: false } ) );
+ 
+ //
+ 
+@@ -33,31 +33,20 @@
+ 		new THREE.CylinderGeometry( 0.5, 0.5, 1, 12 )
+ 	];
+ 
+-	const content = document.getElementById( 'content' );
++	renderer = new THREE.WebGPURenderer( { antialias: true, window: sdlWindows[ 0 ] } );
++	renderer.setClearColor( 0xffffff, 1 );
++	renderer.setPixelRatio( viewOf( sdlWindows[ 0 ] ).window.devicePixelRatio );
+ 
+ 	for ( let i = 0; i < 40; i ++ ) {
+ 
+ 		const scene = new THREE.Scene();
+ 		scene.backgroundNode = color( 0xeeeeee );
+ 
+-		// make a list item
+-		const element = document.createElement( 'div' );
+-		element.className = 'list-item';
+-
+-		const sceneCanvas = document.createElement( 'canvas' );
+-		element.appendChild( sceneCanvas );
+-
+-		const descriptionElement = document.createElement( 'div' );
+-		descriptionElement.innerText = 'Scene ' + ( i + 1 );
+-		element.appendChild( descriptionElement );
+-
+-		const canvasTarget = new THREE.CanvasTarget( sceneCanvas );
+-		canvasTarget.setPixelRatio( window.devicePixelRatio );
+-		canvasTarget.setSize( 200, 200 );
++		const canvasTarget = i === 0 ? renderer.getCanvasTarget() : new THREE.CanvasTarget( createCanvas( sdlWindows[ i ] ) );
++		canvasTarget.setPixelRatio( viewOf( sdlWindows[ i ] ).window.devicePixelRatio );
+ 
+-		// the element that represents the area we want to render the scene
++		// the window that represents the area we want to render the scene
+ 		scene.userData.canvasTarget = canvasTarget;
+-		content.appendChild( element );
+ 
+ 		const camera = new THREE.PerspectiveCamera( 50, 1, 1, 10 );
+ 		camera.position.z = 2;
+@@ -94,9 +83,6 @@
+ 
+ 	}
+ 
+-	renderer = new THREE.WebGPURenderer( { antialias: true, window: sdlWindow } );
+-	renderer.setClearColor( 0xffffff, 1 );
+-	renderer.setPixelRatio( window.devicePixelRatio );
+ 	renderer.setAnimationLoop( animate );
+ 
+ }

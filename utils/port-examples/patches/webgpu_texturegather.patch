@@ -1,0 +1,69 @@
+--- a/examples/webgpu_texturegather.mjs
++++ b/examples/webgpu_texturegather.mjs
+@@ -1,8 +1,11 @@
+ import * as THREE from '@kmamal/three/webgpu';
+ import { If, vec4, uv, ivec2, texture, Fn } from '@kmamal/three/tsl';
+-import { createWindow, window } from '@kmamal/three/addons/utils/SDLWindow.js';
++import { createWindow, viewOf } from '@kmamal/three/addons/utils/SDLWindow.js';
+ 
+-const sdlWindow = createWindow( { title: 'three.js webgpu - texture gather', api: 'webgpu' } );
++const sdlWindows = {
++	webgpu: createWindow( { title: 'three.js webgpu - texture gather - webgpu', api: 'webgpu' } ),
++	webgl: createWindow( { title: 'three.js webgpu - texture gather - webgl', api: 'webgl' } )
++};
+ 
+ // WebGPU Backend
+ init();
+@@ -12,7 +15,10 @@
+ 
+ async function init( forceWebGL = false ) {
+ 
+-	const aspect = ( window.innerWidth / 2 ) / window.innerHeight;
++	const sdlWindow = sdlWindows[ forceWebGL ? 'webgl' : 'webgpu' ];
++	const view = viewOf( sdlWindow ).window;
++
++	const aspect = view.innerWidth / view.innerHeight;
+ 	const camera = new THREE.OrthographicCamera( - aspect, aspect );
+ 	camera.position.z = 2;
+ 
+@@ -55,21 +61,13 @@
+ 	scene.add( plane );
+ 
+ 	const renderer = new THREE.WebGPURenderer( { antialias: false, forceWebGL: forceWebGL, window: sdlWindow } );
+-	renderer.setPixelRatio( window.devicePixelRatio );
+-	renderer.setSize( window.innerWidth / 2, window.innerHeight );
++	renderer.setPixelRatio( view.devicePixelRatio );
++	renderer.setSize( view.innerWidth, view.innerHeight );
+ 	renderer.setAnimationLoop( animate );
+ 	await renderer.init();
+ 
+-	renderer.domElement.style.position = 'absolute';
+-	renderer.domElement.style.top = '0';
+-	renderer.domElement.style.left = '0';
+-	renderer.domElement.style.width = '50%';
+-	renderer.domElement.style.height = '100%';
+-
+ 	if ( forceWebGL ) {
+ 
+-		renderer.domElement.style.left = '50%';
+-
+ 		scene.background = new THREE.Color( 0x212121 );
+ 
+ 	} else {
+@@ -123,13 +121,13 @@
+ 
+ 	}
+ 
+-	window.addEventListener( 'resize', onWindowResize );
++	view.addEventListener( 'resize', onWindowResize );
+ 
+ 	function onWindowResize() {
+ 
+-		renderer.setSize( window.innerWidth / 2, window.innerHeight );
++		renderer.setSize( view.innerWidth, view.innerHeight );
+ 
+-		const aspect = ( window.innerWidth / 2 ) / window.innerHeight;
++		const aspect = view.innerWidth / view.innerHeight;
+ 
+ 		const frustumHeight = camera.top - camera.bottom;
+ 

@@ -1,0 +1,11 @@
+--- a/examples/misc_exporter_usdz.mjs
++++ b/examples/misc_exporter_usdz.mjs
+@@ -63,7 +63,7 @@
+ 		// USDZ
+ 
+ 		const exporter = new USDZExporter();
+-		exporter.setTextureUtils( WebGLTextureUtils ); // for texture decompresssing
++		exporter.setTextureUtils( { decompress: ( texture, maxTextureSize ) => WebGLTextureUtils.decompress( texture, maxTextureSize, renderer ) } ); // for texture decompresssing
+ 		const arraybuffer = await exporter.parseAsync( gltf.scene, { animations: gltf.animations } );
+ 		const blob = new Blob( [ arraybuffer ], { type: 'application/octet-stream' } );
+ 

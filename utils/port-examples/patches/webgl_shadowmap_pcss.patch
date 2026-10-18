@@ -1,0 +1,11 @@
+--- a/examples/webgl_shadowmap_pcss.mjs
++++ b/examples/webgl_shadowmap_pcss.mjs
+@@ -190,7 +190,7 @@
+ 
+ 	shader = shader.replace(
+ 		'#ifdef USE_SHADOWMAP',
+-		'#ifdef USE_SHADOWMAP' +
++		'#ifdef USE_SHADOWMAP\n' +
+ 		shaders.PCSS
+ 	);
+ 

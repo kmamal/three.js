@@ -1,0 +1,74 @@
+--- a/examples/webgpu_centroid_sampling.mjs
++++ b/examples/webgpu_centroid_sampling.mjs
+@@ -2,9 +2,14 @@
+ import { varying, uv, texture, Fn } from '@kmamal/three/tsl';
+ 
+ import { GUI } from '@kmamal/three/addons/libs/lil-gui.module.js';
+-import { createWindow, window, document } from '@kmamal/three/addons/utils/SDLWindow.js';
++import { createWindow, viewOf, document } from '@kmamal/three/addons/utils/SDLWindow.js';
++
++const sdlWindowAntialiasingDisabled = createWindow( { title: 'three.js webgpu - centroid sampling - antialiasing disabled', api: 'webgpu' } );
++const sdlWindowAntialiasingEnabled = createWindow( { title: 'three.js webgpu - centroid sampling - antialiasing enabled', api: 'webgpu' } );
++
++const viewAntialiasingDisabled = viewOf( sdlWindowAntialiasingDisabled ).window;
++const viewAntialiasingEnabled = viewOf( sdlWindowAntialiasingEnabled ).window;
+ 
+-const sdlWindow = createWindow( { title: 'three.js webgpu - centroid sampling', api: 'webgpu' } );
+ let rendererAntialiasingEnabled;
+ let rendererAntialiasingDisabled;
+ let camera;
+@@ -147,32 +152,30 @@
+ 
+ 	// Create Standard Renderer
+ 	rendererAntialiasingDisabled = new THREE.WebGPURenderer( {
+-		window: sdlWindow,
++		window: sdlWindowAntialiasingDisabled,
+ 		antialias: false,
+ 		forceWebGL: forceWebGL
+ 	} );
+ 
+-	rendererAntialiasingDisabled.setPixelRatio( window.devicePixelRatio );
+-	rendererAntialiasingDisabled.setSize( window.innerWidth / 2, window.innerHeight );
++	rendererAntialiasingDisabled.setPixelRatio( viewAntialiasingDisabled.devicePixelRatio );
++	rendererAntialiasingDisabled.setSize( viewAntialiasingDisabled.innerWidth, viewAntialiasingDisabled.innerHeight );
+ 	rendererAntialiasingDisabled.setAnimationLoop( animateStandard );
+ 
+ 	// Create antialiased renderer
+ 	rendererAntialiasingEnabled = new THREE.WebGPURenderer( {
+-		window: sdlWindow,
++		window: sdlWindowAntialiasingEnabled,
+ 		antialias: true,
+ 		forceWebGL: forceWebGL
+ 	} );
+ 
+-	document.body.querySelector( '#antialiasing-enabled' ).appendChild( rendererAntialiasingEnabled.domElement );
+-	rendererAntialiasingEnabled.setPixelRatio( window.devicePixelRatio );
+-	rendererAntialiasingEnabled.setSize( window.innerWidth / 2, window.innerHeight );
++	rendererAntialiasingEnabled.setPixelRatio( viewAntialiasingEnabled.devicePixelRatio );
++	rendererAntialiasingEnabled.setSize( viewAntialiasingEnabled.innerWidth, viewAntialiasingEnabled.innerHeight );
+ 	rendererAntialiasingEnabled.setAnimationLoop( animateAliased );
+-	document.body.querySelector( '#antialiasing-disabled' ).appendChild( rendererAntialiasingDisabled.domElement );
+-	document.body.querySelector( '#antialiasing-disabled' ).appendChild( rendererAntialiasingDisabled.domElement );
+ 
+ 	onWindowResize();
+ 
+-	window.addEventListener( 'resize', onWindowResize );
++	viewAntialiasingDisabled.addEventListener( 'resize', onWindowResize );
++	viewAntialiasingEnabled.addEventListener( 'resize', onWindowResize );
+ 
+ 	gui = new GUI( { title: 'Settings' } );
+ 	gui.add( effectController, 'sampling', [
+@@ -206,10 +209,9 @@
+ 
+ function onWindowResize() {
+ 
+-	const halfWidth = window.innerWidth / 2;
+-	rendererAntialiasingDisabled.setSize( halfWidth, window.innerHeight );
+-	rendererAntialiasingEnabled.setSize( halfWidth, window.innerHeight );
+-	const aspect = ( halfWidth ) / window.innerHeight;
++	rendererAntialiasingDisabled.setSize( viewAntialiasingDisabled.innerWidth, viewAntialiasingDisabled.innerHeight );
++	rendererAntialiasingEnabled.setSize( viewAntialiasingEnabled.innerWidth, viewAntialiasingEnabled.innerHeight );
++	const aspect = viewAntialiasingDisabled.innerWidth / viewAntialiasingDisabled.innerHeight;
+ 
+ 	camera.aspect = aspect;
+ 	camera.updateProjectionMatrix();

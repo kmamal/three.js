@@ -1,0 +1,171 @@
+--- a/examples/webgl_camera_logarithmicdepthbuffer.mjs
++++ b/examples/webgl_camera_logarithmicdepthbuffer.mjs
+@@ -4,20 +4,21 @@
+ import { TextGeometry } from '@kmamal/three/addons/geometries/TextGeometry.js';
+ 
+ import Stats from '@kmamal/three/addons/libs/stats.module.js';
+-import { createWindow, window, document } from '@kmamal/three/addons/utils/SDLWindow.js';
++import { createWindow, viewOf, window } from '@kmamal/three/addons/utils/SDLWindow.js';
++
++const sdlWindows = {
++	normal: createWindow( { title: 'three.js webgl - cameras - logarithmic depth buffer - normal z-buffer', api: 'webgl' } ),
++	logzbuf: createWindow( { title: 'three.js webgl - cameras - logarithmic depth buffer - logarithmic z-buffer', api: 'webgl' } )
++};
+ 
+-const sdlWindow = createWindow( { title: 'three.js webgl - cameras - logarithmic depth buffer', api: 'webgl' } );
+ 
+ // 1 micrometer to 100 billion light years in one scene, with 1 unit = 1 meter?  preposterous!  and yet...
+ const NEAR = 1e-6, FAR = 1e27;
+-let SCREEN_WIDTH = window.innerWidth;
+-let SCREEN_HEIGHT = window.innerHeight;
+-let screensplit = .25, screensplit_right = 0;
+ const mouse = [ .5, .5 ];
+ let zoompos = - 100, minzoomspeed = .015;
+ let zoomspeed = minzoomspeed;
+ 
+-let container, border, stats;
++let stats;
+ const objects = {};
+ 
+ // Generate a number of text labels, from 1µm in size up to 100,000,000 light years
+@@ -45,8 +46,6 @@
+ 
+ function init() {
+ 
+-	container = document.getElementById( 'container' );
+-
+ 	const loader = new FontLoader();
+ 	loader.load( 'fonts/helvetiker_regular.typeface.json', function ( font ) {
+ 
+@@ -62,30 +61,25 @@
+ 
+ 	stats = new Stats();
+ 
+-	// Resize border allows the user to easily compare effects of logarithmic depth buffer over the whole scene
+-	border = document.getElementById( 'renderer_border' );
+-	border.addEventListener( 'pointerdown', onBorderPointerDown );
+-
+-	window.addEventListener( 'mousemove', onMouseMove );
+-	window.addEventListener( 'resize', onWindowResize );
+-	window.addEventListener( 'wheel', onMouseWheel );
+-
+ }
+ 
+ function initView( scene, name, logDepthBuf ) {
+ 
+-	const framecontainer = document.getElementById( 'container_' + name );
++	const sdlWindow = sdlWindows[ name ];
++	const view = viewOf( sdlWindow ).window;
+ 
+-	const camera = new THREE.PerspectiveCamera( 50, screensplit * SCREEN_WIDTH / SCREEN_HEIGHT, NEAR, FAR );
++	const camera = new THREE.PerspectiveCamera( 50, view.innerWidth / view.innerHeight, NEAR, FAR );
+ 	scene.add( camera );
+ 
+ 	const renderer = new THREE.WebGLRenderer( { antialias: true, logarithmicDepthBuffer: logDepthBuf, window: sdlWindow } );
+-	renderer.setPixelRatio( window.devicePixelRatio );
+-	renderer.setSize( SCREEN_WIDTH / 2, SCREEN_HEIGHT );
+-	renderer.domElement.style.position = 'relative';
+-	renderer.domElement.id = 'renderer_' + name;
++	renderer.setPixelRatio( view.devicePixelRatio );
++	renderer.setSize( view.innerWidth, view.innerHeight );
++
++	view.addEventListener( 'mousemove', ( ev ) => onMouseMove( ev, view ) );
++	view.addEventListener( 'resize', () => onWindowResize( { renderer, camera, view } ) );
++	view.addEventListener( 'wheel', onMouseWheel );
+ 
+-	return { container: framecontainer, renderer: renderer, scene: scene, camera: camera };
++	return { renderer: renderer, scene: scene, camera: camera };
+ 
+ }
+ 
+@@ -148,31 +142,6 @@
+ 
+ }
+ 
+-function updateRendererSizes() {
+-
+-	// Recalculate size for both renderers when screen size or split location changes
+-
+-	SCREEN_WIDTH = window.innerWidth;
+-	SCREEN_HEIGHT = window.innerHeight;
+-
+-	screensplit_right = 1 - screensplit;
+-
+-	objects.normal.renderer.setSize( screensplit * SCREEN_WIDTH, SCREEN_HEIGHT );
+-	objects.normal.camera.aspect = screensplit * SCREEN_WIDTH / SCREEN_HEIGHT;
+-	objects.normal.camera.updateProjectionMatrix();
+-	objects.normal.camera.setViewOffset( SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0, SCREEN_WIDTH * screensplit, SCREEN_HEIGHT );
+-	objects.normal.container.style.width = ( screensplit * 100 ) + '%';
+-
+-	objects.logzbuf.renderer.setSize( screensplit_right * SCREEN_WIDTH, SCREEN_HEIGHT );
+-	objects.logzbuf.camera.aspect = screensplit_right * SCREEN_WIDTH / SCREEN_HEIGHT;
+-	objects.logzbuf.camera.updateProjectionMatrix();
+-	objects.logzbuf.camera.setViewOffset( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH * screensplit, 0, SCREEN_WIDTH * screensplit_right, SCREEN_HEIGHT );
+-	objects.logzbuf.container.style.width = ( screensplit_right * 100 ) + '%';
+-
+-	border.style.left = ( screensplit * 100 ) + '%';
+-
+-}
+-
+ function animate() {
+ 
+ 	window.requestAnimationFrame( animate );
+@@ -210,13 +179,6 @@
+ 	objects.logzbuf.camera.position.copy( objects.normal.camera.position );
+ 	objects.logzbuf.camera.quaternion.copy( objects.normal.camera.quaternion );
+ 
+-	// Update renderer sizes if the split has changed
+-	if ( screensplit_right != 1 - screensplit ) {
+-
+-		updateRendererSizes();
+-
+-	}
+-
+ 	objects.normal.renderer.render( objects.normal.scene, objects.normal.camera );
+ 	objects.logzbuf.renderer.render( objects.logzbuf.scene, objects.logzbuf.camera );
+ 
+@@ -224,37 +186,18 @@
+ 
+ }
+ 
+-function onWindowResize() {
+-
+-	updateRendererSizes();
+-
+-}
+-
+-function onBorderPointerDown() {
+-
+-	// activate draggable window resizing bar
+-	window.addEventListener( 'pointermove', onBorderPointerMove );
+-	window.addEventListener( 'pointerup', onBorderPointerUp );
+-
+-}
+-
+-function onBorderPointerMove( ev ) {
+-
+-	screensplit = Math.max( 0, Math.min( 1, ev.clientX / window.innerWidth ) );
+-
+-}
+-
+-function onBorderPointerUp() {
++function onWindowResize( { renderer, camera, view } ) {
+ 
+-	window.removeEventListener( 'pointermove', onBorderPointerMove );
+-	window.removeEventListener( 'pointerup', onBorderPointerUp );
++	renderer.setSize( view.innerWidth, view.innerHeight );
++	camera.aspect = view.innerWidth / view.innerHeight;
++	camera.updateProjectionMatrix();
+ 
+ }
+ 
+-function onMouseMove( ev ) {
++function onMouseMove( ev, view ) {
+ 
+-	mouse[ 0 ] = ev.clientX / window.innerWidth;
+-	mouse[ 1 ] = ev.clientY / window.innerHeight;
++	mouse[ 0 ] = ev.clientX / view.innerWidth;
++	mouse[ 1 ] = ev.clientY / view.innerHeight;
+ 
+ }
+ 

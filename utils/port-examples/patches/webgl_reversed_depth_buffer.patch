@@ -1,0 +1,126 @@
+--- a/examples/webgl_reversed_depth_buffer.mjs
++++ b/examples/webgl_reversed_depth_buffer.mjs
+@@ -5,9 +5,19 @@
+ import { EffectComposer } from '@kmamal/three/addons/postprocessing/EffectComposer.js';
+ import { RenderPass } from '@kmamal/three/addons/postprocessing/RenderPass.js';
+ import { OutputPass } from '@kmamal/three/addons/postprocessing/OutputPass.js';
+-import { createWindow, window, document } from '@kmamal/three/addons/utils/SDLWindow.js';
++import { createWindow, viewOf, window } from '@kmamal/three/addons/utils/SDLWindow.js';
+ 
+-const sdlWindow = createWindow( { title: 'three.js webgl - reverse depth buffer', api: 'webgl' } );
++const sdlWindows = {
++	normal: createWindow( { title: 'three.js webgl - reverse depth buffer - normal', api: 'webgl' } ),
++	logarithmic: createWindow( { title: 'three.js webgl - reverse depth buffer - logarithmic', api: 'webgl' } ),
++	reverse: createWindow( { title: 'three.js webgl - reverse depth buffer - reverse', api: 'webgl' } )
++};
++
++const views = {
++	normal: viewOf( sdlWindows.normal ).window,
++	logarithmic: viewOf( sdlWindows.logarithmic ).window,
++	reverse: viewOf( sdlWindows.reverse ).window
++};
+ 
+ let stats, camera, reversedCamera, scene;
+ let normalRenderer, logarithmicRenderer, reverseRenderer;
+@@ -25,7 +35,7 @@
+ 
+ 	stats = new Stats();
+ 
+-	camera = new THREE.PerspectiveCamera( 72, 0.33 * window.innerWidth / window.innerHeight, 5, 9999 );
++	camera = new THREE.PerspectiveCamera( 72, views.normal.innerWidth / views.normal.innerHeight, 5, 9999 );
+ 	camera.position.z = 12;
+ 
+ 	reversedCamera = camera.clone();
+@@ -107,40 +117,31 @@
+ 
+ 	}
+ 
+-	const normalContainer = document.getElementById( 'container_normal' );
+-	normalRenderer = new THREE.WebGLRenderer( { window: sdlWindow } );
+-	normalRenderer.setPixelRatio( window.devicePixelRatio );
+-	normalRenderer.setSize( 0.33 * window.innerWidth, window.innerHeight );
+-	normalRenderer.domElement.style.position = 'relative';
+-	normalContainer.appendChild( normalRenderer.domElement );
++	normalRenderer = new THREE.WebGLRenderer( { window: sdlWindows.normal } );
++	normalRenderer.setPixelRatio( views.normal.devicePixelRatio );
++	normalRenderer.setSize( views.normal.innerWidth, views.normal.innerHeight );
+ 
+ 	normalComposer = new EffectComposer( normalRenderer, renderTarget );
+ 	normalComposer.addPass( new RenderPass( scene, camera ) );
+ 	normalComposer.addPass( new OutputPass() );
+ 
+-	const logarithmicContainer = document.getElementById( 'container_logarithmic' );
+-	logarithmicRenderer = new THREE.WebGLRenderer( { logarithmicDepthBuffer: true, window: sdlWindow } );
+-	logarithmicRenderer.setPixelRatio( window.devicePixelRatio );
+-	logarithmicRenderer.setSize( 0.33 * window.innerWidth, window.innerHeight );
+-	logarithmicRenderer.domElement.style.position = 'relative';
+-	logarithmicContainer.appendChild( logarithmicRenderer.domElement );
++	logarithmicRenderer = new THREE.WebGLRenderer( { logarithmicDepthBuffer: true, window: sdlWindows.logarithmic } );
++	logarithmicRenderer.setPixelRatio( views.logarithmic.devicePixelRatio );
++	logarithmicRenderer.setSize( views.logarithmic.innerWidth, views.logarithmic.innerHeight );
+ 
+ 	logarithmicComposer = new EffectComposer( logarithmicRenderer, renderTarget );
+ 	logarithmicComposer.addPass( new RenderPass( scene, camera ) );
+ 	logarithmicComposer.addPass( new OutputPass() );
+ 
+-	const reverseContainer = document.getElementById( 'container_reverse' );
+-	reverseRenderer = new THREE.WebGLRenderer( { reversedDepthBuffer: true, window: sdlWindow } );
+-	reverseRenderer.setPixelRatio( window.devicePixelRatio );
+-	reverseRenderer.setSize( 0.33 * window.innerWidth, window.innerHeight );
+-	reverseRenderer.domElement.style.position = 'relative';
+-	reverseContainer.appendChild( reverseRenderer.domElement );
++	reverseRenderer = new THREE.WebGLRenderer( { reversedDepthBuffer: true, window: sdlWindows.reverse } );
++	reverseRenderer.setPixelRatio( views.reverse.devicePixelRatio );
++	reverseRenderer.setSize( views.reverse.innerWidth, views.reverse.innerHeight );
+ 
+ 	reverseComposer = new EffectComposer( reverseRenderer, renderTarget );
+ 	reverseComposer.addPass( new RenderPass( scene, reversedCamera ) );
+ 	reverseComposer.addPass( new OutputPass() );
+ 
+-	window.addEventListener( 'resize', onWindowResize );
++	for ( const name in views ) views[ name ].addEventListener( 'resize', onWindowResize );
+ 	onWindowResize();
+ 
+ }
+@@ -175,22 +176,28 @@
+ 
+ function onWindowResize() {
+ 
+-	const width = 0.33 * window.innerWidth;
+-	const height = window.innerHeight;
+-	const dpr = window.devicePixelRatio;
+-
+-	normalComposer.setSize( width * dpr, height * dpr );
+-	logarithmicComposer.setSize( width * dpr, height * dpr );
+-	reverseComposer.setSize( width * dpr, height * dpr );
+-
+-	normalRenderer.setSize( width, height );
+-	logarithmicRenderer.setSize( width, height );
+-	reverseRenderer.setSize( width, height );
++	for ( const [ name, composer, renderer ] of [
++		[ 'normal', normalComposer, normalRenderer ],
++		[ 'logarithmic', logarithmicComposer, logarithmicRenderer ],
++		[ 'reverse', reverseComposer, reverseRenderer ]
++	] ) {
++
++		const view = views[ name ];
++		const width = view.innerWidth;
++		const height = view.innerHeight;
++		const dpr = view.devicePixelRatio;
+ 
+-	camera.aspect = 0.33 * window.innerWidth / window.innerHeight;
++		composer.setSize( width * dpr, height * dpr );
++		renderer.setSize( width, height );
++
++	}
++
++	const aspect = views.normal.innerWidth / views.normal.innerHeight;
++
++	camera.aspect = aspect;
+ 	camera.updateProjectionMatrix();
+ 
+-	reversedCamera.aspect = 0.33 * window.innerWidth / window.innerHeight;
++	reversedCamera.aspect = aspect;
+ 	reversedCamera.updateProjectionMatrix();
+ 
+ }

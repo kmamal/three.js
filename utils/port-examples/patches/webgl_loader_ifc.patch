@@ -1,0 +1,27 @@
+--- a/examples/webgl_loader_ifc.mjs
++++ b/examples/webgl_loader_ifc.mjs
+@@ -1,3 +1,5 @@
++import path from 'node:path';
++import { createRequire } from 'node:module';
+ import * as THREE from '@kmamal/three';
+ import { OrbitControls } from '@kmamal/three/addons/controls/OrbitControls.js';
+ import * as BufferGeometryUtils from '@kmamal/three/addons/utils/BufferGeometryUtils.js';
+@@ -7,8 +9,7 @@
+ 
+ const sdlWindow = createWindow( { title: 'three.js webgl - IFCLoader', api: 'webgl' } );
+ 
+-const WEB_IFC_VERSION = '0.0.77';
+-const WEB_IFC_WASM_PATH = `https://cdn.jsdelivr.net/npm/web-ifc@${ WEB_IFC_VERSION }/`;
++const WEB_IFC_WASM_PATH = path.dirname( createRequire( import.meta.url ).resolve( 'web-ifc' ) ) + '/';
+ 
+ let scene, camera, renderer;
+ 
+@@ -45,7 +46,7 @@
+ 	window.addEventListener( 'resize', onWindowResize );
+ 
+ 	const ifcAPI = new IfcAPI();
+-	ifcAPI.SetWasmPath( WEB_IFC_WASM_PATH );
++	ifcAPI.SetWasmPath( WEB_IFC_WASM_PATH, true );
+ 	await ifcAPI.Init();
+ 
+ 	const response = await fetch( 'models/ifc/rac_advanced_sample_project.ifc' );

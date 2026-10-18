@@ -1,0 +1,35 @@
+--- a/examples/webgpu_compute_audio.mjs
++++ b/examples/webgpu_compute_audio.mjs
+@@ -9,7 +9,7 @@
+ let computeNode;
+ let waveBuffer, sampleRate;
+ let waveArray;
+-let currentAudio, currentAnalyser;
++let currentAudio, currentAnalyser, currentContext;
+ const analyserBuffer = new Uint8Array( 1024 );
+ let analyserTexture;
+ 
+@@ -18,6 +18,7 @@
+ async function playAudioBuffer() {
+ 
+ 	if ( currentAudio ) currentAudio.stop();
++	if ( currentContext ) currentContext.close();
+ 
+ 	// compute audio
+ 
+@@ -28,6 +29,7 @@
+ 	// play result
+ 
+ 	const audioOutputContext = new AudioContext( { sampleRate } );
++	currentContext = audioOutputContext;
+ 	const audioOutputBuffer = audioOutputContext.createBuffer( 1, wave.length, sampleRate );
+ 
+ 	audioOutputBuffer.copyToChannel( wave, 0 );
+@@ -56,6 +58,7 @@
+ 	const audioContext = new AudioContext();
+ 
+ 	const audioBuffer = await audioContext.decodeAudioData( soundBuffer );
++	audioContext.close();
+ 
+ 	waveBuffer = audioBuffer.getChannelData( 0 );
+ 

@@ -1,0 +1,156 @@
+import * as THREE from '@kmamal/three/webgpu';
+import { uniform, mix, pmremTexture, reference, positionLocal, hue, saturation, positionWorld, normalWorld, positionWorldDirection, reflectVector } from '@kmamal/three/tsl';
+
+import { HDRLoader } from '@kmamal/three/addons/loaders/HDRLoader.js';
+
+import { OrbitControls } from '@kmamal/three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from '@kmamal/three/addons/loaders/GLTFLoader.js';
+
+import { GUI } from '@kmamal/three/addons/libs/lil-gui.module.js';
+import { createWindow, window } from '@kmamal/three/addons/utils/SDLWindow.js';
+
+const sdlWindow = createWindow( { title: 'three.js webgpu - envmap adjustments', api: 'webgpu' } );
+let camera, scene, renderer;
+
+init();
+
+async function init() {
+
+	const initialDistance = 2;
+
+	camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 0.25, 20 );
+	camera.position.set( - 1.8 * initialDistance, 0.6 * initialDistance, 2.7 * initialDistance );
+
+	scene = new THREE.Scene();
+
+	// HDR textures
+
+	const hdr1Texture = await new HDRLoader()
+		.loadAsync( './textures/equirectangular/pedestrian_overpass_1k.hdr' );
+
+	hdr1Texture.mapping = THREE.EquirectangularReflectionMapping;
+	hdr1Texture.generateMipmaps = true;
+	hdr1Texture.minFilter = THREE.LinearMipmapLinearFilter;
+
+	const hdr2Texture = await new HDRLoader()
+		.loadAsync( './textures/equirectangular/752-hdri-skies-com_1k.hdr' );
+
+	hdr2Texture.mapping = THREE.EquirectangularReflectionMapping;
+	hdr2Texture.generateMipmaps = true;
+	hdr2Texture.minFilter = THREE.LinearMipmapLinearFilter;
+
+	// nodes and environment
+
+	const adjustments = {
+		mix: 0,
+		procedural: 0,
+		intensity: 1,
+		hue: 0,
+		saturation: 1
+	};
+
+	const mixNode = reference( 'mix', 'float', adjustments );
+	const proceduralNode = reference( 'procedural', 'float', adjustments );
+	const intensityNode = reference( 'intensity', 'float', adjustments );
+	const hueNode = reference( 'hue', 'float', adjustments );
+	const saturationNode = reference( 'saturation', 'float', adjustments );
+
+	const rotateY1Matrix = new THREE.Matrix4();
+	const rotateY2Matrix = new THREE.Matrix4();
+
+	const getEnvironmentNode = ( reflectNode, positionNode ) => {
+
+		const custom1UV = reflectNode.xyz.mul( uniform( rotateY1Matrix ) );
+		const custom2UV = reflectNode.xyz.mul( uniform( rotateY2Matrix ) );
+		const mixCubeMaps = mix( pmremTexture( hdr1Texture, custom1UV ), pmremTexture( hdr2Texture, custom2UV ), positionNode.y.add( mixNode ).clamp() );
+
+		const proceduralEnv = mix( mixCubeMaps, normalWorld, proceduralNode );
+
+		const intensityFilter = proceduralEnv.mul( intensityNode );
+		const hueFilter = hue( intensityFilter, hueNode );
+		return saturation( hueFilter, saturationNode );
+
+	};
+
+	const blurNode = uniform( 0 );
+
+	scene.environmentNode = getEnvironmentNode( reflectVector, positionWorld );
+
+	scene.backgroundNode = getEnvironmentNode( positionWorldDirection, positionLocal ).context( {
+		getTextureLevel: () => blurNode
+	} );
+
+	// scene objects
+
+	const loader = new GLTFLoader().setPath( 'models/gltf/DamagedHelmet/glTF/' );
+	const gltf = await loader.loadAsync( 'DamagedHelmet.gltf' );
+
+	scene.add( gltf.scene );
+
+	const sphereGeometry = new THREE.SphereGeometry( .5, 64, 32 );
+
+	const sphereRightView = new THREE.Mesh( sphereGeometry, new THREE.MeshStandardMaterial( { roughness: 0, metalness: 1 } ) );
+	sphereRightView.position.x += 2;
+
+	const sphereLeftView = new THREE.Mesh( sphereGeometry, new THREE.MeshStandardMaterial( { roughness: 1, metalness: 1 } ) );
+	sphereLeftView.position.x -= 2;
+
+	scene.add( sphereLeftView );
+	scene.add( sphereRightView );
+
+	// renderer and controls
+
+	renderer = new THREE.WebGPURenderer( { antialias: true, window: sdlWindow } );
+	renderer.setPixelRatio( window.devicePixelRatio );
+	renderer.setSize( window.innerWidth, window.innerHeight );
+	renderer.toneMapping = THREE.LinearToneMapping;
+	renderer.setAnimationLoop( render );
+
+	const controls = new OrbitControls( camera, renderer.domElement );
+	controls.minDistance = 2;
+	controls.maxDistance = 10;
+
+	window.addEventListener( 'resize', onWindowResize );
+
+	// gui
+
+	const gui = new GUI( { title: 'Settings' } );
+	gui.add( adjustments, 'mix', - 1, 2, 0.01 );
+	gui.add( { blurBackground: blurNode.value }, 'blurBackground', 0, 1, 0.01 ).onChange( value => {
+
+		blurNode.value = value;
+
+	} );
+	gui.add( { offsetHDR1: 0 }, 'offsetHDR1', 0, Math.PI * 2, 0.01 ).onChange( value => {
+
+		rotateY1Matrix.makeRotationY( value );
+
+	} );
+	gui.add( { offsetHDR2: 0 }, 'offsetHDR2', 0, Math.PI * 2, 0.01 ).onChange( value => {
+
+		rotateY2Matrix.makeRotationY( value );
+
+	} );
+	gui.add( adjustments, 'procedural', 0, 1, 0.01 );
+	gui.add( adjustments, 'intensity', 0, 5, 0.01 );
+	gui.add( adjustments, 'hue', 0, Math.PI * 2, 0.01 );
+	gui.add( adjustments, 'saturation', 0, 2, 0.01 );
+
+}
+
+function onWindowResize() {
+
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
+
+	renderer.setSize( window.innerWidth, window.innerHeight );
+
+}
+
+//
+
+function render() {
+
+	renderer.render( scene, camera );
+
+}

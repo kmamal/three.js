@@ -1,0 +1,84 @@
+--- a/examples/webgpu_storage_buffer.mjs
++++ b/examples/webgpu_storage_buffer.mjs
+@@ -1,12 +1,10 @@
+ import * as THREE from '@kmamal/three/webgpu';
+ import { storage, If, vec3, uv, uint, float, Fn, instanceIndex, workgroupBarrier } from '@kmamal/three/tsl';
+-import { createWindow, window, document } from '@kmamal/three/addons/utils/SDLWindow.js';
++import { createWindow, viewOf } from '@kmamal/three/addons/utils/SDLWindow.js';
+ 
+-const sdlWindow = createWindow( { title: 'three.js webgpu - storage pbo external element', api: 'webgpu' } );
+-
+-const timestamps = {
+-	webgpu: document.getElementById( 'timestamps' ),
+-	webgl: document.getElementById( 'timestamps_webgl' )
++const sdlWindows = {
++	webgpu: createWindow( { title: 'three.js webgpu - storage pbo external element - webgpu', api: 'webgpu' } ),
++	webgl: createWindow( { title: 'three.js webgpu - storage pbo external element - webgl', api: 'webgl' } )
+ };
+ 
+ // WebGPU Backend
+@@ -17,7 +15,10 @@
+ 
+ async function init( forceWebGL = false ) {
+ 
+-	const aspect = ( window.innerWidth / 2 ) / window.innerHeight;
++	const sdlWindow = sdlWindows[ forceWebGL ? 'webgl' : 'webgpu' ];
++	const view = viewOf( sdlWindow ).window;
++
++	const aspect = view.innerWidth / view.innerHeight;
+ 	const camera = new THREE.OrthographicCamera( - aspect, aspect, 1, - 1, 0, 2 );
+ 	camera.position.z = 1;
+ 
+@@ -131,21 +132,13 @@
+ 	scene.add( plane );
+ 
+ 	const renderer = new THREE.WebGPURenderer( { antialias: false, forceWebGL: forceWebGL, trackTimestamp: true, window: sdlWindow } );
+-	renderer.setPixelRatio( window.devicePixelRatio );
+-	renderer.setSize( window.innerWidth / 2, window.innerHeight );
++	renderer.setPixelRatio( view.devicePixelRatio );
++	renderer.setSize( view.innerWidth, view.innerHeight );
+ 
+ 	await renderer.init();
+ 
+-	renderer.domElement.style.position = 'absolute';
+-	renderer.domElement.style.top = '0';
+-	renderer.domElement.style.left = '0';
+-	renderer.domElement.style.width = '50%';
+-	renderer.domElement.style.height = '100%';
+-
+ 	if ( forceWebGL ) {
+ 
+-		renderer.domElement.style.left = '50%';
+-
+ 		scene.background = new THREE.Color( 0x212121 );
+ 
+ 	} else {
+@@ -170,10 +163,7 @@
+ 		renderer.resolveTimestampsAsync( THREE.TimestampQuery.COMPUTE );
+ 		renderer.resolveTimestampsAsync( THREE.TimestampQuery.RENDER );
+ 
+-		timestamps[ forceWebGL ? 'webgl' : 'webgpu' ].innerHTML = `
+-
+-				Compute ${renderer.info.compute.frameCalls} pass in ${renderer.info.compute.timestamp.toFixed( 6 )}ms<br>
+-				Draw ${renderer.info.render.drawCalls} pass in ${renderer.info.render.timestamp.toFixed( 6 )}ms`;
++		sdlWindow.setTitle( `three.js webgpu - storage pbo external element - ${ forceWebGL ? 'webgl' : 'webgpu' } - compute ${renderer.info.compute.frameCalls} pass in ${renderer.info.compute.timestamp.toFixed( 6 )}ms, draw ${renderer.info.render.drawCalls} pass in ${renderer.info.render.timestamp.toFixed( 6 )}ms` );
+ 
+ 		setTimeout( stepAnimation, 1000 );
+ 
+@@ -181,13 +171,13 @@
+ 
+ 	stepAnimation();
+ 
+-	window.addEventListener( 'resize', onWindowResize );
++	view.addEventListener( 'resize', onWindowResize );
+ 
+ 	function onWindowResize() {
+ 
+-		renderer.setSize( window.innerWidth / 2, window.innerHeight );
++		renderer.setSize( view.innerWidth, view.innerHeight );
+ 
+-		const aspect = ( window.innerWidth / 2 ) / window.innerHeight;
++		const aspect = view.innerWidth / view.innerHeight;
+ 
+ 		const frustumHeight = camera.top - camera.bottom;
+ 

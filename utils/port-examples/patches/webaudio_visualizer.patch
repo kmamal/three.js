@@ -1,0 +1,30 @@
+--- a/examples/webaudio_visualizer.mjs
++++ b/examples/webaudio_visualizer.mjs
+@@ -51,24 +51,10 @@
+ 	const audio = new THREE.Audio( listener );
+ 	const file = './sounds/376737_Skullbeatz___Bad_Cat_Maste.mp3';
+ 
+-	if ( /(iPad|iPhone|iPod)/g.test( navigator.userAgent ) ) {
++	const mediaElement = new Audio( file );
++	mediaElement.play();
+ 
+-		const loader = new THREE.AudioLoader();
+-		loader.load( file, function ( buffer ) {
+-
+-			audio.setBuffer( buffer );
+-			audio.play();
+-
+-		} );
+-
+-	} else {
+-
+-		const mediaElement = new Audio( file );
+-		mediaElement.play();
+-
+-		audio.setMediaElementSource( mediaElement );
+-
+-	}
++	audio.setMediaElementSource( mediaElement );
+ 
+ 	analyser = new THREE.AudioAnalyser( audio, fftSize );
+ 

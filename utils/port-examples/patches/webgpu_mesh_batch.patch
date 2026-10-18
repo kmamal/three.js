@@ -1,0 +1,14 @@
+--- a/examples/webgpu_mesh_batch.mjs
++++ b/examples/webgpu_mesh_batch.mjs
+@@ -207,11 +207,6 @@
+ 	// gui
+ 
+ 	gui = new GUI( { title: 'Settings' } );
+-	gui.add( api, 'webgpu' ).onChange( () => {
+-
+-		init( ! api.webgpu );
+-
+-	} );
+ 	gui.add( api, 'count', 1, MAX_GEOMETRY_COUNT, 1 ).onChange( initMesh );
+ 	gui.add( api, 'dynamic', 0, MAX_GEOMETRY_COUNT, 1 );
+ 

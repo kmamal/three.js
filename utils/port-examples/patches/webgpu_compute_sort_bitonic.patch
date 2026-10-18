@@ -1,0 +1,197 @@
+--- a/examples/webgpu_compute_sort_bitonic.mjs
++++ b/examples/webgpu_compute_sort_bitonic.mjs
+@@ -6,9 +6,10 @@
+ import WebGPU from '@kmamal/three/addons/capabilities/WebGPU.js';
+ 
+ import { GUI } from '@kmamal/three/addons/libs/lil-gui.module.js';
+-import { createWindow, window, document } from '@kmamal/three/addons/utils/SDLWindow.js';
++import { createWindow, viewOf } from '@kmamal/three/addons/utils/SDLWindow.js';
+ 
+-const sdlWindow = createWindow( { title: 'three.js webgpu - storage pbo external element', api: 'webgpu' } );
++const sdlWindowLocal = createWindow( { title: 'three.js webgpu - bitonic sort - local swaps', api: 'webgpu' } );
++const sdlWindowGlobal = createWindow( { title: 'three.js webgpu - bitonic sort - global swaps', api: 'webgpu' } );
+ 
+ const StepType = {
+ 
+@@ -22,13 +23,8 @@
+ 
+ };
+ 
+-const timestamps = {
+-	local_swap: document.getElementById( 'local_swap' ),
+-	global_swap: document.getElementById( 'global_swap' )
+-};
+-
+-const localColors = [ 'rgb(203, 64, 203)', 'rgb(0, 215, 215)' ];
+-const globalColors = [ 'rgb(1, 150, 1)', 'red' ];
++const localColors = [ 'magenta', 'cyan' ];
++const globalColors = [ 'green', 'red' ];
+ 
+ // Total number of elements and the dimensions of the display grid.
+ const size = 16384;
+@@ -119,10 +115,10 @@
+ 
+ };
+ 
+-const windowResizeCallback = ( renderer, scene, camera ) => {
++const windowResizeCallback = ( renderer, scene, camera, view ) => {
+ 
+-	renderer.setSize( window.innerWidth / 2, window.innerHeight );
+-	const aspect = ( window.innerWidth / 2 ) / window.innerHeight;
++	renderer.setSize( view.innerWidth, view.innerHeight );
++	const aspect = view.innerWidth / view.innerHeight;
+ 	const frustumHeight = camera.top - camera.bottom;
+ 	camera.left = - frustumHeight * aspect / 2;
+ 	camera.right = frustumHeight * aspect / 2;
+@@ -131,17 +127,9 @@
+ 
+ };
+ 
+-const constructInnerHTML = ( isGlobal, colorsArr ) => {
++const getTitle = ( isGlobal, colorsArr ) => {
+ 
+-	return `
+-
+-	Compute ${isGlobal ? 'Global' : 'Local'}:
+-	<div style="display: flex; flex-direction:row; justify-content: center; align-items: center;">
+-		${isGlobal ? 'Global Swaps' : 'Local Swaps'} Compare Region&nbsp;
+-		<div style="background-color: ${ colorsArr[ 0 ]}; width:12.5px; height: 1em; border-radius: 20%;"></div>
+-		&nbsp;to Region&nbsp;
+-		<div style="background-color: ${ colorsArr[ 1 ] }; width:12.5px; height: 1em; border-radius: 20%;"></div>
+-	</div>`;
++	return `three.js webgpu - bitonic sort - ${ isGlobal ? 'global' : 'local' } swaps compare region ${ colorsArr[ 0 ] } to region ${ colorsArr[ 1 ] }`;
+ 
+ };
+ 
+@@ -209,21 +197,13 @@
+ 
+ };
+ 
+-const setupDomElement = ( renderer ) => {
++async function initBitonicSort( sdlWindow ) {
+ 
+-	renderer.domElement.style.position = 'absolute';
+-	renderer.domElement.style.top = '0';
+-	renderer.domElement.style.left = '0';
+-	renderer.domElement.style.width = '50%';
+-	renderer.domElement.style.height = '100%';
+-
+-};
+-
+-async function initBitonicSort() {
++	const view = viewOf( sdlWindow ).window;
+ 
+ 	let currentStep = 0;
+ 
+-	const aspect = ( window.innerWidth / 2 ) / window.innerHeight;
++	const aspect = view.innerWidth / view.innerHeight;
+ 	const camera = new THREE.OrthographicCamera( - aspect, aspect, 1, - 1, 0, 2 );
+ 	camera.position.z = 1;
+ 
+@@ -255,8 +235,8 @@
+ 	} );
+ 
+ 	const renderer = new THREE.WebGPURenderer( { antialias: false, window: sdlWindow } );
+-	renderer.setPixelRatio( window.devicePixelRatio );
+-	renderer.setSize( window.innerWidth / 2, window.innerHeight );
++	renderer.setPixelRatio( view.devicePixelRatio );
++	renderer.setSize( view.innerWidth, view.innerHeight );
+ 
+ 	await renderer.init();
+ 
+@@ -267,7 +247,6 @@
+ 	};
+ 
+ 	renderer.setAnimationLoop( animate );
+-	setupDomElement( renderer );
+ 	scene.background = new THREE.Color( 0x313131 );
+ 
+ 	const bitonicSortModule = new BitonicSort(
+@@ -304,7 +283,7 @@
+ 
+ 		}
+ 
+-		timestamps[ 'local_swap' ].innerHTML = constructInnerHTML( false, localColors );
++		sdlWindow.setTitle( getTitle( false, localColors ) );
+ 
+ 		if ( currentStep === bitonicSortModule.stepCount ) {
+ 
+@@ -320,27 +299,29 @@
+ 
+ 	stepAnimation();
+ 
+-	window.addEventListener( 'resize', onWindowResize );
++	view.addEventListener( 'resize', onWindowResize );
+ 
+ 	function onWindowResize() {
+ 
+-		windowResizeCallback( renderer, scene, camera );
++		windowResizeCallback( renderer, scene, camera, view );
+ 
+ 	}
+ 
+ }
+ 
+-initBitonicSort();
++initBitonicSort( sdlWindowLocal );
+ 
+ // Global Swaps Only
+-initGlobalSwapOnly();
++initGlobalSwapOnly( sdlWindowGlobal );
+ 
+ // When forceGlobalSwap is true, force all valid local swaps to be global swaps.
+-async function initGlobalSwapOnly() {
++async function initGlobalSwapOnly( sdlWindow ) {
++
++	const view = viewOf( sdlWindow ).window;
+ 
+ 	let currentStep = 0;
+ 
+-	const aspect = ( window.innerWidth / 2 ) / window.innerHeight;
++	const aspect = view.innerWidth / view.innerHeight;
+ 	const camera = new THREE.OrthographicCamera( - aspect, aspect, 1, - 1, 0, 2 );
+ 	camera.position.z = 1;
+ 
+@@ -487,8 +468,8 @@
+ 	scene.add( createDisplayMesh( currentElementsStorage, infoStorage, nextBlockHeightRead ) );
+ 
+ 	const renderer = new THREE.WebGPURenderer( { antialias: false, window: sdlWindow } );
+-	renderer.setPixelRatio( window.devicePixelRatio );
+-	renderer.setSize( window.innerWidth / 2, window.innerHeight );
++	renderer.setPixelRatio( view.devicePixelRatio );
++	renderer.setSize( view.innerWidth, view.innerHeight );
+ 
+ 	await renderer.init();
+ 
+@@ -499,8 +480,6 @@
+ 	};
+ 
+ 	renderer.setAnimationLoop( animate );
+-	setupDomElement( renderer );
+-	renderer.domElement.style.left = '50%';
+ 	scene.background = new THREE.Color( 0x212121 );
+ 
+ 	renderer.compute( computeInit );
+@@ -526,7 +505,7 @@
+ 
+ 		}
+ 
+-		timestamps[ 'global_swap' ].innerHTML = constructInnerHTML( true, globalColors );
++		sdlWindow.setTitle( getTitle( true, globalColors ) );
+ 
+ 		if ( currentStep === MAX_STEPS ) {
+ 
+@@ -542,11 +521,11 @@
+ 
+ 	stepAnimation();
+ 
+-	window.addEventListener( 'resize', onWindowResize );
++	view.addEventListener( 'resize', onWindowResize );
+ 
+ 	function onWindowResize() {
+ 
+-		windowResizeCallback( renderer, scene, camera );
++		windowResizeCallback( renderer, scene, camera, view );
+ 
+ 	}
+ 

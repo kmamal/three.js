@@ -1,0 +1,160 @@
+--- a/examples/webgpu_camera_logarithmicdepthbuffer.mjs
++++ b/examples/webgpu_camera_logarithmicdepthbuffer.mjs
+@@ -2,20 +2,19 @@
+ 
+ import { FontLoader } from '@kmamal/three/addons/loaders/FontLoader.js';
+ import { TextGeometry } from '@kmamal/three/addons/geometries/TextGeometry.js';
+-import { createWindow, window, document } from '@kmamal/three/addons/utils/SDLWindow.js';
++import { createWindow, viewOf, window } from '@kmamal/three/addons/utils/SDLWindow.js';
+ 
+-const sdlWindow = createWindow( { title: 'three.js webgpu - logarithmic depth buffer', api: 'webgpu' } );
++const sdlWindows = {
++	normal: createWindow( { title: 'three.js webgpu - logarithmic depth buffer - normal z-buffer', api: 'webgpu' } ),
++	logzbuf: createWindow( { title: 'three.js webgpu - logarithmic depth buffer - logarithmic z-buffer', api: 'webgpu' } )
++};
+ 
+ // 1 micrometer to 100 billion light years in one scene, with 1 unit = 1 meter?  preposterous!  and yet...
+ const NEAR = 1e-6, FAR = 1e27;
+-let SCREEN_WIDTH = window.innerWidth;
+-let SCREEN_HEIGHT = window.innerHeight;
+-let screensplit = .25, screensplit_right = 0;
+ const mouse = [ .5, .5 ];
+ let zoompos = - 100, minzoomspeed = .015;
+ let zoomspeed = minzoomspeed;
+ 
+-let border;
+ const objects = {};
+ 
+ // Generate a number of text labels, from 1µm in size up to 100,000,000 light years
+@@ -52,32 +51,27 @@
+ 	objects.normal = await initView( scene, 'normal', false );
+ 	objects.logzbuf = await initView( scene, 'logzbuf', true );
+ 
+-	// Resize border allows the user to easily compare effects of logarithmic depth buffer over the whole scene
+-	border = document.getElementById( 'renderer_border' );
+-	border.addEventListener( 'pointerdown', onBorderPointerDown );
+-
+-	window.addEventListener( 'mousemove', onMouseMove );
+-	window.addEventListener( 'resize', onWindowResize );
+-	window.addEventListener( 'wheel', onMouseWheel );
+-
+ }
+ 
+ async function initView( scene, name, logDepthBuf ) {
+ 
+-	const framecontainer = document.getElementById( 'container_' + name );
++	const sdlWindow = sdlWindows[ name ];
++	const view = viewOf( sdlWindow ).window;
+ 
+-	const camera = new THREE.PerspectiveCamera( 50, screensplit * SCREEN_WIDTH / SCREEN_HEIGHT, NEAR, FAR );
++	const camera = new THREE.PerspectiveCamera( 50, view.innerWidth / view.innerHeight, NEAR, FAR );
+ 	scene.add( camera );
+ 
+ 	const renderer = new THREE.WebGPURenderer( { antialias: true, logarithmicDepthBuffer: logDepthBuf, window: sdlWindow } );
+-	renderer.setPixelRatio( window.devicePixelRatio );
+-	renderer.setSize( SCREEN_WIDTH / 2, SCREEN_HEIGHT );
+-	renderer.domElement.style.position = 'relative';
+-	renderer.domElement.id = 'renderer_' + name;
++	renderer.setPixelRatio( view.devicePixelRatio );
++	renderer.setSize( view.innerWidth, view.innerHeight );
+ 
+ 	await renderer.init();
+ 
+-	return { container: framecontainer, renderer: renderer, scene: scene, camera: camera };
++	view.addEventListener( 'mousemove', ( ev ) => onMouseMove( ev, view ) );
++	view.addEventListener( 'resize', () => onWindowResize( { renderer, camera, view } ) );
++	view.addEventListener( 'wheel', onMouseWheel );
++
++	return { renderer: renderer, scene: scene, camera: camera };
+ 
+ }
+ 
+@@ -141,31 +135,6 @@
+ 
+ }
+ 
+-function updateRendererSizes() {
+-
+-	// Recalculate size for both renderers when screen size or split location changes
+-
+-	SCREEN_WIDTH = window.innerWidth;
+-	SCREEN_HEIGHT = window.innerHeight;
+-
+-	screensplit_right = 1 - screensplit;
+-
+-	objects.normal.renderer.setSize( screensplit * SCREEN_WIDTH, SCREEN_HEIGHT );
+-	objects.normal.camera.aspect = screensplit * SCREEN_WIDTH / SCREEN_HEIGHT;
+-	objects.normal.camera.updateProjectionMatrix();
+-	objects.normal.camera.setViewOffset( SCREEN_WIDTH, SCREEN_HEIGHT, 0, 0, SCREEN_WIDTH * screensplit, SCREEN_HEIGHT );
+-	objects.normal.container.style.width = ( screensplit * 100 ) + '%';
+-
+-	objects.logzbuf.renderer.setSize( screensplit_right * SCREEN_WIDTH, SCREEN_HEIGHT );
+-	objects.logzbuf.camera.aspect = screensplit_right * SCREEN_WIDTH / SCREEN_HEIGHT;
+-	objects.logzbuf.camera.updateProjectionMatrix();
+-	objects.logzbuf.camera.setViewOffset( SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_WIDTH * screensplit, 0, SCREEN_WIDTH * screensplit_right, SCREEN_HEIGHT );
+-	objects.logzbuf.container.style.width = ( screensplit_right * 100 ) + '%';
+-
+-	border.style.left = ( screensplit * 100 ) + '%';
+-
+-}
+-
+ function animate() {
+ 
+ 	window.requestAnimationFrame( animate );
+@@ -198,49 +167,23 @@
+ 	objects.logzbuf.camera.position.copy( objects.normal.camera.position );
+ 	objects.logzbuf.camera.quaternion.copy( objects.normal.camera.quaternion );
+ 
+-	// Update renderer sizes if the split has changed
+-	if ( screensplit_right != 1 - screensplit ) {
+-
+-		updateRendererSizes();
+-
+-	}
+-
+ 	objects.normal.renderer.render( objects.normal.scene, objects.normal.camera );
+ 	objects.logzbuf.renderer.render( objects.logzbuf.scene, objects.logzbuf.camera );
+ 
+ }
+ 
+-function onWindowResize() {
+-
+-	updateRendererSizes();
+-
+-}
+-
+-function onBorderPointerDown() {
+-
+-	// activate draggable window resizing bar
+-	window.addEventListener( 'pointermove', onBorderPointerMove );
+-	window.addEventListener( 'pointerup', onBorderPointerUp );
+-
+-}
+-
+-function onBorderPointerMove( ev ) {
+-
+-	screensplit = Math.max( 0, Math.min( 1, ev.clientX / window.innerWidth ) );
+-
+-}
+-
+-function onBorderPointerUp() {
++function onWindowResize( { renderer, camera, view } ) {
+ 
+-	window.removeEventListener( 'pointermove', onBorderPointerMove );
+-	window.removeEventListener( 'pointerup', onBorderPointerUp );
++	renderer.setSize( view.innerWidth, view.innerHeight );
++	camera.aspect = view.innerWidth / view.innerHeight;
++	camera.updateProjectionMatrix();
+ 
+ }
+ 
+-function onMouseMove( ev ) {
++function onMouseMove( ev, view ) {
+ 
+-	mouse[ 0 ] = ev.clientX / window.innerWidth;
+-	mouse[ 1 ] = ev.clientY / window.innerHeight;
++	mouse[ 0 ] = ev.clientX / view.innerWidth;
++	mouse[ 1 ] = ev.clientY / view.innerHeight;
+ 
+ }
+ 

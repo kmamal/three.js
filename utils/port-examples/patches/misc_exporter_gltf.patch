@@ -1,0 +1,11 @@
+--- a/examples/misc_exporter_gltf.mjs
++++ b/examples/misc_exporter_gltf.mjs
+@@ -12,7 +12,7 @@
+ 
+ function exportGLTF( input ) {
+ 
+-	const gltfExporter = new GLTFExporter().setTextureUtils( TextureUtils );
++	const gltfExporter = new GLTFExporter().setTextureUtils( { decompress: ( texture, maxTextureSize ) => TextureUtils.decompress( texture, maxTextureSize, renderer ) } );
+ 
+ 	const options = {
+ 		trs: params.trs,

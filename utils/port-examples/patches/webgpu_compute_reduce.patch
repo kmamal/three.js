@@ -1,0 +1,90 @@
+--- a/examples/webgpu_compute_reduce.mjs
++++ b/examples/webgpu_compute_reduce.mjs
+@@ -4,13 +4,11 @@
+ import WebGPU from '@kmamal/three/addons/capabilities/WebGPU.js';
+ 
+ import { GUI } from '@kmamal/three/addons/libs/lil-gui.module.js';
+-import { createWindow, window, document } from '@kmamal/three/addons/utils/SDLWindow.js';
++import { createWindow, viewOf, document } from '@kmamal/three/addons/utils/SDLWindow.js';
+ 
+-const sdlWindow = createWindow( { title: 'three.js webgpu - compute reduction', api: 'webgpu' } );
+-
+-const timestamps = {
+-	left_side_display: document.getElementById( 'left_side_display' ),
+-	right_side_display: document.getElementById( 'right_side_display' )
++const sdlWindows = {
++	left: createWindow( { title: 'three.js webgpu - compute reduction - left', api: 'webgpu' } ),
++	right: createWindow( { title: 'three.js webgpu - compute reduction - right', api: 'webgpu' } )
+ };
+ 
+ const divRoundUp = ( size, part_size ) => {
+@@ -724,9 +722,12 @@
+ 
+ async function init( leftSideDisplay = true ) {
+ 
++	const sdlWindow = sdlWindows[ leftSideDisplay ? 'left' : 'right' ];
++	const view = viewOf( sdlWindow ).window;
++
+ 	const effectController = leftSideDisplay ? leftEffectController : rightEffectController;
+ 
+-	const aspect = ( window.innerWidth / 2 ) / window.innerHeight;
++	const aspect = view.innerWidth / view.innerHeight;
+ 	const camera = new THREE.OrthographicCamera( - aspect, aspect, 1, - 1, 0, 2 );
+ 	camera.position.z = 1;
+ 
+@@ -797,8 +798,8 @@
+ 	const computeResetWorkgroupSums = computeResetWorkgroupSumsFn().compute( 256 );
+ 
+ 	const renderer = new THREE.WebGPURenderer( { antialias: false, trackTimestamp: true, window: sdlWindow } );
+-	renderer.setPixelRatio( window.devicePixelRatio );
+-	renderer.setSize( window.innerWidth / 2, window.innerHeight );
++	renderer.setPixelRatio( view.devicePixelRatio );
++	renderer.setSize( view.innerWidth, view.innerHeight );
+ 
+ 	await renderer.init();
+ 
+@@ -1036,16 +1037,8 @@
+ 
+ 	renderer.setAnimationLoop( animate );
+ 
+-	renderer.domElement.style.position = 'absolute';
+-	renderer.domElement.style.top = '0';
+-	renderer.domElement.style.left = '0';
+-	renderer.domElement.style.width = '50%';
+-	renderer.domElement.style.height = '100%';
+-
+ 	if ( ! leftSideDisplay ) {
+ 
+-		renderer.domElement.style.left = '50%';
+-
+ 		scene.background = new THREE.Color( 0x212121 );
+ 
+ 	} else {
+@@ -1127,9 +1120,7 @@
+ 
+ 			}
+ 
+-			timestamps[ leftSideDisplay ? 'left_side_display' : 'right_side_display' ].innerHTML = `
+-
+-				Compute ${effectController.algo}: ${passInfoString}`;
++			sdlWindow.setTitle( `three.js webgpu - compute reduction - ${ leftSideDisplay ? 'left' : 'right' } - compute ${effectController.algo}: ${passInfoString.replace( '<br>', '' )}` );
+ 
+ 		}
+ 
+@@ -1160,13 +1151,13 @@
+ 
+ 	};
+ 
+-	window.addEventListener( 'resize', onWindowResize );
++	view.addEventListener( 'resize', onWindowResize );
+ 
+ 	function onWindowResize() {
+ 
+-		renderer.setSize( window.innerWidth / 2, window.innerHeight );
++		renderer.setSize( view.innerWidth, view.innerHeight );
+ 
+-		const aspect = ( window.innerWidth / 2 ) / window.innerHeight;
++		const aspect = view.innerWidth / view.innerHeight;
+ 
+ 		const frustumHeight = camera.top - camera.bottom;
+ 
