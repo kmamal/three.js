@@ -1,7 +1,7 @@
 
 /**
  * @module ParametricFunctions
- * @three_import import * as ParametricFunctions from 'three/addons/geometries/ParametricFunctions.js';
+ * @three_import import * as ParametricFunctions from '@kmamal/three/addons/geometries/ParametricFunctions.js';
  */
 
 /**

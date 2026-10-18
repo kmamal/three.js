@@ -6,14 +6,14 @@ import {
 	Mesh,
 	Sphere,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * A marching cubes implementation.
  *
  * Port of: {@link http://webglsamples.org/blob/blob.html}
  *
- * @three_import import { MarchingCubes } from 'three/addons/objects/MarchingCubes.js';
+ * @three_import import { MarchingCubes } from '@kmamal/three/addons/objects/MarchingCubes.js';
  */
 class MarchingCubes extends Mesh {
 

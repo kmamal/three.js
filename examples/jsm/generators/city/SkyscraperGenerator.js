@@ -17,10 +17,10 @@ import {
 	Sphere,
 	Vector2,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
-import { MeshStandardNodeMaterial } from 'three/webgpu';
-import { attribute, cameraPosition, color, cross, dot, float, floor, Fn, fract, fwidth, hash as ihash, mix, mod, modelWorldMatrixInverse, mx_fractal_noise_float, normalLocal, normalWorldGeometry, positionLocal, positionWorld, select, smoothstep, step, uint, uv, varying, vec2, vec3, vec4 } from 'three/tsl';
+import { MeshStandardNodeMaterial } from '@kmamal/three/webgpu';
+import { attribute, cameraPosition, color, cross, dot, float, floor, Fn, fract, fwidth, hash as ihash, mix, mod, modelWorldMatrixInverse, mx_fractal_noise_float, normalLocal, normalWorldGeometry, positionLocal, positionWorld, select, smoothstep, step, uint, uv, varying, vec2, vec3, vec4 } from '@kmamal/three/tsl';
 
 import { mergeGeometries } from '../../utils/BufferGeometryUtils.js';
 import { bumpNormal } from './CityGeneratorUtils.js';

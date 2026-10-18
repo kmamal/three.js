@@ -7,7 +7,7 @@ import {
 	ACESFilmicToneMapping,
 	AgXToneMapping,
 	NeutralToneMapping
-} from 'three/webgpu';
+} from '@kmamal/three/webgpu';
 
 const _tempRgb = [ 0, 0, 0 ];
 

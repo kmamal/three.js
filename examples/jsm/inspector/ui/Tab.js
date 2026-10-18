@@ -1,4 +1,4 @@
-import { EventDispatcher } from 'three';
+import { EventDispatcher } from '@kmamal/three';
 
 /**
  * Tab class

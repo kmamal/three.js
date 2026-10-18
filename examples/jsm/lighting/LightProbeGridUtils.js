@@ -1,4 +1,4 @@
-import { Box3, DirectionalLight, Sphere, Vector3 } from 'three';
+import { Box3, DirectionalLight, Sphere, Vector3 } from '@kmamal/three';
 
 const _casterBox = /*@__PURE__*/ new Box3();
 const _casterSphere = /*@__PURE__*/ new Sphere();

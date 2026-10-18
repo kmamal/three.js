@@ -1,6 +1,6 @@
 /**
  * @module VerticalBlurShader
- * @three_import import { VerticalBlurShader } from 'three/addons/shaders/VerticalBlurShader.js';
+ * @three_import import { VerticalBlurShader } from '@kmamal/three/addons/shaders/VerticalBlurShader.js';
  */
 
 /**

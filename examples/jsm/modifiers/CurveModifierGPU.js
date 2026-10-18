@@ -12,9 +12,9 @@ import {
 	Mesh,
 	InstancedMesh,
 	LinearFilter
-} from 'three';
+} from '@kmamal/three';
 
-import { modelWorldMatrix, normalLocal, vec2, vec3, vec4, mat3, varyingProperty, texture, reference, Fn, select, positionLocal } from 'three/tsl';
+import { modelWorldMatrix, normalLocal, vec2, vec3, vec4, mat3, varyingProperty, texture, reference, Fn, select, positionLocal } from '@kmamal/three/tsl';
 
 /**
  * Make a new DataTexture to store the descriptions of the curves.
@@ -165,7 +165,7 @@ function modifyShader( material, uniforms, numberOfCurves ) {
  * This module can only be used with {@link WebGPURenderer}. When using {@link WebGLRenderer},
  * import the class from `CurveModifier.js`.
  *
- * @three_import import { Flow } from 'three/addons/modifiers/CurveModifierGPU.js';
+ * @three_import import { Flow } from '@kmamal/three/addons/modifiers/CurveModifierGPU.js';
  */
 export class Flow {
 

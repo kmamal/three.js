@@ -7,7 +7,7 @@ import {
 	PlaneGeometry,
 	Scene,
 	ShaderMaterial
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * This is a helper for visualising a given light's shadow map.
@@ -26,7 +26,7 @@ import {
  * lightShadowMapViewer.update();
  * ```
  *
- * @three_import import { ShadowMapViewer } from 'three/addons/utils/ShadowMapViewer.js';
+ * @three_import import { ShadowMapViewer } from '@kmamal/three/addons/utils/ShadowMapViewer.js';
  */
 class ShadowMapViewer {
 

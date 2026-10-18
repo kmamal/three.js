@@ -1,11 +1,11 @@
 import {
 	Vector2,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * @module VolumeShader
- * @three_import import { VolumeRenderShader1 } from 'three/addons/shaders/VolumeShader.js';
+ * @three_import import { VolumeRenderShader1 } from '@kmamal/three/addons/shaders/VolumeShader.js';
  */
 
 /**

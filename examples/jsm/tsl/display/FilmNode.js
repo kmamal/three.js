@@ -1,11 +1,11 @@
-import { Node } from 'three/webgpu';
-import { rand, Fn, fract, time, uv, clamp, mix, vec4, nodeProxy } from 'three/tsl';
+import { Node } from '@kmamal/three/webgpu';
+import { rand, Fn, fract, time, uv, clamp, mix, vec4, nodeProxy } from '@kmamal/three/tsl';
 
 /**
  * Post processing node for creating a film grain effect.
  *
  * @augments Node
- * @three_import import { film } from 'three/addons/tsl/display/FilmNode.js';
+ * @three_import import { film } from '@kmamal/three/addons/tsl/display/FilmNode.js';
  */
 class FilmNode extends Node {
 

@@ -1,6 +1,6 @@
 import {
 	Group
-} from 'three';
+} from '@kmamal/three';
 
 import { GaussianSplat } from '../objects/GaussianSplat.js';
 import { SH_BAND_WORDS, createGaussianSplatGeometry, createPackedSphericalHarmonicsBand, writeColorBytesFromSH0, writeCovariance } from '../utils/GaussianSplatUtils.js';
@@ -26,7 +26,7 @@ const ATTRIBUTES = {
  * } );
  * ```
  *
- * @three_import import { GLTFGaussianSplatLoaderExtension } from 'three/addons/loaders/GLTFGaussianSplatLoaderExtension.js';
+ * @three_import import { GLTFGaussianSplatLoaderExtension } from '@kmamal/three/addons/loaders/GLTFGaussianSplatLoaderExtension.js';
  */
 class GLTFGaussianSplatLoaderExtension {
 

@@ -44,7 +44,7 @@ import {
 	UnsignedInt5999Type,
 	UnsignedInt101111Type,
 	UnsignedShortType
-} from 'three';
+} from '@kmamal/three';
 import { WorkerPool } from '../utils/WorkerPool.js';
 import {
 	read,
@@ -137,7 +137,7 @@ let _zstd;
  * ```
  *
  * @augments Loader
- * @three_import import { KTX2Loader } from 'three/addons/loaders/KTX2Loader.js';
+ * @three_import import { KTX2Loader } from '@kmamal/three/addons/loaders/KTX2Loader.js';
  */
 class KTX2Loader extends Loader {
 

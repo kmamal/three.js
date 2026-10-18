@@ -14,7 +14,7 @@ import {
 	UnsignedShortType,
 	WebGLRenderTarget,
 	HalfFloatType,
-} from 'three';
+} from '@kmamal/three';
 import { Pass, FullScreenQuad } from './Pass.js';
 import { SSRBlurShader, SSRDepthShader, SSRShader } from '../shaders/SSRShader.js';
 import { CopyShader } from '../shaders/CopyShader.js';
@@ -34,7 +34,7 @@ import { CopyShader } from '../shaders/CopyShader.js';
  * ```
  *
  * @augments Pass
- * @three_import import { SSRPass } from 'three/addons/postprocessing/SSRPass.js';
+ * @three_import import { SSRPass } from '@kmamal/three/addons/postprocessing/SSRPass.js';
  */
 class SSRPass extends Pass {
 

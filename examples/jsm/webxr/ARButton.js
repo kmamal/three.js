@@ -8,7 +8,7 @@
  * ```
  *
  * @hideconstructor
- * @three_import import { ARButton } from 'three/addons/webxr/ARButton.js';
+ * @three_import import { ARButton } from '@kmamal/three/addons/webxr/ARButton.js';
  */
 class ARButton {
 

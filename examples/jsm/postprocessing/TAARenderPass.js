@@ -1,7 +1,7 @@
 import {
 	HalfFloatType,
 	WebGLRenderTarget
-} from 'three';
+} from '@kmamal/three';
 import { SSAARenderPass } from './SSAARenderPass.js';
 
 /**
@@ -20,7 +20,7 @@ import { SSAARenderPass } from './SSAARenderPass.js';
  * ```
  *
  * @augments SSAARenderPass
- * @three_import import { TAARenderPass } from 'three/addons/postprocessing/TAARenderPass.js';
+ * @three_import import { TAARenderPass } from '@kmamal/three/addons/postprocessing/TAARenderPass.js';
  */
 class TAARenderPass extends SSAARenderPass {
 

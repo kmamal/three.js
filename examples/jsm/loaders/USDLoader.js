@@ -2,7 +2,7 @@ import {
 	FileLoader,
 	Loader,
 	LoaderUtils
-} from 'three';
+} from '@kmamal/three';
 
 import { unzipSync } from '../libs/fflate.module.js';
 import { USDAParser } from './usd/USDAParser.js';
@@ -22,7 +22,7 @@ import { USDComposer } from './usd/USDComposer.js';
  * ```
  *
  * @augments Loader
- * @three_import import { USDLoader } from 'three/addons/loaders/USDLoader.js';
+ * @three_import import { USDLoader } from '@kmamal/three/addons/loaders/USDLoader.js';
  */
 class USDLoader extends Loader {
 

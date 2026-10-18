@@ -3,7 +3,7 @@ import {
 	MathUtils,
 	Spherical,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 const _lookDirection = new Vector3();
 const _spherical = new Spherical();
@@ -15,7 +15,7 @@ const _targetVelocity = new Vector3();
  * This class is an alternative implementation of {@link FlyControls}.
  *
  * @augments Controls
- * @three_import import { FirstPersonControls } from 'three/addons/controls/FirstPersonControls.js';
+ * @three_import import { FirstPersonControls } from '@kmamal/three/addons/controls/FirstPersonControls.js';
  */
 class FirstPersonControls extends Controls {
 

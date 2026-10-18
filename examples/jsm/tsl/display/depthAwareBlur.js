@@ -1,4 +1,4 @@
-import { abs, exp, float, Fn, int, logarithmicDepthToViewZ, Loop, max, perspectiveDepthToViewZ, reference, uv } from 'three/tsl';
+import { abs, exp, float, Fn, int, logarithmicDepthToViewZ, Loop, max, perspectiveDepthToViewZ, reference, uv } from '@kmamal/three/tsl';
 
 /**
  * Applies one pass of a separable, depth-aware (bilateral) blur to a screen-space signal.

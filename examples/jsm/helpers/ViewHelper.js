@@ -15,7 +15,7 @@ import {
 	Vector2,
 	Vector3,
 	Vector4
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * A special type of helper that visualizes the camera's transformation
@@ -26,7 +26,7 @@ import {
  * so it looks along the selected axis.
  *
  * @augments Object3D
- * @three_import import { ViewHelper } from 'three/addons/helpers/ViewHelper.js';
+ * @three_import import { ViewHelper } from '@kmamal/three/addons/helpers/ViewHelper.js';
  */
 class ViewHelper extends Object3D {
 

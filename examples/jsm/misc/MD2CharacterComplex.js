@@ -6,7 +6,7 @@ import {
 	TextureLoader,
 	UVMapping,
 	SRGBColorSpace
-} from 'three';
+} from '@kmamal/three';
 import { MD2Loader } from '../loaders/MD2Loader.js';
 import { MorphBlendMesh } from '../misc/MorphBlendMesh.js';
 
@@ -14,7 +14,7 @@ import { MorphBlendMesh } from '../misc/MorphBlendMesh.js';
  * This class represents a management component for animated MD2
  * character assets. It provides a larger API compared to {@link MD2Character}.
  *
- * @three_import import { MD2CharacterComplex } from 'three/addons/misc/MD2CharacterComplex.js';
+ * @three_import import { MD2CharacterComplex } from '@kmamal/three/addons/misc/MD2CharacterComplex.js';
  */
 class MD2CharacterComplex {
 

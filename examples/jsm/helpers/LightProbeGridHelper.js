@@ -5,8 +5,8 @@ import {
 	NodeMaterial,
 	SphereGeometry,
 	Vector3
-} from 'three/webgpu';
-import { array, attribute, Fn, getShIrradianceAt, normalWorld, texture3D, uniform, vec3, vec4 } from 'three/tsl';
+} from '@kmamal/three/webgpu';
+import { array, attribute, Fn, getShIrradianceAt, normalWorld, texture3D, uniform, vec3, vec4 } from '@kmamal/three/tsl';
 
 /**
  * Visualizes a {@link LightProbeGrid} by rendering a sphere at each probe
@@ -23,7 +23,7 @@ import { array, attribute, Fn, getShIrradianceAt, normalWorld, texture3D, unifor
  *
  * @private
  * @augments InstancedMesh
- * @three_import import { LightProbeGridHelper } from 'three/addons/helpers/LightProbeGridHelper.js';
+ * @three_import import { LightProbeGridHelper } from '@kmamal/three/addons/helpers/LightProbeGridHelper.js';
  */
 class LightProbeGridHelper extends InstancedMesh {
 

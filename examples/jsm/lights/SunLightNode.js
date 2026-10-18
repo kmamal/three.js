@@ -1,5 +1,5 @@
-import { AnalyticLightNode } from 'three/webgpu';
-import { cameraViewMatrix, lightPosition } from 'three/tsl';
+import { AnalyticLightNode } from '@kmamal/three/webgpu';
+import { cameraViewMatrix, lightPosition } from '@kmamal/three/tsl';
 import { sunShadow } from './SunShadowNode.js';
 
 /**
@@ -10,7 +10,7 @@ import { sunShadow } from './SunShadowNode.js';
  * ```
  *
  * @augments AnalyticLightNode
- * @three_import import { SunLightNode } from 'three/addons/lights/SunLightNode.js';
+ * @three_import import { SunLightNode } from '@kmamal/three/addons/lights/SunLightNode.js';
  */
 class SunLightNode extends AnalyticLightNode {
 

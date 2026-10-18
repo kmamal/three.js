@@ -14,7 +14,7 @@ import {
 	SRGBTransfer,
 	DataTexture,
 	REVISION,
-} from 'three';
+} from '@kmamal/three';
 
 import {
 	createDefaultContainer,
@@ -135,7 +135,7 @@ const ERROR_COLOR_SPACE = 'THREE.KTX2Exporter: Supported color spaces are SRGBCo
  * const result = await exporter.parse( dataTexture );
  * ```
  *
- * @three_import import { KTX2Exporter } from 'three/addons/exporters/KTX2Exporter.js';
+ * @three_import import { KTX2Exporter } from '@kmamal/three/addons/exporters/KTX2Exporter.js';
  */
 export class KTX2Exporter {
 

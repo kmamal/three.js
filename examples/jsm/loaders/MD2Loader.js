@@ -5,7 +5,7 @@ import {
 	Float32BufferAttribute,
 	Loader,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 const _normalData = [
 	[ - 0.525731, 0.000000, 0.850651 ], [ - 0.442863, 0.238856, 0.864188 ],
@@ -105,7 +105,7 @@ const _normalData = [
  * ```
  *
  * @augments Loader
- * @three_import import { MD2Loader } from 'three/addons/loaders/MD2Loader.js';
+ * @three_import import { MD2Loader } from '@kmamal/three/addons/loaders/MD2Loader.js';
  */
 class MD2Loader extends Loader {
 

@@ -1,7 +1,7 @@
 import {
 	Matrix4,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 const _pixelToLocal = new Matrix4();
 const _mvp = new Matrix4();
@@ -29,7 +29,7 @@ const _size = new Vector3();
  * // In the animation loop
  * interactions.update();
  * ```
- * @three_import import { InteractionManager } from 'three/addons/interaction/InteractionManager.js';
+ * @three_import import { InteractionManager } from '@kmamal/three/addons/interaction/InteractionManager.js';
  */
 class InteractionManager {
 

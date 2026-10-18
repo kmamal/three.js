@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import * as THREE from '@kmamal/three';
 
 const mouse = new THREE.Vector2();
 const raycaster = new THREE.Raycaster();

@@ -6,7 +6,7 @@ import {
 	PlaneGeometry,
 	SRGBColorSpace,
 	Color
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * This class can be used to render a DOM element onto a canvas and use it as a texture
@@ -23,7 +23,7 @@ import {
  * ```
  *
  * @augments Mesh
- * @three_import import { HTMLMesh } from 'three/addons/interactive/HTMLMesh.js';
+ * @three_import import { HTMLMesh } from '@kmamal/three/addons/interactive/HTMLMesh.js';
  */
 class HTMLMesh extends Mesh {
 

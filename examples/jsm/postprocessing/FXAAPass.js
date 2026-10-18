@@ -10,7 +10,7 @@ import { ShaderPass } from './ShaderPass.js';
  * ```
  *
  * @augments ShaderPass
- * @three_import import { FXAAPass } from 'three/addons/postprocessing/FXAAPass.js';
+ * @three_import import { FXAAPass } from '@kmamal/three/addons/postprocessing/FXAAPass.js';
  */
 class FXAAPass extends ShaderPass {
 

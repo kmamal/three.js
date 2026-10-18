@@ -1,7 +1,7 @@
 import {
 	MathUtils,
 	Mesh
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * A special type of an animated mesh with a more advanced interface
@@ -10,7 +10,7 @@ import {
  * fading options.
  *
  * @augments Mesh
- * @three_import import { MorphBlendMesh } from 'three/addons/misc/MorphBlendMesh.js';
+ * @three_import import { MorphBlendMesh } from '@kmamal/three/addons/misc/MorphBlendMesh.js';
  */
 class MorphBlendMesh extends Mesh {
 

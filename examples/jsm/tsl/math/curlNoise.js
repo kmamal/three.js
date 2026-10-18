@@ -1,4 +1,4 @@
-import { mod, Fn, vec2, div, vec4, dot, floor, step, sub, min, max, mul, abs, vec3, inverseSqrt, add, float } from 'three/tsl';
+import { mod, Fn, vec2, div, vec4, dot, floor, step, sub, min, max, mul, abs, vec3, inverseSqrt, add, float } from '@kmamal/three/tsl';
 
 /**
  * Permutation polynomial for noise generation.

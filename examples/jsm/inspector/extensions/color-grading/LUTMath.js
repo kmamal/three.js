@@ -2,7 +2,7 @@
  * LUTMath.js - Mathematical operations for LUT 3D Generator
  */
 
-import { REVISION } from 'three';
+import { REVISION } from '@kmamal/three';
 
 // Monotone cubic spline evaluation for curve points
 export function evaluateSpline( t, points ) {

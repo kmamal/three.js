@@ -5,7 +5,7 @@ import {
 	Matrix4,
 	Quaternion,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 const SH_C0 = 0.2820947917738781;
 const SH_BAND_COMPONENTS = [ 0, 9, 15, 21 ];

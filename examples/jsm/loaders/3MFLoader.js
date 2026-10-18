@@ -22,7 +22,7 @@ import {
 	TextureLoader,
 	SRGBColorSpace,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 import { unzipSync } from '../libs/fflate.module.js';
 import { mergeGeometries } from '../utils/BufferGeometryUtils.js';
 
@@ -57,7 +57,7 @@ const NS_BEAM_LATTICE_BALLS = 'http://schemas.microsoft.com/3dmanufacturing/beam
  * ```
  *
  * @augments Loader
- * @three_import import { ThreeMFLoader } from 'three/addons/loaders/3MFLoader.js';
+ * @three_import import { ThreeMFLoader } from '@kmamal/three/addons/loaders/3MFLoader.js';
  */
 class ThreeMFLoader extends Loader {
 

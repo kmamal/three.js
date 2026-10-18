@@ -1,6 +1,6 @@
 /**
  * @module OutputShader
- * @three_import import { OutputShader } from 'three/addons/shaders/OutputShader.js';
+ * @three_import import { OutputShader } from '@kmamal/three/addons/shaders/OutputShader.js';
  */
 
 /**

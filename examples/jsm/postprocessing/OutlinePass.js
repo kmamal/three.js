@@ -12,7 +12,7 @@ import {
 	Vector2,
 	Vector3,
 	WebGLRenderTarget
-} from 'three';
+} from '@kmamal/three';
 import { Pass, FullScreenQuad } from './Pass.js';
 import { CopyShader } from '../shaders/CopyShader.js';
 
@@ -26,7 +26,7 @@ import { CopyShader } from '../shaders/CopyShader.js';
  * ```
  *
  * @augments Pass
- * @three_import import { OutlinePass } from 'three/addons/postprocessing/OutlinePass.js';
+ * @three_import import { OutlinePass } from '@kmamal/three/addons/postprocessing/OutlinePass.js';
  */
 class OutlinePass extends Pass {
 

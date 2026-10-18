@@ -1,5 +1,5 @@
-import { AnalyticLightNode, Vector3 } from 'three/webgpu';
-import { array, getShIrradianceAt, normalWorld, positionWorld, texture3D, uniform, vec3 } from 'three/tsl';
+import { AnalyticLightNode, Vector3 } from '@kmamal/three/webgpu';
+import { array, getShIrradianceAt, normalWorld, positionWorld, texture3D, uniform, vec3 } from '@kmamal/three/tsl';
 
 // Padding texels at each boundary of every atlas sub-volume.
 export const ATLAS_PADDING = 1;

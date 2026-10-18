@@ -1,11 +1,11 @@
-import { Node } from 'three/webgpu';
-import { nodeObject, Fn, uv, vec2, vec3, sin, cos, add, vec4, screenSize } from 'three/tsl';
+import { Node } from '@kmamal/three/webgpu';
+import { nodeObject, Fn, uv, vec2, vec3, sin, cos, add, vec4, screenSize } from '@kmamal/three/tsl';
 
 /**
  * Post processing node for creating dot-screen effect.
  *
  * @augments Node
- * @three_import import { dotScreen } from 'three/addons/tsl/display/DotScreenNode.js';
+ * @three_import import { dotScreen } from '@kmamal/three/addons/tsl/display/DotScreenNode.js';
  */
 class DotScreenNode extends Node {
 

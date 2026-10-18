@@ -1,6 +1,6 @@
 import {
 	Vector4
-} from 'three';
+} from '@kmamal/three';
 import * as NURBSUtils from '../curves/NURBSUtils.js';
 
 /**
@@ -8,7 +8,7 @@ import * as NURBSUtils from '../curves/NURBSUtils.js';
  *
  * Implementation is based on `(x, y [, z=0 [, w=1]])` control points with `w=weight`.
  *
- * @three_import import { NURBSSurface } from 'three/addons/curves/NURBSSurface.js';
+ * @three_import import { NURBSSurface } from '@kmamal/three/addons/curves/NURBSSurface.js';
  */
 class NURBSSurface {
 

@@ -7,7 +7,7 @@ import {
 	Loader,
 	Vector3,
 	SRGBColorSpace
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * A loader for the STL format, as created by Solidworks and other CAD programs.
@@ -49,7 +49,7 @@ import {
  * ```
  *
  * @augments Loader
- * @three_import import { STLLoader } from 'three/addons/loaders/STLLoader.js';
+ * @three_import import { STLLoader } from '@kmamal/three/addons/loaders/STLLoader.js';
  */
 class STLLoader extends Loader {
 

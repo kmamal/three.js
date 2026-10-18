@@ -27,7 +27,7 @@ import {
 	SpriteMaterial,
 	TextureLoader,
 	EquirectangularReflectionMapping
-} from 'three';
+} from '@kmamal/three';
 
 import { EXRLoader } from '../loaders/EXRLoader.js';
 
@@ -52,7 +52,7 @@ const _bufferGeometryLoader = new BufferGeometryLoader();
  * ```
  *
  * @augments Loader
- * @three_import import { Rhino3dmLoader } from 'three/addons/loaders/3DMLoader.js';
+ * @three_import import { Rhino3dmLoader } from '@kmamal/three/addons/loaders/3DMLoader.js';
  */
 class Rhino3dmLoader extends Loader {
 

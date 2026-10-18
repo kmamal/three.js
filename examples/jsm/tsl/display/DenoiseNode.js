@@ -1,5 +1,5 @@
-import { DataTexture, RepeatWrapping, Vector2, Vector3, Node } from 'three/webgpu';
-import { texture, getNormalFromDepth, getViewPosition, convertToTexture, nodeObject, Fn, float, NodeUpdateType, uv, uniform, Loop, luminance, vec2, vec3, vec4, uniformArray, int, dot, max, pow, abs, If, textureSize, sin, cos, mat2, PI, property } from 'three/tsl';
+import { DataTexture, RepeatWrapping, Vector2, Vector3, Node } from '@kmamal/three/webgpu';
+import { texture, getNormalFromDepth, getViewPosition, convertToTexture, nodeObject, Fn, float, NodeUpdateType, uv, uniform, Loop, luminance, vec2, vec3, vec4, uniformArray, int, dot, max, pow, abs, If, textureSize, sin, cos, mat2, PI, property } from '@kmamal/three/tsl';
 import { SimplexNoise } from '../../math/SimplexNoise.js';
 
 /**
@@ -11,7 +11,7 @@ import { SimplexNoise } from '../../math/SimplexNoise.js';
  * Reference: {@link https://openaccess.thecvf.com/content/WACV2021/papers/Khademi_Self-Supervised_Poisson-Gaussian_Denoising_WACV_2021_paper.pdf}.
  *
  * @augments Node
- * @three_import import { denoise } from 'three/addons/tsl/display/DenoiseNode.js';
+ * @three_import import { denoise } from '@kmamal/three/addons/tsl/display/DenoiseNode.js';
  */
 class DenoiseNode extends Node {
 

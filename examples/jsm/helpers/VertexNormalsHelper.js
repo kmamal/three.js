@@ -5,7 +5,7 @@ import {
 	LineBasicMaterial,
 	Matrix3,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 const _v1 = new Vector3();
 const _v2 = new Vector3();
@@ -27,7 +27,7 @@ const _normalMatrix = new Matrix3();
  * ```
  *
  * @augments LineSegments
- * @three_import import { VertexNormalsHelper } from 'three/addons/helpers/VertexNormalsHelper.js';
+ * @three_import import { VertexNormalsHelper } from '@kmamal/three/addons/helpers/VertexNormalsHelper.js';
  */
 class VertexNormalsHelper extends LineSegments {
 

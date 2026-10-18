@@ -1,10 +1,10 @@
 import {
 	Vector2
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * @module ConvolutionShader
- * @three_import import { ConvolutionShader } from 'three/addons/shaders/ConvolutionShader.js';
+ * @three_import import { ConvolutionShader } from '@kmamal/three/addons/shaders/ConvolutionShader.js';
  */
 
 /**

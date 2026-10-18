@@ -14,7 +14,7 @@ import {
 	Vector3,
 	Matrix4,
 	MathUtils
-} from 'three';
+} from '@kmamal/three';
 
 //trackball state
 const STATE = {
@@ -107,7 +107,7 @@ const _EPS = 0.000001;
  * animation loop when animations are on.
  *
  * @augments Controls
- * @three_import import { ArcballControls } from 'three/addons/controls/ArcballControls.js';
+ * @three_import import { ArcballControls } from '@kmamal/three/addons/controls/ArcballControls.js';
  */
 class ArcballControls extends Controls {
 

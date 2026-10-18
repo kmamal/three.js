@@ -1,5 +1,5 @@
-import { HalfFloatType, RenderTarget, Vector2, NodeMaterial, RendererUtils, QuadMesh, Node, NodeUpdateType } from 'three/webgpu';
-import { Fn, float, vec2, vec3, vec4, ivec2, int, uv, floor, fract, abs, max, min, clamp, saturate, sqrt, select, exp2, nodeObject, passTexture, textureSize, textureLoad, convertToTexture, context } from 'three/tsl';
+import { HalfFloatType, RenderTarget, Vector2, NodeMaterial, RendererUtils, QuadMesh, Node, NodeUpdateType } from '@kmamal/three/webgpu';
+import { Fn, float, vec2, vec3, vec4, ivec2, int, uv, floor, fract, abs, max, min, clamp, saturate, sqrt, select, exp2, nodeObject, passTexture, textureSize, textureLoad, convertToTexture, context } from '@kmamal/three/tsl';
 
 const _quadMesh = /*@__PURE__*/ new QuadMesh();
 const _size = /*@__PURE__*/ new Vector2();
@@ -24,7 +24,7 @@ let _rendererState;
  * Reference: {@link https://gpuopen.com/fidelityfx-superresolution/}.
  *
  * @augments Node
- * @three_import import { fsr1 } from 'three/addons/tsl/display/fsr1/FSR1Node.js';
+ * @three_import import { fsr1 } from '@kmamal/three/addons/tsl/display/fsr1/FSR1Node.js';
  */
 class FSR1Node extends Node {
 

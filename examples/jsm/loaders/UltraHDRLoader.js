@@ -10,7 +10,7 @@ import {
 	Loader,
 	RGBAFormat,
 	UVMapping,
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * UltraHDR Image Format - https://developer.android.com/media/platform/hdr-image-format
@@ -66,7 +66,7 @@ for ( let i = 0; i < 1024; i ++ ) {
  * ```
  *
  * @augments Loader
- * @three_import import { UltraHDRLoader } from 'three/addons/loaders/UltraHDRLoader.js';
+ * @three_import import { UltraHDRLoader } from '@kmamal/three/addons/loaders/UltraHDRLoader.js';
  */
 class UltraHDRLoader extends Loader {
 

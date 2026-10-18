@@ -11,7 +11,7 @@ import { Timeline } from './tabs/Timeline.js';
 import { setText } from './ui/utils.js';
 import { getItem, setItem } from './Storage.js';
 
-import { setConsoleFunction, getConsoleFunction, REVISION } from 'three/webgpu';
+import { setConsoleFunction, getConsoleFunction, REVISION } from '@kmamal/three/webgpu';
 
 class Inspector extends RendererInspector {
 

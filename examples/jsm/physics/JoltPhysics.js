@@ -1,4 +1,4 @@
-import { Timer, Vector3, Quaternion, Matrix4 } from 'three';
+import { Timer, Vector3, Quaternion, Matrix4 } from '@kmamal/three';
 
 const JOLT_PATH = 'https://cdn.jsdelivr.net/npm/jolt-physics@1.0.0/dist/jolt-physics.wasm-compat.js';
 
@@ -71,7 +71,7 @@ function setupCollisionFiltering( settings ) {
  * @name JoltPhysics
  * @class
  * @hideconstructor
- * @three_import import { JoltPhysics } from 'three/addons/physics/JoltPhysics.js';
+ * @three_import import { JoltPhysics } from '@kmamal/three/addons/physics/JoltPhysics.js';
  */
 async function JoltPhysics() {
 

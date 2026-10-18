@@ -14,11 +14,11 @@
 		<script type="importmap">
 			{
 				"imports": {
-					"three": "../build/three.module.js",
-					"three/webgpu": "../build/three.webgpu.js",
-					"three/addons/": "../examples/jsm/",
+					"@kmamal/three": "../build/three.module.js",
+					"@kmamal/three/webgpu": "../build/three.webgpu.js",
+					"@kmamal/three/addons/": "../examples/jsm/",
 
-					"three/examples/": "../examples/",
+					"@kmamal/three/examples/": "../examples/",
 					"three-gpu-pathtracer": "https://cdn.jsdelivr.net/npm/three-gpu-pathtracer@0.0.23/build/index.module.js",
 					"three-mesh-bvh": "https://cdn.jsdelivr.net/npm/three-mesh-bvh@0.7.4/build/index.module.js"
 				}
@@ -57,7 +57,7 @@
 
 		<script type="module">
 
-			import * as THREE from 'three';
+			import * as THREE from '@kmamal/three';
 
 			import { Editor } from './js/Editor.js';
 			import { Viewport } from './js/Viewport.js';
@@ -70,7 +70,7 @@
 			import { AnimationResizer } from './js/AnimationResizer.js';
 			import { Animation } from './js/Animation.js';
 
-			import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
+			import { TextGeometry } from '@kmamal/three/addons/geometries/TextGeometry.js';
 
 			window.URL = window.URL || window.webkitURL;
 			window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;

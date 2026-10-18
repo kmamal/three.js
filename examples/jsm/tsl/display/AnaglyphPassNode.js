@@ -1,5 +1,5 @@
-import { Matrix3, NodeMaterial, Vector3 } from 'three/webgpu';
-import { clamp, Fn, vec4, uv, uniform, max, context } from 'three/tsl';
+import { Matrix3, NodeMaterial, Vector3 } from '@kmamal/three/webgpu';
+import { clamp, Fn, vec4, uv, uniform, max, context } from '@kmamal/three/tsl';
 import StereoCompositePassNode from './StereoCompositePassNode.js';
 import { frameCorners } from '../../utils/CameraUtils.js';
 
@@ -278,7 +278,7 @@ const ANAGLYPH_MATRICES = {
  * perception with zero parallax at the plane distance.
  *
  * @augments StereoCompositePassNode
- * @three_import import { anaglyphPass, AnaglyphAlgorithm, AnaglyphColorMode } from 'three/addons/tsl/display/AnaglyphPassNode.js';
+ * @three_import import { anaglyphPass, AnaglyphAlgorithm, AnaglyphColorMode } from '@kmamal/three/addons/tsl/display/AnaglyphPassNode.js';
  */
 class AnaglyphPassNode extends StereoCompositePassNode {
 

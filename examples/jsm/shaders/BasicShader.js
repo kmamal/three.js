@@ -1,6 +1,6 @@
 /**
  * @module BasicShader
- * @three_import import { BasicShader } from 'three/addons/shaders/BasicShader.js';
+ * @three_import import { BasicShader } from '@kmamal/three/addons/shaders/BasicShader.js';
  */
 
 /**

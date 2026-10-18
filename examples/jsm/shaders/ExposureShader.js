@@ -1,6 +1,6 @@
 /**
  * @module ExposureShader
- * @three_import import { ExposureShader } from 'three/addons/shaders/ExposureShader.js';
+ * @three_import import { ExposureShader } from '@kmamal/three/addons/shaders/ExposureShader.js';
  */
 
 /**

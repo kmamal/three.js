@@ -6,7 +6,7 @@ import {
 	Loader,
 	UnsignedByteType,
 	Vector3,
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * A loader for the Cube LUT format.
@@ -20,7 +20,7 @@ import {
  * ```
  *
  * @augments Loader
- * @three_import import { LUTCubeLoader } from 'three/addons/loaders/LUTCubeLoader.js';
+ * @three_import import { LUTCubeLoader } from '@kmamal/three/addons/loaders/LUTCubeLoader.js';
  */
 export class LUTCubeLoader extends Loader {
 

@@ -6,7 +6,7 @@ import {
 	MeshStandardMaterial,
 	PointLight,
 	Scene,
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * This class represents a scene with a very basic room setup that can be used as
@@ -26,7 +26,7 @@ import {
  * ```
  *
  * @augments Scene
- * @three_import import { DebugEnvironment } from 'three/addons/environments/DebugEnvironment.js';
+ * @three_import import { DebugEnvironment } from '@kmamal/three/addons/environments/DebugEnvironment.js';
  */
 class DebugEnvironment extends Scene {
 

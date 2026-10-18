@@ -1,4 +1,4 @@
-import { MOUSE, TOUCH, Plane, Raycaster, Vector2, Vector3 } from 'three';
+import { MOUSE, TOUCH, Plane, Raycaster, Vector2, Vector3 } from '@kmamal/three';
 
 import { OrbitControls } from './OrbitControls.js';
 
@@ -17,7 +17,7 @@ const _panCurrent = new Vector3();
  * - Pan: Left mouse, or arrow keys / touch: one-finger move.
  *
  * @augments OrbitControls
- * @three_import import { MapControls } from 'three/addons/controls/MapControls.js';
+ * @three_import import { MapControls } from '@kmamal/three/addons/controls/MapControls.js';
  */
 class MapControls extends OrbitControls {
 

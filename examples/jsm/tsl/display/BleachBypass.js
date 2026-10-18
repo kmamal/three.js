@@ -1,4 +1,4 @@
-import { float, Fn, vec3, vec4, min, max, mix, luminance } from 'three/tsl';
+import { float, Fn, vec3, vec4, min, max, mix, luminance } from '@kmamal/three/tsl';
 
 /**
  * Applies a bleach bypass effect to the given color node.

@@ -4,9 +4,9 @@ import {
 	Mesh,
 	Vector3,
 	NodeMaterial
-} from 'three/webgpu';
+} from '@kmamal/three/webgpu';
 
-import { Fn, float, floor, fract, vec2, vec3, acos, add, mul, clamp, cos, dot, exp, max, min, mix, modelViewProjection, normalize, positionWorld, pow, smoothstep, sub, varyingProperty, vec4, uniform, cameraPosition, time, If, Loop } from 'three/tsl';
+import { Fn, float, floor, fract, vec2, vec3, acos, add, mul, clamp, cos, dot, exp, max, min, mix, modelViewProjection, normalize, positionWorld, pow, smoothstep, sub, varyingProperty, vec4, uniform, cameraPosition, time, If, Loop } from '@kmamal/three/tsl';
 
 /**
  * Represents a skydome for scene backgrounds. Based on [A Practical Analytic Model for Daylight](https://www.researchgate.net/publication/220720443_A_Practical_Analytic_Model_for_Daylight)
@@ -37,7 +37,7 @@ import { Fn, float, floor, fract, vec2, vec3, acos, add, mul, clamp, cos, dot, e
  * ```
  *
  * @augments Mesh
- * @three_import import { SkyMesh } from 'three/addons/objects/SkyMesh.js';
+ * @three_import import { SkyMesh } from '@kmamal/three/addons/objects/SkyMesh.js';
  */
 class SkyMesh extends Mesh {
 

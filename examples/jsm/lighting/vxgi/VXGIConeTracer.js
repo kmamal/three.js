@@ -1,4 +1,4 @@
-import { float, vec3, vec4, If, Loop, Break, max, min, abs, dot, clamp, log2, exp2, select } from 'three/tsl';
+import { float, vec3, vec4, If, Loop, Break, max, min, abs, dot, clamp, log2, exp2, select } from '@kmamal/three/tsl';
 
 /**
  * Emits the intersection of a ray with the bounds of the given volume.

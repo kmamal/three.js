@@ -1,10 +1,10 @@
 import {
 	Vector2
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * @module UVsDebug
- * @three_import import { UVsDebug } from 'three/addons/utils/UVsDebug.js';
+ * @three_import import { UVsDebug } from '@kmamal/three/addons/utils/UVsDebug.js';
  */
 
 /**

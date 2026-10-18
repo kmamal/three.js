@@ -8,7 +8,7 @@ import {
 	NearestFilter,
 	RGBAFormat,
 	UVMapping
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * Texture library for {@link RectAreaLight}. This class holds the LTC BRDF data
@@ -25,7 +25,7 @@ import {
  * in the main build files.
  *
  * @hideconstructor
- * @three_import import { RectAreaLightTexturesLib } from 'three/addons/lights/RectAreaLightTexturesLib.js';
+ * @three_import import { RectAreaLightTexturesLib } from '@kmamal/three/addons/lights/RectAreaLightTexturesLib.js';
  */
 class RectAreaLightTexturesLib {
 

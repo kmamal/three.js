@@ -12,9 +12,9 @@ import {
 	VSMShadowMap,
 	RendererUtils,
 	Quaternion
-} from 'three/webgpu';
+} from '@kmamal/three/webgpu';
 
-import { min, Fn, shadow, NodeUpdateType } from 'three/tsl';
+import { min, Fn, shadow, NodeUpdateType } from '@kmamal/three/tsl';
 
 const { resetRendererAndSceneState, restoreRendererAndSceneState } = RendererUtils;
 let _rendererState;
@@ -45,7 +45,7 @@ class LwLight extends Object3D {
  *
  * @class
  * @augments ShadowBaseNode
- * @three_import import { TileShadowNode } from 'three/addons/tsl/shadows/TileShadowNode.js';
+ * @three_import import { TileShadowNode } from '@kmamal/three/addons/tsl/shadows/TileShadowNode.js';
  */
 class TileShadowNode extends ShadowBaseNode {
 

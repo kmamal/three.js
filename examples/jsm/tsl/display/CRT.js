@@ -1,4 +1,4 @@
-import { Fn, float, vec2, vec3, sin, screenUV, mix, clamp, dot, convertToTexture, time, uv, select } from 'three/tsl';
+import { Fn, float, vec2, vec3, sin, screenUV, mix, clamp, dot, convertToTexture, time, uv, select } from '@kmamal/three/tsl';
 import { circle } from './Shape.js';
 
 /**

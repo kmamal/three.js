@@ -1,4 +1,4 @@
-import { float, Fn, vec2, vec4, uv, min, screenSize, convertToTexture } from 'three/tsl';
+import { float, Fn, vec2, vec4, uv, min, screenSize, convertToTexture } from '@kmamal/three/tsl';
 
 /**
  * Applies a lens dirt effect. The lens dirt texture is revealed wherever the

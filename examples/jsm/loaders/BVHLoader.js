@@ -8,7 +8,7 @@ import {
 	Skeleton,
 	Vector3,
 	VectorKeyframeTrack
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * A loader for the BVH format.
@@ -31,7 +31,7 @@ import {
  * ```
  *
  * @augments Loader
- * @three_import import { BVHLoader } from 'three/addons/loaders/BVHLoader.js';
+ * @three_import import { BVHLoader } from '@kmamal/three/addons/loaders/BVHLoader.js';
  */
 class BVHLoader extends Loader {
 

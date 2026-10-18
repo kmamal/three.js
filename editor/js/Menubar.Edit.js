@@ -1,5 +1,5 @@
-import { Box3, Vector3 } from 'three';
-import { clone } from 'three/addons/utils/SkeletonUtils.js';
+import { Box3, Vector3 } from '@kmamal/three';
+import { clone } from '@kmamal/three/addons/utils/SkeletonUtils.js';
 
 import { UIPanel, UIRow, UIHorizontalRule, UIText } from './libs/ui.js';
 

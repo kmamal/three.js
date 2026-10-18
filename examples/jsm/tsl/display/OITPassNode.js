@@ -1,5 +1,5 @@
-import { PassNode, RenderTarget, BlendMode, RendererUtils, Vector2, HalfFloatType, UnsignedByteType, RedFormat, CustomBlending, NormalBlending, OneFactor, ZeroFactor, OneMinusSrcColorFactor } from 'three/webgpu';
-import { float, mix, mrt, output, positionView, texture, vec4 } from 'three/tsl';
+import { PassNode, RenderTarget, BlendMode, RendererUtils, Vector2, HalfFloatType, UnsignedByteType, RedFormat, CustomBlending, NormalBlending, OneFactor, ZeroFactor, OneMinusSrcColorFactor } from '@kmamal/three/webgpu';
+import { float, mix, mrt, output, positionView, texture, vec4 } from '@kmamal/three/tsl';
 
 const _size = /*@__PURE__*/ new Vector2();
 
@@ -34,7 +34,7 @@ let _rendererState, _sceneState;
  * - {@link https://casual-effects.blogspot.com/2014/03/weighted-blended-order-independent.html}
  *
  * @augments PassNode
- * @three_import import { oitPass } from 'three/addons/tsl/display/OITPassNode.js';
+ * @three_import import { oitPass } from '@kmamal/three/addons/tsl/display/OITPassNode.js';
  */
 class OITPassNode extends PassNode {
 

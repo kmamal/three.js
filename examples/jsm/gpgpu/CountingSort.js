@@ -1,5 +1,5 @@
-import { StorageBufferAttribute, DynamicDrawUsage } from 'three/webgpu';
-import { Fn, Loop, atomicAdd, atomicLoad, atomicStore, instanceIndex, storage, uint } from 'three/tsl';
+import { StorageBufferAttribute, DynamicDrawUsage } from '@kmamal/three/webgpu';
+import { Fn, Loop, atomicAdd, atomicLoad, atomicStore, instanceIndex, storage, uint } from '@kmamal/three/tsl';
 
 /**
  * A reusable GPU counting sort.
@@ -30,7 +30,7 @@ import { Fn, Loop, atomicAdd, atomicLoad, atomicStore, instanceIndex, storage, u
  * // `sort.orderRead` now holds a storage buffer of `count` indices, ordered by bin.
  * ```
  *
- * @three_import import { CountingSort } from 'three/addons/gpgpu/CountingSort.js';
+ * @three_import import { CountingSort } from '@kmamal/three/addons/gpgpu/CountingSort.js';
  */
 class CountingSort {
 

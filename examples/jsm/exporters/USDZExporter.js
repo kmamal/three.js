@@ -3,7 +3,7 @@ import {
 	DoubleSide,
 	Color,
 	PropertyBinding,
-} from 'three';
+} from '@kmamal/three';
 
 import {
 	strToU8,
@@ -133,7 +133,7 @@ class USDNode {
  * const arraybuffer = await exporter.parseAsync( scene );
  * ```
  *
- * @three_import import { USDZExporter } from 'three/addons/exporters/USDZExporter.js';
+ * @three_import import { USDZExporter } from '@kmamal/three/addons/exporters/USDZExporter.js';
  */
 class USDZExporter {
 

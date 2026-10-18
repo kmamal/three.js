@@ -6,7 +6,7 @@ import {
 	UniformsLib,
 	UniformsUtils,
 	PMREMGenerator,
-} from 'three';
+} from '@kmamal/three';
 import {
 	context,
 	cubeTexture,
@@ -16,7 +16,7 @@ import {
 	rangeFogFactor,
 	densityFogFactor,
 	workingToColorSpace,
-} from 'three/tsl';
+} from '@kmamal/three/tsl';
 import {
 	NodeUtils,
 	NodeFrame,
@@ -26,7 +26,7 @@ import {
 	BasicNodeLibrary,
 	WebGLCapabilities,
 	PMREMNode,
-} from 'three/webgpu';
+} from '@kmamal/three/webgpu';
 
 // Limitations
 // - VSM shadows not supported

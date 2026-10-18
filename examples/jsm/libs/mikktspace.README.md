@@ -3,7 +3,7 @@
 JavaScript port of [Morten S. Mikkelsen's MikkTSpace reference](https://github.com/mmikk/MikkTSpace/blob/3e895b49d05ea07e4c2133156cfa94369e19e409/mikktspace.c), specialized for the triangle input and tangent output used by `BufferGeometryUtils.computeMikkTSpaceTangents()`.
 
 ```js
-import * as MikkTSpace from 'three/addons/libs/mikktspace.module.js';
+import * as MikkTSpace from '@kmamal/three/addons/libs/mikktspace.module.js';
 
 const tangents = MikkTSpace.generateTangents( positions, normals, uvs );
 ```

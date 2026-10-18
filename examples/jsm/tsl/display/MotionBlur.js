@@ -1,4 +1,4 @@
-import { Fn, float, uv, Loop, int } from 'three/tsl';
+import { Fn, float, uv, Loop, int } from '@kmamal/three/tsl';
 
 /**
  * Applies a motion blur effect to the given input node.

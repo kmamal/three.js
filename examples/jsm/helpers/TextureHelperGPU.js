@@ -6,8 +6,8 @@ import {
 	PlaneGeometry,
 	DoubleSide,
 	Vector3,
-} from 'three/webgpu';
-import { texture as textureNode, cubeTexture, texture3D, float, vec4, attribute } from 'three/tsl';
+} from '@kmamal/three/webgpu';
+import { texture as textureNode, cubeTexture, texture3D, float, vec4, attribute } from '@kmamal/three/tsl';
 import { mergeGeometries } from '../utils/BufferGeometryUtils.js';
 
 /**
@@ -20,7 +20,7 @@ import { mergeGeometries } from '../utils/BufferGeometryUtils.js';
  *
  * @private
  * @augments Mesh
- * @three_import import { TextureHelper } from 'three/addons/helpers/TextureHelperGPU.js';
+ * @three_import import { TextureHelper } from '@kmamal/three/addons/helpers/TextureHelperGPU.js';
  */
 class TextureHelper extends Mesh {
 

@@ -6,7 +6,7 @@ import {
 	LineBasicMaterial,
 	Mesh,
 	MeshBasicMaterial
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * Creates a visual aid for rect area lights.
@@ -20,7 +20,7 @@ import {
  * ```
  *
  * @augments Line
- * @three_import import { RectAreaLightHelper } from 'three/addons/helpers/RectAreaLightHelper.js';
+ * @three_import import { RectAreaLightHelper } from '@kmamal/three/addons/helpers/RectAreaLightHelper.js';
  */
 class RectAreaLightHelper extends Line {
 

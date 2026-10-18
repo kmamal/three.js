@@ -1,7 +1,7 @@
 import {
 	ShaderMaterial,
 	UniformsUtils
-} from 'three';
+} from '@kmamal/three';
 import { Pass, FullScreenQuad } from './Pass.js';
 import { CopyShader } from '../shaders/CopyShader.js';
 
@@ -17,7 +17,7 @@ import { CopyShader } from '../shaders/CopyShader.js';
  * ```
  *
  * @augments Pass
- * @three_import import { TexturePass } from 'three/addons/postprocessing/TexturePass.js';
+ * @three_import import { TexturePass } from '@kmamal/three/addons/postprocessing/TexturePass.js';
  */
 class TexturePass extends Pass {
 

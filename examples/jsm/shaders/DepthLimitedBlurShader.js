@@ -1,10 +1,10 @@
 import {
 	Vector2
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * @module DepthLimitedBlurShader
- * @three_import import { DepthLimitedBlurShader, BlurShaderUtils } from 'three/addons/shaders/DepthLimitedBlurShader.js';
+ * @three_import import { DepthLimitedBlurShader, BlurShaderUtils } from '@kmamal/three/addons/shaders/DepthLimitedBlurShader.js';
  */
 
 /**

@@ -13,7 +13,7 @@ import {
 	Vector2,
 	Vector3,
 	Vector4
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * Creates a simulated lens flare that tracks a light.
@@ -33,7 +33,7 @@ import {
  * ```
  *
  * @augments Mesh
- * @three_import import { Lensflare } from 'three/addons/objects/Lensflare.js';
+ * @three_import import { Lensflare } from '@kmamal/three/addons/objects/Lensflare.js';
  */
 class Lensflare extends Mesh {
 
@@ -340,7 +340,7 @@ class Lensflare extends Mesh {
 /**
  * Represents a single flare that can be added to a {@link Lensflare} container.
  *
- * @three_import import { LensflareElement } from 'three/addons/objects/Lensflare.js';
+ * @three_import import { LensflareElement } from '@kmamal/three/addons/objects/Lensflare.js';
  */
 class LensflareElement {
 

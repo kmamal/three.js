@@ -1,6 +1,6 @@
 /**
  * @module VerticalTiltShiftShader
- * @three_import import { VerticalTiltShiftShader } from 'three/addons/shaders/VerticalTiltShiftShader.js';
+ * @three_import import { VerticalTiltShiftShader } from '@kmamal/three/addons/shaders/VerticalTiltShiftShader.js';
  */
 
 /**

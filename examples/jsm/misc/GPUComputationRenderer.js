@@ -6,7 +6,7 @@ import {
 	RGBAFormat,
 	ShaderMaterial,
 	WebGLRenderTarget
-} from 'three';
+} from '@kmamal/three';
 
 import { FullScreenQuad } from '../postprocessing/Pass.js';
 
@@ -99,7 +99,7 @@ import { FullScreenQuad } from '../postprocessing/Pass.js';
  * gpuCompute.doRenderTarget( myFilter2, outputRenderTarget );
  * ```
  *
- * @three_import import { GPUComputationRenderer } from 'three/addons/misc/GPUComputationRenderer.js';
+ * @three_import import { GPUComputationRenderer } from '@kmamal/three/addons/misc/GPUComputationRenderer.js';
  */
 class GPUComputationRenderer {
 

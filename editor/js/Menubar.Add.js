@@ -1,12 +1,12 @@
-import * as THREE from 'three';
+import * as THREE from '@kmamal/three';
 
 import { UIPanel, UIRow } from './libs/ui.js';
 
 import { AddObjectCommand } from './commands/AddObjectCommand.js';
 import { MultiCmdsCommand } from './commands/MultiCmdsCommand.js';
 
-import { FontLoader } from 'three/addons/loaders/FontLoader.js';
-import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
+import { FontLoader } from '@kmamal/three/addons/loaders/FontLoader.js';
+import { TextGeometry } from '@kmamal/three/addons/geometries/TextGeometry.js';
 
 function MenubarAdd( editor ) {
 

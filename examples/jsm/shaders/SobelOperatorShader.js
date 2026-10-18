@@ -1,10 +1,10 @@
 import {
 	Vector2
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * @module SobelOperatorShader
- * @three_import import { SobelOperatorShader } from 'three/addons/shaders/SobelOperatorShader.js';
+ * @three_import import { SobelOperatorShader } from '@kmamal/three/addons/shaders/SobelOperatorShader.js';
  */
 
 /**

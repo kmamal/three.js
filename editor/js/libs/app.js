@@ -35,7 +35,7 @@ const APP = {
 
 			if ( project.renderer === 'WebGPURenderer' ) {
 
-				const { WebGPURenderer } = await import( 'three/webgpu' );
+				const { WebGPURenderer } = await import( '@kmamal/three/webgpu' );
 				renderer = new WebGPURenderer( { antialias: true, reversedDepthBuffer: true } );
 				await renderer.init();
 

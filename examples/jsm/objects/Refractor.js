@@ -11,7 +11,7 @@ import {
 	Vector4,
 	WebGLRenderTarget,
 	HalfFloatType
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * Can be used to create a flat, refractive surface like for special
@@ -33,7 +33,7 @@ import {
  * ```
  *
  * @augments Mesh
- * @three_import import { Refractor } from 'three/addons/objects/Refractor.js';
+ * @three_import import { Refractor } from '@kmamal/three/addons/objects/Refractor.js';
  */
 class Refractor extends Mesh {
 

@@ -1,5 +1,5 @@
-import { REVISION } from 'three/webgpu';
-import * as TSL from 'three/tsl';
+import { REVISION } from '@kmamal/three/webgpu';
+import * as TSL from '@kmamal/three/tsl';
 
 import { VariableDeclaration, Accessor } from './AST.js';
 import { isExpression, isPrimitive } from './TranspilerUtils.js';
@@ -1042,7 +1042,7 @@ ${ this.tab }}`;
 
 		} else {
 
-			header += imports.length > 0 ? 'import { ' + imports.join( ', ' ) + ' } from \'three/tsl\';\n' : '';
+			header += imports.length > 0 ? 'import { ' + imports.join( ', ' ) + ' } from \'@kmamal/three/tsl\';\n' : '';
 
 		}
 

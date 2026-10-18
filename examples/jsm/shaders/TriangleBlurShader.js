@@ -1,10 +1,10 @@
 import {
 	Vector2
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * @module TriangleBlurShader
- * @three_import import { TriangleBlurShader } from 'three/addons/shaders/TriangleBlurShader.js';
+ * @three_import import { TriangleBlurShader } from '@kmamal/three/addons/shaders/TriangleBlurShader.js';
  */
 
 /**

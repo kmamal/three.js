@@ -1,5 +1,5 @@
 import { Command } from '../Command.js';
-import { Euler } from 'three';
+import { Euler } from '@kmamal/three';
 
 class SetRotationCommand extends Command {
 

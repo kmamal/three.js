@@ -1,5 +1,5 @@
-import { RenderTarget, Vector2, Vector3, Node, QuadMesh, NodeMaterial, RendererUtils, HalfFloatType, RGBAFormat, RedFormat, UnsignedByteType } from 'three/webgpu';
-import { Fn, NodeUpdateType, uniform, reference, vec2, vec3, vec4, float, uint, uv, mix, passTexture, getViewPosition, getNormalFromDepth, logarithmicDepthToViewZ, viewZToPerspectiveDepth, screenCoordinate, interleavedGradientNoise, normalize, cross, abs, select, sqrt, fract, floor, cos, sin, exp2, pow, PI, Loop, If, Break, property, outputStruct, context } from 'three/tsl';
+import { RenderTarget, Vector2, Vector3, Node, QuadMesh, NodeMaterial, RendererUtils, HalfFloatType, RGBAFormat, RedFormat, UnsignedByteType } from '@kmamal/three/webgpu';
+import { Fn, NodeUpdateType, uniform, reference, vec2, vec3, vec4, float, uint, uv, mix, passTexture, getViewPosition, getNormalFromDepth, logarithmicDepthToViewZ, viewZToPerspectiveDepth, screenCoordinate, interleavedGradientNoise, normalize, cross, abs, select, sqrt, fract, floor, cos, sin, exp2, pow, PI, Loop, If, Break, property, outputStruct, context } from '@kmamal/three/tsl';
 
 import { VXGIVolume } from './VXGIVolume.js';
 import { createConeTracer, intersectVolume, sampleDirectional } from './VXGIConeTracer.js';
@@ -41,7 +41,7 @@ const _neutralContext = /*@__PURE__*/ context();
  * Note: This node can only be used with `WebGPURenderer` and a WebGPU backend.
  *
  * @augments Node
- * @three_import import { vxgi } from 'three/addons/lighting/vxgi/VXGINode.js';
+ * @three_import import { vxgi } from '@kmamal/three/addons/lighting/vxgi/VXGINode.js';
  */
 class VXGINode extends Node {
 

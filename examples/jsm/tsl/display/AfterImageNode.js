@@ -1,5 +1,5 @@
-import { RenderTarget, Vector2, QuadMesh, NodeMaterial, RendererUtils, Node, NodeUpdateType } from 'three/webgpu';
-import { nodeObject, Fn, float, uv, texture, passTexture, sign, max, convertToTexture } from 'three/tsl';
+import { RenderTarget, Vector2, QuadMesh, NodeMaterial, RendererUtils, Node, NodeUpdateType } from '@kmamal/three/webgpu';
+import { nodeObject, Fn, float, uv, texture, passTexture, sign, max, convertToTexture } from '@kmamal/three/tsl';
 
 const _size = /*@__PURE__*/ new Vector2();
 const _quadMesh = /*@__PURE__*/ new QuadMesh();
@@ -10,7 +10,7 @@ let _rendererState;
  * Post processing node for creating an after image effect.
  *
  * @augments Node
- * @three_import import { afterImage } from 'three/addons/tsl/display/AfterImageNode.js';
+ * @three_import import { afterImage } from '@kmamal/three/addons/tsl/display/AfterImageNode.js';
  */
 class AfterImageNode extends Node {
 

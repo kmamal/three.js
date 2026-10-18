@@ -6,13 +6,13 @@ import {
 	Matrix4,
 	Mesh,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 import { mergeGroups, deepCloneAttribute } from './BufferGeometryUtils.js';
 
 /**
  * @module SceneUtils
- * @three_import import * as SceneUtils from 'three/addons/utils/SceneUtils.js';
+ * @three_import import * as SceneUtils from '@kmamal/three/addons/utils/SceneUtils.js';
  */
 
 const _color = /*@__PURE__*/new Color();

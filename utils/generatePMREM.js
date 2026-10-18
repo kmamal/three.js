@@ -53,7 +53,7 @@ try {
 			return request.respond( {
 				status: 200,
 				contentType: 'text/html',
-				body: '<link rel="icon" href="data:,"><script type="importmap">{"imports":{"three":"/src/Three.js"}}</script>'
+				body: '<link rel="icon" href="data:,"><script type="importmap">{"imports":{"@kmamal/three":"/src/Three.js"}}</script>'
 			} );
 
 		}

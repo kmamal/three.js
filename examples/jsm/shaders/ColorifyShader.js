@@ -1,10 +1,10 @@
 import {
 	Color
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * @module ColorifyShader
- * @three_import import { ColorifyShader } from 'three/addons/shaders/ColorifyShader.js';
+ * @three_import import { ColorifyShader } from '@kmamal/three/addons/shaders/ColorifyShader.js';
  */
 
 /**

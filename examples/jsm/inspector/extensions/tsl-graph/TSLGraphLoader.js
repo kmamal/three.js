@@ -1,11 +1,11 @@
-import { FileLoader, error } from 'three';
+import { FileLoader, error } from '@kmamal/three';
 
-import * as THREE from 'three';
-import * as TSL from 'three/tsl';
+import * as THREE from '@kmamal/three';
+import * as TSL from '@kmamal/three/tsl';
 
 const _library = {
-	'three': { ...THREE },
-	'three/tsl': { ...TSL }
+	'@kmamal/three': { ...THREE },
+	'@kmamal/three/tsl': { ...TSL }
 };
 
 const STORAGE_PREFIX = 'tsl-graph';

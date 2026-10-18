@@ -1,4 +1,4 @@
-import { Line2NodeMaterial } from 'three/webgpu';
+import { Line2NodeMaterial } from '@kmamal/three/webgpu';
 
 import { LineSegments2 } from './LineSegments2.js';
 import { LineGeometry } from '../LineGeometry.js';
@@ -14,7 +14,7 @@ import { LineGeometry } from '../LineGeometry.js';
  * import the class from `lines/Line2.js`.
  *
  * @augments LineSegments2
- * @three_import import { Line2 } from 'three/addons/lines/webgpu/Line2.js';
+ * @three_import import { Line2 } from '@kmamal/three/addons/lines/webgpu/Line2.js';
  */
 class Line2 extends LineSegments2 {
 

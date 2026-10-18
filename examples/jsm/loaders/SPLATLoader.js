@@ -1,7 +1,7 @@
 import {
 	FileLoader,
 	Loader
-} from 'three';
+} from '@kmamal/three';
 
 import { createGaussianSplatGeometry, writeCovariance } from '../utils/GaussianSplatUtils.js';
 
@@ -21,7 +21,7 @@ const ROW_SIZE_BYTES = 32;
  * ```
  *
  * @augments Loader
- * @three_import import { SPLATLoader } from 'three/addons/loaders/SPLATLoader.js';
+ * @three_import import { SPLATLoader } from '@kmamal/three/addons/loaders/SPLATLoader.js';
  */
 class SPLATLoader extends Loader {
 

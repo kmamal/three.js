@@ -6,7 +6,7 @@
 				"error": null,
 				"imports": [
 					{
-						"from": "three/tsl",
+						"from": "@kmamal/three/tsl",
 						"imports": [
 							"add",
 							"color",
@@ -25,7 +25,7 @@
 				"error": null,
 				"imports": [
 					{
-						"from": "three/tsl",
+						"from": "@kmamal/three/tsl",
 						"imports": [
 							"add",
 							"color",
@@ -44,7 +44,7 @@
 				"error": null,
 				"imports": [
 					{
-						"from": "three/tsl",
+						"from": "@kmamal/three/tsl",
 						"imports": [
 							"color",
 							"float",
@@ -60,7 +60,7 @@
 				"error": null,
 				"imports": [
 					{
-						"from": "three/tsl",
+						"from": "@kmamal/three/tsl",
 						"imports": [
 							"clamp",
 							"color",

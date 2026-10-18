@@ -1,7 +1,7 @@
 import {
 	Matrix4,
 	Vector2
-} from 'three';
+} from '@kmamal/three';
 
 
 /**
@@ -11,7 +11,7 @@ import {
  * - [3D Game Shaders For Beginners, Screen Space Reflection (SSR)](https://lettier.github.io/3d-game-shaders-for-beginners/screen-space-reflection.html).
  *
  * @module SSRShader
- * @three_import import * as SSRShader from 'three/addons/shaders/SSRShader.js';
+ * @three_import import * as SSRShader from '@kmamal/three/addons/shaders/SSRShader.js';
  */
 
 /**

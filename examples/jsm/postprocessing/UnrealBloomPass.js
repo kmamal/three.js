@@ -8,7 +8,7 @@ import {
 	Vector2,
 	Vector3,
 	WebGLRenderTarget
-} from 'three';
+} from '@kmamal/three';
 import { Pass, FullScreenQuad } from './Pass.js';
 import { CopyShader } from '../shaders/CopyShader.js';
 import { LuminosityHighPassShader } from '../shaders/LuminosityHighPassShader.js';
@@ -31,7 +31,7 @@ import { LuminosityHighPassShader } from '../shaders/LuminosityHighPassShader.js
  * ```
  *
  * @augments Pass
- * @three_import import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+ * @three_import import { UnrealBloomPass } from '@kmamal/three/addons/postprocessing/UnrealBloomPass.js';
  */
 class UnrealBloomPass extends Pass {
 

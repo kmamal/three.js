@@ -1,6 +1,6 @@
 /**
  * @module HorizontalBlurShader
- * @three_import import { HorizontalBlurShader } from 'three/addons/shaders/HorizontalBlurShader.js';
+ * @three_import import { HorizontalBlurShader } from '@kmamal/three/addons/shaders/HorizontalBlurShader.js';
  */
 
 /**

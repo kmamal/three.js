@@ -4,7 +4,7 @@ import {
 	LineBasicMaterial,
 	Line,
 	MathUtils
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * This helper displays the directional cone of a positional audio.
@@ -21,7 +21,7 @@ import {
  * ```
  *
  * @augments Line
- * @three_import import { PositionalAudioHelper } from 'three/addons/helpers/PositionalAudioHelper.js';
+ * @three_import import { PositionalAudioHelper } from '@kmamal/three/addons/helpers/PositionalAudioHelper.js';
  */
 class PositionalAudioHelper extends Line {
 

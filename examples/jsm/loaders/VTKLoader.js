@@ -6,7 +6,7 @@ import {
 	Float32BufferAttribute,
 	Loader,
 	SRGBColorSpace
-} from 'three';
+} from '@kmamal/three';
 import { unzlibSync } from '../libs/fflate.module.js';
 
 /**
@@ -26,7 +26,7 @@ import { unzlibSync } from '../libs/fflate.module.js';
  * ```
  *
  * @augments Loader
- * @three_import import { VTKLoader } from 'three/addons/loaders/VTKLoader.js';
+ * @three_import import { VTKLoader } from '@kmamal/three/addons/loaders/VTKLoader.js';
  * @deprecated since r184.
  */
 class VTKLoader extends Loader {

@@ -1,4 +1,4 @@
-import { Light, Object3D } from 'three';
+import { Light, Object3D } from '@kmamal/three';
 import { SunLightShadow } from './SunLightShadow.js';
 
 /**
@@ -30,7 +30,7 @@ import { SunLightShadow } from './SunLightShadow.js';
  * ```
  *
  * @augments Light
- * @three_import import { SunLight } from 'three/addons/lights/SunLight.js';
+ * @three_import import { SunLight } from '@kmamal/three/addons/lights/SunLight.js';
  */
 class SunLight extends Light {
 

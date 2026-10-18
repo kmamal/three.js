@@ -3,7 +3,7 @@ import {
 	HalfFloatType,
 	RGBAFormat,
 	DataUtils,
-} from 'three';
+} from '@kmamal/three';
 import * as fflate from '../libs/fflate.module.js';
 
 const textEncoder = new TextEncoder();
@@ -27,7 +27,7 @@ const ZIP_COMPRESSION = 3;
  * const result = await exporter.parse( renderer, options );
  * ```
  *
- * @three_import import { EXRExporter } from 'three/addons/exporters/EXRExporter.js';
+ * @three_import import { EXRExporter } from '@kmamal/three/addons/exporters/EXRExporter.js';
  */
 class EXRExporter {
 

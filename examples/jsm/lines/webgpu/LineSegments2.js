@@ -11,7 +11,7 @@ import {
 	Vector4,
 	Line2NodeMaterial,
 	Vector2
-} from 'three/webgpu';
+} from '@kmamal/three/webgpu';
 import { LineSegmentsGeometry } from '../LineSegmentsGeometry.js';
 
 const _start = new Vector3();
@@ -235,7 +235,7 @@ function raycastScreenSpace( lineSegments, camera, intersects ) {
  * import the class from `lines/LineSegments2.js`.
  *
  * @augments Mesh
- * @three_import import { LineSegments2 } from 'three/addons/lines/webgpu/LineSegments2.js';
+ * @three_import import { LineSegments2 } from '@kmamal/three/addons/lines/webgpu/LineSegments2.js';
  */
 class LineSegments2 extends Mesh {
 

@@ -11,7 +11,7 @@ import {
 	Quaternion,
 	SphereGeometry,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 const _quaternion = new Quaternion();
 const _targetPos = new Vector3();
@@ -30,7 +30,7 @@ const _matrix = new Matrix4();
  *
  * `CCDIKSolver` is designed to work with instances of {@link SkinnedMesh}.
  *
- * @three_import import { CCDIKSolver } from 'three/addons/animation/CCDIKSolver.js';
+ * @three_import import { CCDIKSolver } from '@kmamal/three/addons/animation/CCDIKSolver.js';
  */
 class CCDIKSolver {
 
@@ -328,7 +328,7 @@ function setPositionOfBoneToAttributeArray( array, index, bone, matrixWorldInv )
  * Helper for visualizing IK bones.
  *
  * @augments Object3D
- * @three_import import { CCDIKHelper } from 'three/addons/animation/CCDIKSolver.js';
+ * @three_import import { CCDIKHelper } from '@kmamal/three/addons/animation/CCDIKSolver.js';
  */
 class CCDIKHelper extends Object3D {
 

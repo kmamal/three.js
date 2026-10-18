@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import * as THREE from '@kmamal/three';
 
 import { UIPanel, UIRow, UIButton, UIInteger, UISelect, UIText } from './libs/ui.js';
 

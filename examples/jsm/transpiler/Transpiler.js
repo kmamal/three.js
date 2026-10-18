@@ -7,7 +7,7 @@ import Linker from './Linker.js';
  * to support developers when they want to migrate their custom materials from the
  * current to the new node-based material system.
  *
- * @three_import import Transpiler from 'three/addons/transpiler/Transpiler.js';
+ * @three_import import Transpiler from '@kmamal/three/addons/transpiler/Transpiler.js';
  */
 class Transpiler {
 

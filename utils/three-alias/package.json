@@ -1,0 +1,14 @@
+{
+  "name": "three",
+  "version": "0.186.1",
+  "type": "module",
+  "exports": {
+    ".": "./src/Three.js",
+    "./webgpu": "./src/Three.WebGPU.js",
+    "./tsl": "./src/Three.TSL.js",
+    "./addons": "./examples/jsm/Addons.js",
+    "./addons/*": "./examples/jsm/*",
+    "./src/*": "./src/*",
+    "./examples/jsm/*": "./examples/jsm/*"
+  }
+}

@@ -4,7 +4,7 @@ import {
 	Float32BufferAttribute,
 	Vector2,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * This class can be used to modify a geometry by breaking its edges if they
@@ -15,7 +15,7 @@ import {
  * geometry = modifier.modify( geometry );
  * ```
  *
- * @three_import import { TessellateModifier } from 'three/addons/modifiers/TessellateModifier.js';
+ * @three_import import { TessellateModifier } from '@kmamal/three/addons/modifiers/TessellateModifier.js';
  */
 class TessellateModifier {
 

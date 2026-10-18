@@ -1,5 +1,5 @@
-import { Color, Node, Vector3, Vector4 } from 'three/webgpu';
-import { Loop, NodeUpdateType, getDistanceAttenuation, positionView, renderGroup, uniform, uniformArray, vec3 } from 'three/tsl';
+import { Color, Node, Vector3, Vector4 } from '@kmamal/three/webgpu';
+import { Loop, NodeUpdateType, getDistanceAttenuation, positionView, renderGroup, uniform, uniformArray, vec3 } from '@kmamal/three/tsl';
 
 const _position = /*@__PURE__*/ new Vector3();
 

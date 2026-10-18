@@ -11,7 +11,7 @@ import {
 	StorageBufferAttribute,
 	Vector2,
 	Vector3
-} from 'three/webgpu';
+} from '@kmamal/three/webgpu';
 
 import {
 	Discard,
@@ -40,7 +40,7 @@ import {
 	vec2,
 	vec3,
 	vec4
-} from 'three/tsl';
+} from '@kmamal/three/tsl';
 
 import { CountingSort } from '../gpgpu/CountingSort.js';
 import {
@@ -81,7 +81,7 @@ const _vector = /*@__PURE__*/ new Vector3();
  * Note that this class can only be used with {@link WebGPURenderer}. The
  * `forceWebGL` fallback of {@link WebGPURenderer} is supported, but
  * {@link WebGLRenderer} is not. Import maps or package exports must resolve
- * both `three/webgpu` and `three/tsl`.
+ * both `@kmamal/three/webgpu` and `@kmamal/three/tsl`.
  *
  * ```js
  * const splats = new GaussianSplat( geometry );
@@ -89,7 +89,7 @@ const _vector = /*@__PURE__*/ new Vector3();
  * ```
  *
  * @augments Mesh
- * @three_import import { GaussianSplat } from 'three/addons/objects/GaussianSplat.js';
+ * @three_import import { GaussianSplat } from '@kmamal/three/addons/objects/GaussianSplat.js';
  */
 class GaussianSplat extends Mesh {
 

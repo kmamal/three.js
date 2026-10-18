@@ -14,7 +14,7 @@ import {
 	Vector3,
 	Color,
 	SRGBColorSpace
-} from 'three';
+} from '@kmamal/three';
 
 // o object_name | g group_name
 const _object_pattern = /^[og]\s*(.+)?/;
@@ -448,7 +448,7 @@ function ParserState() {
  * ```
  *
  * @augments Loader
- * @three_import import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+ * @three_import import { OBJLoader } from '@kmamal/three/addons/loaders/OBJLoader.js';
  */
 class OBJLoader extends Loader {
 

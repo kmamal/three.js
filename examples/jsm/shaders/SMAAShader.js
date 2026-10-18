@@ -1,6 +1,6 @@
 import {
 	Vector2
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * WebGL port of Subpixel Morphological Antialiasing (SMAA) v2.8
@@ -10,7 +10,7 @@ import {
  * - {@link https://github.com/iryoku/smaa/releases/tag/v2.8}
  *
  * @module SMAAShader
- * @three_import import { SMAAShader } from 'three/addons/shaders/SMAAShader.js';
+ * @three_import import { SMAAShader } from '@kmamal/three/addons/shaders/SMAAShader.js';
  */
 
 /**

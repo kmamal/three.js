@@ -13,7 +13,7 @@ import {
 	SRGBColorSpace,
 	Vector3,
 	Ray
-} from 'three';
+} from '@kmamal/three';
 
 // Special surface finish tag types.
 // Note: "MATERIAL" tag (e.g. GLITTER, SPECKLE) is not implemented
@@ -1768,7 +1768,7 @@ function createObject( loader, elements, elementSize, isConditionalSegments = fa
  * ```
  *
  * @augments Loader
- * @three_import import { LDrawLoader } from 'three/addons/loaders/LDrawLoader.js';
+ * @three_import import { LDrawLoader } from '@kmamal/three/addons/loaders/LDrawLoader.js';
  */
 class LDrawLoader extends Loader {
 

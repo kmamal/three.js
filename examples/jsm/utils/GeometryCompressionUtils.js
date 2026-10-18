@@ -3,11 +3,11 @@ import {
 	Matrix3,
 	Matrix4,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * @module GeometryCompressionUtils
- * @three_import import * as GeometryCompressionUtils from 'three/addons/utils/GeometryCompressionUtils.js';
+ * @three_import import * as GeometryCompressionUtils from '@kmamal/three/addons/utils/GeometryCompressionUtils.js';
  */
 
 // Octahedron and Quantization encodings based on work by: https://github.com/tsherif/mesh-quantization-example

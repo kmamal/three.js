@@ -5,7 +5,7 @@ import {
 	ShaderMaterial,
 	UniformsUtils,
 	WebGLRenderTarget
-} from 'three';
+} from '@kmamal/three';
 import { Pass, FullScreenQuad } from './Pass.js';
 import { CopyShader } from '../shaders/CopyShader.js';
 import { AfterimageShader } from '../shaders/AfterimageShader.js';
@@ -19,7 +19,7 @@ import { AfterimageShader } from '../shaders/AfterimageShader.js';
  * ```
  *
  * @augments Pass
- * @three_import import { AfterimagePass } from 'three/addons/postprocessing/AfterimagePass.js';
+ * @three_import import { AfterimagePass } from '@kmamal/three/addons/postprocessing/AfterimagePass.js';
  */
 class AfterimagePass extends Pass {
 

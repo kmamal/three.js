@@ -2,7 +2,7 @@ import {
 	Controls,
 	Euler,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 const _euler = new Euler( 0, 0, 0, 'YXZ' );
 const _vector = new Vector3();
@@ -56,7 +56,7 @@ const _PI_2 = Math.PI / 2;
  * ```
  *
  * @augments Controls
- * @three_import import { PointerLockControls } from 'three/addons/controls/PointerLockControls.js';
+ * @three_import import { PointerLockControls } from '@kmamal/three/addons/controls/PointerLockControls.js';
  */
 class PointerLockControls extends Controls {
 

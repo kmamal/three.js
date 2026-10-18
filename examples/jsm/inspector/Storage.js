@@ -1,4 +1,4 @@
-import { REVISION } from 'three/webgpu';
+import { REVISION } from '@kmamal/three/webgpu';
 
 const STORAGE_KEY = 'threejs-inspector';
 

@@ -1,4 +1,4 @@
-import { Color, ColorManagement, SRGBColorSpace } from 'three';
+import { Color, ColorManagement, SRGBColorSpace } from '@kmamal/three';
 
 /* global DracoEncoderModule */
 
@@ -26,7 +26,7 @@ import { Color, ColorManagement, SRGBColorSpace } from 'three';
  * const data = await exporter.parseAsync( mesh, options );
  * ```
  *
- * @three_import import { DRACOExporter } from 'three/addons/exporters/DRACOExporter.js';
+ * @three_import import { DRACOExporter } from '@kmamal/three/addons/exporters/DRACOExporter.js';
  */
 class DRACOExporter {
 

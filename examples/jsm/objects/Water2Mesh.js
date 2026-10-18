@@ -6,9 +6,9 @@ import {
 	NodeMaterial,
 	NodeUpdateType,
 	Node
-} from 'three/webgpu';
+} from '@kmamal/three/webgpu';
 
-import { Fn, vec2, viewportSafeUV, viewportSharedTexture, reflector, pow, float, abs, texture, uniform, vec4, cameraPosition, positionWorld, uv, mix, vec3, normalize, max, dot, screenUV } from 'three/tsl';
+import { Fn, vec2, viewportSafeUV, viewportSharedTexture, reflector, pow, float, abs, texture, uniform, vec4, cameraPosition, positionWorld, uv, mix, vec3, normalize, max, dot, screenUV } from '@kmamal/three/tsl';
 
 /** @module Water2Mesh */
 
@@ -24,7 +24,7 @@ import { Fn, vec2, viewportSafeUV, viewportSharedTexture, reflector, pow, float,
  * - {@link http://graphicsrunner.blogspot.de/2010/08/water-using-flow-maps.html}
  *
  * @augments Mesh
- * @three_import import { WaterMesh } from 'three/addons/objects/Water2Mesh.js';
+ * @three_import import { WaterMesh } from '@kmamal/three/addons/objects/Water2Mesh.js';
  */
 class WaterMesh extends Mesh {
 

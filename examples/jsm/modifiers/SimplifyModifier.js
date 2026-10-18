@@ -1,7 +1,7 @@
 import {
 	BufferAttribute,
 	BufferGeometry
-} from 'three';
+} from '@kmamal/three';
 import { MeshoptSimplifier } from '../libs/meshopt_simplifier.module.js';
 import { mergeVertices } from '../utils/BufferGeometryUtils.js';
 
@@ -17,7 +17,7 @@ import { mergeVertices } from '../utils/BufferGeometryUtils.js';
  * geometry = await modifier.modify( geometry, count );
  * ```
  *
- * @three_import import { SimplifyModifier } from 'three/addons/modifiers/SimplifyModifier.js';
+ * @three_import import { SimplifyModifier } from '@kmamal/three/addons/modifiers/SimplifyModifier.js';
  */
 class SimplifyModifier {
 

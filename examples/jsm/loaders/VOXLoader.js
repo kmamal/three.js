@@ -13,7 +13,7 @@ import {
 	NearestFilter,
 	RedFormat,
 	SRGBColorSpace
-} from 'three';
+} from '@kmamal/three';
 
 // Helper function to read a STRING from the data view
 function readString( data, offset ) {
@@ -239,7 +239,7 @@ function buildObject( nodeId, nodes, chunks ) {
  * scene.add( result.scene.children[ 0 ] );
  * ```
  * @augments Loader
- * @three_import import { VOXLoader } from 'three/addons/loaders/VOXLoader.js';
+ * @three_import import { VOXLoader } from '@kmamal/three/addons/loaders/VOXLoader.js';
  */
 class VOXLoader extends Loader {
 

@@ -6,7 +6,7 @@ import {
 	Object3D,
 	Points,
 	PointsMaterial
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * Visualizes the motion path of an animated object based on position keyframes
@@ -19,7 +19,7 @@ import {
  * ```
  *
  * @augments Object3D
- * @three_import import { AnimationPathHelper } from 'three/addons/helpers/AnimationPathHelper.js';
+ * @three_import import { AnimationPathHelper } from '@kmamal/three/addons/helpers/AnimationPathHelper.js';
  */
 class AnimationPathHelper extends Object3D {
 

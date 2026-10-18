@@ -1,5 +1,5 @@
-import { NearestFilter, PassNode } from 'three/webgpu';
-import { nodeObject, Fn, float, uv, vec2, vec3, clamp, floor, dot, smoothstep, If, sign, step, mrt, output, normalView, property, vec4, textureSize } from 'three/tsl';
+import { NearestFilter, PassNode } from '@kmamal/three/webgpu';
+import { nodeObject, Fn, float, uv, vec2, vec3, clamp, floor, dot, smoothstep, If, sign, step, mrt, output, normalView, property, vec4, textureSize } from '@kmamal/three/tsl';
 
 /**
  * A special render pass node that renders the scene with a pixelation effect,
@@ -9,7 +9,7 @@ import { nodeObject, Fn, float, uv, vec2, vec3, clamp, floor, dot, smoothstep, I
  * are scaled down by {@link PixelationPassNode#pixelSize}.
  *
  * @augments PassNode
- * @three_import import { pixelationPass } from 'three/addons/tsl/display/PixelationPassNode.js';
+ * @three_import import { pixelationPass } from '@kmamal/three/addons/tsl/display/PixelationPassNode.js';
  */
 class PixelationPassNode extends PassNode {
 

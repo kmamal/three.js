@@ -6,7 +6,7 @@ import {
 	Triangle,
 	Vector3,
 	Layers
-} from 'three';
+} from '@kmamal/three';
 import { Capsule } from '../math/Capsule.js';
 
 
@@ -99,7 +99,7 @@ function lineToLineClosestPoints( line1, line2, target1 = null, target2 = null )
  * const result = octree.capsuleIntersect( playerCollider ); // collision detection
  * ```
  *
- * @three_import import { Octree } from 'three/addons/math/Octree.js';
+ * @three_import import { Octree } from '@kmamal/three/addons/math/Octree.js';
  */
 class Octree {
 

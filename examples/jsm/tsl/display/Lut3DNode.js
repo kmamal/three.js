@@ -1,11 +1,11 @@
-import { Node } from 'three/webgpu';
-import { nodeObject, Fn, float, uniform, vec3, vec4, mix } from 'three/tsl';
+import { Node } from '@kmamal/three/webgpu';
+import { nodeObject, Fn, float, uniform, vec3, vec4, mix } from '@kmamal/three/tsl';
 
 /**
  * A post processing node for color grading via lookup tables.
  *
  * @augments Node
- * @three_import import { lut3D } from 'three/addons/tsl/display/Lut3DNode.js';
+ * @three_import import { lut3D } from '@kmamal/three/addons/tsl/display/Lut3DNode.js';
  */
 class Lut3DNode extends Node {
 

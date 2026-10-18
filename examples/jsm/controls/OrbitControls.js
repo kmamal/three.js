@@ -9,7 +9,7 @@ import {
 	Plane,
 	Ray,
 	MathUtils
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * Fires when the camera has been transformed by the controls.
@@ -83,7 +83,7 @@ const _EPS = 0.000001;
  * ```
  *
  * @augments Controls
- * @three_import import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+ * @three_import import { OrbitControls } from '@kmamal/three/addons/controls/OrbitControls.js';
  */
 class OrbitControls extends Controls {
 

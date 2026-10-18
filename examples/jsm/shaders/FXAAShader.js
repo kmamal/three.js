@@ -1,10 +1,10 @@
 import {
 	Vector2
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * @module FXAAShader
- * @three_import import { FXAAShader } from 'three/addons/shaders/FXAAShader.js';
+ * @three_import import { FXAAShader } from '@kmamal/three/addons/shaders/FXAAShader.js';
  */
 
 /**

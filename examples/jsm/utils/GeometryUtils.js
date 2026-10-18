@@ -1,8 +1,8 @@
-import { Vector3 } from 'three';
+import { Vector3 } from '@kmamal/three';
 
 /**
  * @module GeometryUtils
- * @three_import import * as GeometryUtils from 'three/addons/utils/GeometryUtils.js';
+ * @three_import import * as GeometryUtils from '@kmamal/three/addons/utils/GeometryUtils.js';
  */
 
 /**

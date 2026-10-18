@@ -7,8 +7,8 @@
  * @see {@link https://github.com/gkjohnson/three-gpu-pathtracer}
  */
 
-import { If, dot, equirectUV, float, luminance, max, normalize, texture, uniform, vec2, vec4 } from 'three/tsl';
-import { ClampToEdgeWrapping, DataTexture, DataUtils, FloatType, HalfFloatType, LinearFilter, RedFormat, RepeatWrapping, TextureSource, Vector2 } from 'three/webgpu';
+import { If, dot, equirectUV, float, luminance, max, normalize, texture, uniform, vec2, vec4 } from '@kmamal/three/tsl';
+import { ClampToEdgeWrapping, DataTexture, DataUtils, FloatType, HalfFloatType, LinearFilter, RedFormat, RepeatWrapping, TextureSource, Vector2 } from '@kmamal/three/webgpu';
 import { D_GTR, F_Schlick, GeometryTerm, SmithG, equirectDirPdf, misPowerHeuristic } from '../utils/SpecularHelpers.js';
 
 function colorToLuminance( r, g, b ) {

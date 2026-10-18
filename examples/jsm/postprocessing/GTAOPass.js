@@ -19,7 +19,7 @@ import {
 	UnsignedInt248Type,
 	WebGLRenderTarget,
 	ZeroFactor
-} from 'three';
+} from '@kmamal/three';
 import { Pass, FullScreenQuad } from './Pass.js';
 import { generateMagicSquareNoise, GTAOShader, GTAODepthShader, GTAOBlendShader } from '../shaders/GTAOShader.js';
 import { generatePdSamplePointInitializer, PoissonDenoiseShader } from '../shaders/PoissonDenoiseShader.js';
@@ -38,7 +38,7 @@ import { SimplexNoise } from '../math/SimplexNoise.js';
  * ```
  *
  * @augments Pass
- * @three_import import { GTAOPass } from 'three/addons/postprocessing/GTAOPass.js';
+ * @three_import import { GTAOPass } from '@kmamal/three/addons/postprocessing/GTAOPass.js';
  */
 class GTAOPass extends Pass {
 

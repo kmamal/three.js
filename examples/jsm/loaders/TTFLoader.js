@@ -1,7 +1,7 @@
 import {
 	FileLoader,
 	Loader
-} from 'three';
+} from '@kmamal/three';
 import opentype from 'https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/+esm';
 
 /**
@@ -17,7 +17,7 @@ import opentype from 'https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/+esm';
  * ```
  *
  * @augments Loader
- * @three_import import { TTFLoader } from 'three/addons/loaders/TTFLoader.js';
+ * @three_import import { TTFLoader } from '@kmamal/three/addons/loaders/TTFLoader.js';
  */
 class TTFLoader extends Loader {
 

@@ -5,7 +5,7 @@ import {
 	Float32BufferAttribute,
 	Loader,
 	SRGBColorSpace
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * A loader for the XYZ format.
@@ -26,7 +26,7 @@ import {
  * ```
  *
  * @augments Loader
- * @three_import import { XYZLoader } from 'three/addons/loaders/XYZLoader.js';
+ * @three_import import { XYZLoader } from '@kmamal/three/addons/loaders/XYZLoader.js';
  */
 class XYZLoader extends Loader {
 

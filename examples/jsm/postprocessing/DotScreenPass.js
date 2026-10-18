@@ -1,7 +1,7 @@
 import {
 	ShaderMaterial,
 	UniformsUtils
-} from 'three';
+} from '@kmamal/three';
 import { Pass, FullScreenQuad } from './Pass.js';
 import { DotScreenShader } from '../shaders/DotScreenShader.js';
 
@@ -14,7 +14,7 @@ import { DotScreenShader } from '../shaders/DotScreenShader.js';
  * ```
  *
  * @augments Pass
- * @three_import import { DotScreenPass } from 'three/addons/postprocessing/DotScreenPass.js';
+ * @three_import import { DotScreenPass } from '@kmamal/three/addons/postprocessing/DotScreenPass.js';
  */
 class DotScreenPass extends Pass {
 

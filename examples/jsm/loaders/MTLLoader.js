@@ -11,7 +11,7 @@ import {
 	TextureLoader,
 	Vector2,
 	SRGBColorSpace
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * A loader for the MTL format.
@@ -29,7 +29,7 @@ import {
  * ```
  *
  * @augments Loader
- * @three_import import { MTLLoader } from 'three/addons/loaders/MTLLoader.js';
+ * @three_import import { MTLLoader } from '@kmamal/three/addons/loaders/MTLLoader.js';
  */
 class MTLLoader extends Loader {
 

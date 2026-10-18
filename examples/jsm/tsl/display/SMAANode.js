@@ -1,5 +1,5 @@
-import { HalfFloatType, LinearFilter, NearestFilter, RenderTarget, Texture, Vector2, QuadMesh, NodeMaterial, Node, RendererUtils } from 'three/webgpu';
-import { abs, Fn, NodeUpdateType, uv, uniform, convertToTexture, vec2, vec4, passTexture, max, step, dot, float, texture, If, Loop, int, Break, sqrt, sign, mix, context } from 'three/tsl';
+import { HalfFloatType, LinearFilter, NearestFilter, RenderTarget, Texture, Vector2, QuadMesh, NodeMaterial, Node, RendererUtils } from '@kmamal/three/webgpu';
+import { abs, Fn, NodeUpdateType, uv, uniform, convertToTexture, vec2, vec4, passTexture, max, step, dot, float, texture, If, Loop, int, Break, sqrt, sign, mix, context } from '@kmamal/three/tsl';
 
 const _quadMesh = /*@__PURE__*/ new QuadMesh();
 const _size = /*@__PURE__*/ new Vector2();
@@ -15,7 +15,7 @@ let _rendererState;
  * Reference: {@link https://github.com/iryoku/smaa/releases/tag/v2.8}.
  *
  * @augments Node
- * @three_import import { smaa } from 'three/addons/tsl/display/SMAANode.js';
+ * @three_import import { smaa } from '@kmamal/three/addons/tsl/display/SMAANode.js';
  */
 class SMAANode extends Node {
 

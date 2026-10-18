@@ -3,10 +3,10 @@ import {
 	CylinderGeometry,
 	InterpolationSamplingMode,
 	InterpolationSamplingType
-} from 'three';
+} from '@kmamal/three';
 
-import { MeshStandardNodeMaterial } from 'three/webgpu';
-import { attribute, color, float, select, varying } from 'three/tsl';
+import { MeshStandardNodeMaterial } from '@kmamal/three/webgpu';
+import { attribute, color, float, select, varying } from '@kmamal/three/tsl';
 
 import { mergeGeometries } from '../../utils/BufferGeometryUtils.js';
 

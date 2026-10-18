@@ -42,7 +42,7 @@ import {
 	Vector3,
 	Vector4,
 	VectorKeyframeTrack
-} from 'three';
+} from '@kmamal/three';
 
 import { unzlibSync } from '../libs/fflate.module.js';
 import { NURBSCurve } from '../curves/NURBSCurve.js';
@@ -73,7 +73,7 @@ let sceneGraph;
  * ```
  *
  * @augments Loader
- * @three_import import { FBXLoader } from 'three/addons/loaders/FBXLoader.js';
+ * @three_import import { FBXLoader } from '@kmamal/three/addons/loaders/FBXLoader.js';
  */
 class FBXLoader extends Loader {
 

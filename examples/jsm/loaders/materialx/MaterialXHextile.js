@@ -19,7 +19,7 @@ import {
 	sub,
 	vec2,
 	vec3,
-} from 'three/tsl';
+} from '@kmamal/three/tsl';
 
 const HEXTILE_SQRT3_2 = Math.sqrt( 3 ) * 2;
 const HEXTILE_EPSILON = 1e-6;

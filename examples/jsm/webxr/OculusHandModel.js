@@ -1,4 +1,4 @@
-import { Object3D, Sphere, Box3 } from 'three';
+import { Object3D, Sphere, Box3 } from '@kmamal/three';
 import { XRHandMeshModel } from './XRHandMeshModel.js';
 
 const TOUCH_RADIUS = 0.01;
@@ -8,7 +8,7 @@ const POINTING_JOINT = 'index-finger-tip';
  * Represents an Oculus hand model.
  *
  * @augments Object3D
- * @three_import import { OculusHandModel } from 'three/addons/webxr/OculusHandModel.js';
+ * @three_import import { OculusHandModel } from '@kmamal/three/addons/webxr/OculusHandModel.js';
  */
 class OculusHandModel extends Object3D {
 

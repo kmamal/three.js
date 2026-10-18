@@ -2,7 +2,7 @@ import {
 	AnimationClip,
 	AnimationMixer,
 	Mesh
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * A special type of an animated mesh with a simple interface
@@ -10,7 +10,7 @@ import {
  * without any transitions or fading between animation changes.
  *
  * @augments Mesh
- * @three_import import { MorphAnimMesh } from 'three/addons/misc/MorphAnimMesh.js';
+ * @three_import import { MorphAnimMesh } from '@kmamal/three/addons/misc/MorphAnimMesh.js';
  */
 class MorphAnimMesh extends Mesh {
 

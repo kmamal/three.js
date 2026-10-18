@@ -1,10 +1,10 @@
 import {
 	Vector2
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * @module NormalMapShader
- * @three_import import { NormalMapShader } from 'three/addons/shaders/NormalMapShader.js';
+ * @three_import import { NormalMapShader } from '@kmamal/three/addons/shaders/NormalMapShader.js';
  */
 
 /**

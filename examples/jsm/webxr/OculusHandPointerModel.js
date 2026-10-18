@@ -1,4 +1,4 @@
-import { BufferGeometry, Float32BufferAttribute, Matrix4, Mesh, MeshBasicMaterial, Object3D, Raycaster, SphereGeometry, Vector3 } from 'three';
+import { BufferGeometry, Float32BufferAttribute, Matrix4, Mesh, MeshBasicMaterial, Object3D, Raycaster, SphereGeometry, Vector3 } from '@kmamal/three';
 
 const PINCH_MAX = 0.05;
 const PINCH_THRESHOLD = 0.02;
@@ -23,7 +23,7 @@ const CURSOR_MAX_DISTANCE = 1.5;
  * Represents an Oculus hand pointer model.
  *
  * @augments Object3D
- * @three_import import { OculusHandPointerModel } from 'three/addons/webxr/OculusHandPointerModel.js';
+ * @three_import import { OculusHandPointerModel } from '@kmamal/three/addons/webxr/OculusHandPointerModel.js';
  */
 class OculusHandPointerModel extends Object3D {
 

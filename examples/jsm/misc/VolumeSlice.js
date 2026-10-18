@@ -7,13 +7,13 @@ import {
 	PlaneGeometry,
 	Texture,
 	SRGBColorSpace
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * This class has been made to hold a slice of a volume data.
  *
  * @see {@link Volume}
- * @three_import import { VolumeSlice } from 'three/addons/misc/VolumeSlice.js';
+ * @three_import import { VolumeSlice } from '@kmamal/three/addons/misc/VolumeSlice.js';
  */
 class VolumeSlice {
 

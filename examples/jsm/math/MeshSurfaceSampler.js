@@ -2,7 +2,7 @@ import {
 	Triangle,
 	Vector2,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 const _face = new Triangle();
 const _color = new Vector3();
@@ -41,7 +41,7 @@ const _uva = new Vector2(), _uvb = new Vector2(), _uvc = new Vector2();
  * scene.add( mesh );
  * ```
  *
- * @three_import import { MeshSurfaceSampler } from 'three/addons/math/MeshSurfaceSampler.js';
+ * @three_import import { MeshSurfaceSampler } from '@kmamal/three/addons/math/MeshSurfaceSampler.js';
  */
 class MeshSurfaceSampler {
 

@@ -2,11 +2,11 @@ import {
 	Matrix4,
 	Vector2,
 	Vector3,
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * @module PoissonDenoiseShader
- * @three_import import { PoissonDenoiseShader } from 'three/addons/shaders/PoissonDenoiseShader.js';
+ * @three_import import { PoissonDenoiseShader } from '@kmamal/three/addons/shaders/PoissonDenoiseShader.js';
  */
 
 /**

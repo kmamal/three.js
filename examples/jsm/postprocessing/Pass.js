@@ -3,7 +3,7 @@ import {
 	Float32BufferAttribute,
 	OrthographicCamera,
 	Mesh
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * Abstract base class for all post processing passes.
@@ -11,7 +11,7 @@ import {
  * This module is only relevant for post processing with {@link WebGLRenderer}.
  *
  * @abstract
- * @three_import import { Pass } from 'three/addons/postprocessing/Pass.js';
+ * @three_import import { Pass } from '@kmamal/three/addons/postprocessing/Pass.js';
  */
 class Pass {
 
@@ -133,7 +133,7 @@ const _geometry = new FullscreenTriangleGeometry();
  * This module can only be used with {@link WebGLRenderer}.
  *
  * @augments Mesh
- * @three_import import { FullScreenQuad } from 'three/addons/postprocessing/Pass.js';
+ * @three_import import { FullScreenQuad } from '@kmamal/three/addons/postprocessing/Pass.js';
  */
 class FullScreenQuad {
 

@@ -1,5 +1,5 @@
-import { Color, Node, Vector3 } from 'three/webgpu';
-import { Loop, NodeUpdateType, mix, normalWorld, renderGroup, uniform, uniformArray } from 'three/tsl';
+import { Color, Node, Vector3 } from '@kmamal/three/webgpu';
+import { Loop, NodeUpdateType, mix, normalWorld, renderGroup, uniform, uniformArray } from '@kmamal/three/tsl';
 
 const warn = ( message ) => {
 

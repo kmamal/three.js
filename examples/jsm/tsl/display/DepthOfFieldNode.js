@@ -1,5 +1,5 @@
-import { Node, NodeMaterial, NodeUpdateType, RenderTarget, Vector2, HalfFloatType, RedFormat, QuadMesh, RendererUtils } from 'three/webgpu';
-import { convertToTexture, nodeObject, Fn, uniform, smoothstep, step, texture, max, uniformArray, outputStruct, property, vec4, vec3, uv, Loop, min, mix, float, context } from 'three/tsl';
+import { Node, NodeMaterial, NodeUpdateType, RenderTarget, Vector2, HalfFloatType, RedFormat, QuadMesh, RendererUtils } from '@kmamal/three/webgpu';
+import { convertToTexture, nodeObject, Fn, uniform, smoothstep, step, texture, max, uniformArray, outputStruct, property, vec4, vec3, uv, Loop, min, mix, float, context } from '@kmamal/three/tsl';
 import { gaussianBlur } from './GaussianBlurNode.js';
 
 const _quadMesh = /*@__PURE__*/ new QuadMesh();
@@ -13,7 +13,7 @@ let _rendererState;
  * - {@link https://www.adriancourreges.com/blog/2016/09/09/doom-2016-graphics-study/}
  *
  * @augments Node
- * @three_import import { dof } from 'three/addons/tsl/display/DepthOfFieldNode.js';
+ * @three_import import { dof } from '@kmamal/three/addons/tsl/display/DepthOfFieldNode.js';
  */
 class DepthOfFieldNode extends Node {
 

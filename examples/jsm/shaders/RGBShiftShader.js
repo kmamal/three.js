@@ -1,6 +1,6 @@
 /**
  * @module RGBShiftShader
- * @three_import import { RGBShiftShader } from 'three/addons/shaders/RGBShiftShader.js';
+ * @three_import import { RGBShiftShader } from '@kmamal/three/addons/shaders/RGBShiftShader.js';
  */
 
 /**

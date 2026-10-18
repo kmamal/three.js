@@ -1,10 +1,10 @@
 import {
 	Vector2
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * @module DotScreenShader
- * @three_import import { DotScreenShader } from 'three/addons/shaders/DotScreenShader.js';
+ * @three_import import { DotScreenShader } from '@kmamal/three/addons/shaders/DotScreenShader.js';
  */
 
 /**

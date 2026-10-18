@@ -1,6 +1,6 @@
 /**
  * @module FilmShader
- * @three_import import { FilmShader } from 'three/addons/shaders/FilmShader.js';
+ * @three_import import { FilmShader } from '@kmamal/three/addons/shaders/FilmShader.js';
  */
 
 /**

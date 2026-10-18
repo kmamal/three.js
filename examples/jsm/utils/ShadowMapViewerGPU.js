@@ -9,8 +9,8 @@ import {
 	Scene,
 	DepthTexture,
 	Vector2
-} from 'three/webgpu';
-import { uv, uniform, textureLoad } from 'three/tsl';
+} from '@kmamal/three/webgpu';
+import { uv, uniform, textureLoad } from '@kmamal/three/tsl';
 
 /**
  * This is a helper for visualising a given light's shadow map.
@@ -29,7 +29,7 @@ import { uv, uniform, textureLoad } from 'three/tsl';
  * lightShadowMapViewer.update();
  * ```
  *
- * @three_import import { ShadowMapViewer } from 'three/addons/utils/ShadowMapViewerGPU.js';
+ * @three_import import { ShadowMapViewer } from '@kmamal/three/addons/utils/ShadowMapViewerGPU.js';
  */
 class ShadowMapViewer {
 

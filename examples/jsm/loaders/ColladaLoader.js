@@ -4,7 +4,7 @@ import {
 	LoaderUtils,
 	Scene,
 	TextureLoader
-} from 'three';
+} from '@kmamal/three';
 
 import { TGALoader } from '../loaders/TGALoader.js';
 import { ColladaParser } from './collada/ColladaParser.js';
@@ -27,7 +27,7 @@ import { ColladaComposer } from './collada/ColladaComposer.js';
  * ```
  *
  * @augments Loader
- * @three_import import { ColladaLoader } from 'three/addons/loaders/ColladaLoader.js';
+ * @three_import import { ColladaLoader } from '@kmamal/three/addons/loaders/ColladaLoader.js';
  */
 class ColladaLoader extends Loader {
 

@@ -1,4 +1,4 @@
-import { Lighting } from 'three/webgpu';
+import { Lighting } from '@kmamal/three/webgpu';
 import ClusteredLightsNode from '../tsl/lighting/ClusteredLightsNode.js';
 
 /**
@@ -14,7 +14,7 @@ import ClusteredLightsNode from '../tsl/lighting/ClusteredLightsNode.js';
  * ```
  *
  * @augments Lighting
- * @three_import import { ClusteredLighting } from 'three/addons/lighting/ClusteredLighting.js';
+ * @three_import import { ClusteredLighting } from '@kmamal/three/addons/lighting/ClusteredLighting.js';
  */
 export class ClusteredLighting extends Lighting {
 

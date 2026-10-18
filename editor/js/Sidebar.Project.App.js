@@ -1,6 +1,6 @@
-import * as THREE from 'three';
+import * as THREE from '@kmamal/three';
 
-import { zipSync, strToU8 } from 'three/addons/libs/fflate.module.js';
+import { zipSync, strToU8 } from '@kmamal/three/addons/libs/fflate.module.js';
 
 import { UIButton, UICheckbox, UIPanel, UIInput, UIRow, UIText } from './libs/ui.js';
 
@@ -122,13 +122,13 @@ function SidebarProjectApp( editor ) {
 			const IMPORTMAP = {
 				WebGLRenderer: {
 					imports: {
-						'three': './js/three.module.js'
+						'@kmamal/three': './js/three.module.js'
 					}
 				},
 				WebGPURenderer: {
 					imports: {
-						'three': './js/three.webgpu.js',
-						'three/webgpu': './js/three.webgpu.js'
+						'@kmamal/three': './js/three.webgpu.js',
+						'@kmamal/three/webgpu': './js/three.webgpu.js'
 					}
 				}
 			};

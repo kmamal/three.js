@@ -1,5 +1,5 @@
-import { BufferAttribute } from 'three';
-import { normalView, positionView } from 'three/tsl';
+import { BufferAttribute } from '@kmamal/three';
+import { normalView, positionView } from '@kmamal/three/tsl';
 import { mergeVertices } from '../../utils/BufferGeometryUtils.js';
 
 // Keep parts indexed and tag their material zone before merging.

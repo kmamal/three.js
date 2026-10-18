@@ -6,7 +6,7 @@ import {
 	ShaderChunk,
 	Matrix4,
 	Box3
-} from 'three';
+} from '@kmamal/three';
 import { CSMFrustum } from './CSMFrustum.js';
 import { CSMShader } from './CSMShader.js';
 
@@ -27,7 +27,7 @@ const _up = new Vector3( 0, 1, 0 );
  * This module can only be used with {@link WebGLRenderer}. When using {@link WebGPURenderer},
  * use {@link CSMShadowNode} instead.
  *
- * @three_import import { CSM } from 'three/addons/csm/CSM.js';
+ * @three_import import { CSM } from '@kmamal/three/addons/csm/CSM.js';
  */
 export class CSM {
 

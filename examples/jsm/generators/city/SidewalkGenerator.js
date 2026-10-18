@@ -3,9 +3,9 @@ import {
 	Group,
 	MeshStandardNodeMaterial,
 	Shape
-} from 'three/webgpu';
+} from '@kmamal/three/webgpu';
 
-import { cameraPosition, color, float, floor, Fn, fract, fwidth, If, mix, mx_noise_float, normalWorldGeometry, positionWorld, sin, smoothstep } from 'three/tsl';
+import { cameraPosition, color, float, floor, Fn, fract, fwidth, If, mix, mx_noise_float, normalWorldGeometry, positionWorld, sin, smoothstep } from '@kmamal/three/tsl';
 
 import { createInstances, updateInstances } from './InstancedMeshGenerator.js';
 import { bumpNormal } from './CityGeneratorUtils.js';

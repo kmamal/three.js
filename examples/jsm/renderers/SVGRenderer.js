@@ -7,7 +7,7 @@ import {
 	Object3D,
 	SRGBColorSpace,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 import {
 	Projector,
@@ -20,7 +20,7 @@ import {
  * Can be used to wrap SVG elements into a 3D object.
  *
  * @augments Object3D
- * @three_import import { SVGObject } from 'three/addons/renderers/SVGRenderer.js';
+ * @three_import import { SVGObject } from '@kmamal/three/addons/renderers/SVGRenderer.js';
  */
 class SVGObject extends Object3D {
 
@@ -72,7 +72,7 @@ class SVGObject extends Object3D {
  * - No texture support.
  * - No shadow support.
  *
- * @three_import import { SVGRenderer } from 'three/addons/renderers/SVGRenderer.js';
+ * @three_import import { SVGRenderer } from '@kmamal/three/addons/renderers/SVGRenderer.js';
  */
 class SVGRenderer {
 

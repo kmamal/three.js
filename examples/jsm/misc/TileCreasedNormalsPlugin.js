@@ -1,4 +1,4 @@
-import { BufferAttribute } from 'three';
+import { BufferAttribute } from '@kmamal/three';
 
 /**
  * A plugin for `3d-tiles-renderer` that computes creased vertex normals for the
@@ -13,7 +13,7 @@ import { BufferAttribute } from 'three';
  * tiles.registerPlugin( new TileCreasedNormalsPlugin( { creaseAngle: Math.PI / 6 } ) );
  * ```
  *
- * @three_import import { TileCreasedNormalsPlugin } from 'three/addons/misc/TileCreasedNormalsPlugin.js';
+ * @three_import import { TileCreasedNormalsPlugin } from '@kmamal/three/addons/misc/TileCreasedNormalsPlugin.js';
  */
 class TileCreasedNormalsPlugin {
 

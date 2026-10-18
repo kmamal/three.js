@@ -1,6 +1,6 @@
 /**
  * @module GammaCorrectionShader
- * @three_import import { GammaCorrectionShader } from 'three/addons/shaders/GammaCorrectionShader.js';
+ * @three_import import { GammaCorrectionShader } from '@kmamal/three/addons/shaders/GammaCorrectionShader.js';
  */
 
 /**

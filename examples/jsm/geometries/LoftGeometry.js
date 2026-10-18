@@ -4,7 +4,7 @@ import {
 	ShapeUtils,
 	Vector2,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 const _vector = /*@__PURE__*/ new Vector3();
 
@@ -50,7 +50,7 @@ const _vector = /*@__PURE__*/ new Vector3();
  * ```
  *
  * @augments BufferGeometry
- * @three_import import { LoftGeometry } from 'three/addons/geometries/LoftGeometry.js';
+ * @three_import import { LoftGeometry } from '@kmamal/three/addons/geometries/LoftGeometry.js';
  */
 class LoftGeometry extends BufferGeometry {
 

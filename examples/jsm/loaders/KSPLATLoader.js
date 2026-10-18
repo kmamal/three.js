@@ -2,7 +2,7 @@ import {
 	DataUtils,
 	FileLoader,
 	Loader
-} from 'three';
+} from '@kmamal/three';
 
 import { SH_BAND_COMPONENTS, SH_BAND_WORDS, createGaussianSplatGeometry, createPackedSphericalHarmonicsBand, writeColorBytes, writeCovariance } from '../utils/GaussianSplatUtils.js';
 
@@ -70,7 +70,7 @@ const COMPRESSION_LEVELS = {
  * ```
  *
  * @augments Loader
- * @three_import import { KSPLATLoader } from 'three/addons/loaders/KSPLATLoader.js';
+ * @three_import import { KSPLATLoader } from '@kmamal/three/addons/loaders/KSPLATLoader.js';
  */
 class KSPLATLoader extends Loader {
 

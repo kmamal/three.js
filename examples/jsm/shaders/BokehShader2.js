@@ -1,10 +1,10 @@
 import {
 	Vector2
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * @module BokehShader2
- * @three_import import { BokehShader, BokehDepthShader } from 'three/addons/shaders/BokehShader2.js';
+ * @three_import import { BokehShader, BokehDepthShader } from '@kmamal/three/addons/shaders/BokehShader2.js';
  */
 
 /**

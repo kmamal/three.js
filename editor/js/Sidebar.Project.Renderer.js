@@ -1,5 +1,5 @@
-import * as THREE from 'three';
-import { WebGPURenderer } from 'three/webgpu';
+import * as THREE from '@kmamal/three';
+import { WebGPURenderer } from '@kmamal/three/webgpu';
 
 import { UINumber, UIPanel, UIRow, UISelect, UIText } from './libs/ui.js';
 import { UIBoolean } from './libs/ui.three.js';

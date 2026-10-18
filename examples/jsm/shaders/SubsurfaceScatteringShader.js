@@ -3,7 +3,7 @@ import {
 	ShaderChunk,
 	ShaderLib,
 	UniformsUtils
-} from 'three';
+} from '@kmamal/three';
 
 function replaceAll( string, find, replace ) {
 
@@ -16,7 +16,7 @@ const meshphong_frag_body = ShaderChunk[ 'meshphong_frag' ].slice( ShaderChunk[ 
 
 /**
  * @module SubsurfaceScatteringShader
- * @three_import import { SubsurfaceScatteringShader } from 'three/addons/shaders/SubsurfaceScatteringShader.js';
+ * @three_import import { SubsurfaceScatteringShader } from '@kmamal/three/addons/shaders/SubsurfaceScatteringShader.js';
  */
 
 /**

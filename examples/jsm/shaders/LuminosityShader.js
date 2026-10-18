@@ -1,6 +1,6 @@
 /**
  * @module LuminosityShader
- * @three_import import { LuminosityShader } from 'three/addons/shaders/LuminosityShader.js';
+ * @three_import import { LuminosityShader } from '@kmamal/three/addons/shaders/LuminosityShader.js';
  */
 
 /**

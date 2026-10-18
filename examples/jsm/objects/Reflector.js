@@ -9,7 +9,7 @@ import {
 	Vector4,
 	WebGLRenderTarget,
 	HalfFloatType
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * Can be used to create a flat, reflective surface like a mirror.
@@ -31,7 +31,7 @@ import {
  * ```
  *
  * @augments Mesh
- * @three_import import { Reflector } from 'three/addons/objects/Reflector.js';
+ * @three_import import { Reflector } from '@kmamal/three/addons/objects/Reflector.js';
  */
 class Reflector extends Mesh {
 

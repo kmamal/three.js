@@ -1,4 +1,4 @@
-import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
+import { TextGeometry } from '@kmamal/three/addons/geometries/TextGeometry.js';
 
 import { UIDiv, UIRow, UIText, UINumber, UIInteger, UIInput, UICheckbox } from './libs/ui.js';
 

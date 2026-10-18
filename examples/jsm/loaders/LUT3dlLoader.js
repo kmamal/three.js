@@ -6,7 +6,7 @@ import {
 	Loader,
 	RGBAFormat,
 	UnsignedByteType,
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * A loader for the 3DL LUT format.
@@ -21,7 +21,7 @@ import {
  * ```
  *
  * @augments Loader
- * @three_import import { LUT3dlLoader } from 'three/addons/loaders/LUT3dlLoader.js';
+ * @three_import import { LUT3dlLoader } from '@kmamal/three/addons/loaders/LUT3dlLoader.js';
  */
 export class LUT3dlLoader extends Loader {
 

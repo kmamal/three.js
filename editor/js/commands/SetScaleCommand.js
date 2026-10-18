@@ -1,5 +1,5 @@
 import { Command } from '../Command.js';
-import { Vector3 } from 'three';
+import { Vector3 } from '@kmamal/three';
 
 class SetScaleCommand extends Command {
 

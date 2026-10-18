@@ -2,10 +2,10 @@ import {
 	BoxGeometry,
 	InterpolationSamplingMode,
 	InterpolationSamplingType
-} from 'three';
+} from '@kmamal/three';
 
-import { MeshStandardNodeMaterial } from 'three/webgpu';
-import { attribute, color, float, floor, fract, mix, mx_fractal_noise_float, positionGeometry, select, sin, varying, vec3 } from 'three/tsl';
+import { MeshStandardNodeMaterial } from '@kmamal/three/webgpu';
+import { attribute, color, float, floor, fract, mix, mx_fractal_noise_float, positionGeometry, select, sin, varying, vec3 } from '@kmamal/three/tsl';
 
 import { mergeGeometries } from '../../utils/BufferGeometryUtils.js';
 

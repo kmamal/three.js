@@ -1,11 +1,11 @@
-import { Vector3, Matrix4 } from 'three';
+import { Vector3, Matrix4 } from '@kmamal/three';
 
 const inverseProjectionMatrix = new Matrix4();
 
 /**
  * Represents the frustum of a CSM instance.
  *
- * @three_import import { CSMFrustum } from 'three/addons/csm/CSMFrustum.js';
+ * @three_import import { CSMFrustum } from '@kmamal/three/addons/csm/CSMFrustum.js';
  */
 class CSMFrustum {
 

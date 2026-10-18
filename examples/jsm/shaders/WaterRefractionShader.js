@@ -1,6 +1,6 @@
 /**
  * @module WaterRefractionShader
- * @three_import import { WaterRefractionShader } from 'three/addons/shaders/WaterRefractionShader.js';
+ * @three_import import { WaterRefractionShader } from '@kmamal/three/addons/shaders/WaterRefractionShader.js';
  */
 
 /**

@@ -10,7 +10,7 @@ import {
 	UniformsUtils,
 	Vector2,
 	Vector4
-} from 'three';
+} from '@kmamal/three';
 import { Reflector } from '../objects/Reflector.js';
 import { Refractor } from '../objects/Refractor.js';
 
@@ -28,7 +28,7 @@ import { Refractor } from '../objects/Refractor.js';
  * - {@link http://graphicsrunner.blogspot.de/2010/08/water-using-flow-maps.html}
  *
  * @augments Mesh
- * @three_import import { Water } from 'three/addons/objects/Water2.js';
+ * @three_import import { Water } from '@kmamal/three/addons/objects/Water2.js';
  */
 class Water extends Mesh {
 

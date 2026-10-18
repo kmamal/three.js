@@ -2,7 +2,7 @@ import {
 	BufferGeometry,
 	Float32BufferAttribute,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * This class can be used to generate a geometry based on a parametric surface.
@@ -17,7 +17,7 @@ import {
  * ```
  *
  * @augments BufferGeometry
- * @three_import import { ParametricGeometry } from 'three/addons/geometries/ParametricGeometry.js';
+ * @three_import import { ParametricGeometry } from '@kmamal/three/addons/geometries/ParametricGeometry.js';
  */
 class ParametricGeometry extends BufferGeometry {
 

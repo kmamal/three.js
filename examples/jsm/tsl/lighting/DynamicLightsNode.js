@@ -1,4 +1,4 @@
-import { LightsNode, NodeUtils } from 'three/webgpu';
+import { LightsNode, NodeUtils } from '@kmamal/three/webgpu';
 
 import AmbientLightDataNode from './data/AmbientLightDataNode.js';
 import DirectionalLightDataNode from './data/DirectionalLightDataNode.js';
@@ -46,7 +46,7 @@ const canBatchLight = ( light ) => {
  * lights keep the default per-light path.
  *
  * @augments LightsNode
- * @three_import import { DynamicLightsNode } from 'three/addons/tsl/lighting/DynamicLightsNode.js';
+ * @three_import import { DynamicLightsNode } from '@kmamal/three/addons/tsl/lighting/DynamicLightsNode.js';
  */
 class DynamicLightsNode extends LightsNode {
 

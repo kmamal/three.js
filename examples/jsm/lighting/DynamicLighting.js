@@ -1,4 +1,4 @@
-import { Lighting, LightsNode } from 'three/webgpu';
+import { Lighting, LightsNode } from '@kmamal/three/webgpu';
 import DynamicLightsNode from '../tsl/lighting/DynamicLightsNode.js';
 
 const _defaultLights = /*@__PURE__*/ new LightsNode();
@@ -13,7 +13,7 @@ const _defaultLights = /*@__PURE__*/ new LightsNode();
  * ```
  *
  * @augments Lighting
- * @three_import import { DynamicLighting } from 'three/addons/lighting/DynamicLighting.js';
+ * @three_import import { DynamicLighting } from '@kmamal/three/addons/lighting/DynamicLighting.js';
  */
 export class DynamicLighting extends Lighting {
 

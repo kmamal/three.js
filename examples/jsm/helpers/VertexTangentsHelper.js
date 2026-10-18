@@ -4,7 +4,7 @@ import {
 	LineSegments,
 	LineBasicMaterial,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 const _v1 = new Vector3();
 const _v2 = new Vector3();
@@ -20,7 +20,7 @@ const _v2 = new Vector3();
  * ```
  *
  * @augments LineSegments
- * @three_import import { VertexTangentsHelper } from 'three/addons/helpers/VertexTangentsHelper.js';
+ * @three_import import { VertexTangentsHelper } from '@kmamal/three/addons/helpers/VertexTangentsHelper.js';
  */
 class VertexTangentsHelper extends LineSegments {
 

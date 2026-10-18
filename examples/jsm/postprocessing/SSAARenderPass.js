@@ -5,7 +5,7 @@ import {
 	ShaderMaterial,
 	UniformsUtils,
 	WebGLRenderTarget
-} from 'three';
+} from '@kmamal/three';
 import { Pass, FullScreenQuad } from './Pass.js';
 import { CopyShader } from '../shaders/CopyShader.js';
 
@@ -21,7 +21,7 @@ import { CopyShader } from '../shaders/CopyShader.js';
  * ```
  *
  * @augments Pass
- * @three_import import { SSAARenderPass } from 'three/addons/postprocessing/SSAARenderPass.js';
+ * @three_import import { SSAARenderPass } from '@kmamal/three/addons/postprocessing/SSAARenderPass.js';
  */
 class SSAARenderPass extends Pass {
 

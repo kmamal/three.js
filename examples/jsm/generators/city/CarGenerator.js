@@ -11,10 +11,10 @@ import {
 	LatheGeometry,
 	Vector2,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
-import { MeshStandardNodeMaterial } from 'three/webgpu';
-import { atan, attribute, color, float, mix, normalGeometry, positionGeometry, select, smoothstep, uniform, uniformArray, uv, varying, vec2 } from 'three/tsl';
+import { MeshStandardNodeMaterial } from '@kmamal/three/webgpu';
+import { atan, attribute, color, float, mix, normalGeometry, positionGeometry, select, smoothstep, uniform, uniformArray, uv, varying, vec2 } from '@kmamal/three/tsl';
 
 import { mergeGeometries } from '../../utils/BufferGeometryUtils.js';
 import { LoftGeometry } from '../../geometries/LoftGeometry.js';

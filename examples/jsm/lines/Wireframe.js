@@ -4,7 +4,7 @@ import {
 	Mesh,
 	Vector3,
 	Vector4
-} from 'three';
+} from '@kmamal/three';
 import { LineSegmentsGeometry } from './LineSegmentsGeometry.js';
 import { LineMaterial } from './LineMaterial.js';
 
@@ -27,7 +27,7 @@ const _viewport = new Vector4();
  * ```
  *
  * @augments Mesh
- * @three_import import { Wireframe } from 'three/addons/lines/Wireframe.js';
+ * @three_import import { Wireframe } from '@kmamal/three/addons/lines/Wireframe.js';
  */
 class Wireframe extends Mesh {
 

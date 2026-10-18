@@ -1,5 +1,5 @@
-import * as THREE from 'three';
-import * as TSL from 'three/tsl';
+import * as THREE from '@kmamal/three';
+import * as TSL from '@kmamal/three/tsl';
 
 // some helpers below are ported from Blender and converted to TSL
 

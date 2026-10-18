@@ -8,7 +8,7 @@ const DEFAULT_HAND_PROFILE_PATH = 'https://cdn.jsdelivr.net/npm/@webxr-input-pro
  * depending on the selected profile. `XRHandMeshModel` represents a hand with a
  * custom asset.
  *
- * @three_import import { XRHandMeshModel } from 'three/addons/webxr/XRHandMeshModel.js';
+ * @three_import import { XRHandMeshModel } from '@kmamal/three/addons/webxr/XRHandMeshModel.js';
  */
 class XRHandMeshModel {
 

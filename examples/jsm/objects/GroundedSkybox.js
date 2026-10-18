@@ -1,4 +1,4 @@
-import { Mesh, MeshBasicMaterial, SphereGeometry, Vector3 } from 'three';
+import { Mesh, MeshBasicMaterial, SphereGeometry, Vector3 } from '@kmamal/three';
 
 /**
  * A ground-projected skybox.
@@ -15,7 +15,7 @@ import { Mesh, MeshBasicMaterial, SphereGeometry, Vector3 } from 'three';
  * ```
  *
  * @augments Mesh
- * @three_import import { GroundedSkybox } from 'three/addons/objects/GroundedSkybox.js';
+ * @three_import import { GroundedSkybox } from '@kmamal/three/addons/objects/GroundedSkybox.js';
  */
 class GroundedSkybox extends Mesh {
 

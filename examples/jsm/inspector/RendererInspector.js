@@ -1,6 +1,6 @@
 
-import { InspectorBase, TimestampQuery, warnOnce, RendererUtils, MeshBasicNodeMaterial, AdditiveBlending, NoToneMapping, LinearSRGBColorSpace } from 'three/webgpu';
-import { vec3 } from 'three/tsl';
+import { InspectorBase, TimestampQuery, warnOnce, RendererUtils, MeshBasicNodeMaterial, AdditiveBlending, NoToneMapping, LinearSRGBColorSpace } from '@kmamal/three/webgpu';
+import { vec3 } from '@kmamal/three/tsl';
 
 class ObjectStats {
 

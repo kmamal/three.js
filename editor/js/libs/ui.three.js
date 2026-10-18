@@ -1,6 +1,6 @@
-import * as THREE from 'three';
+import * as THREE from '@kmamal/three';
 
-import { FullScreenQuad } from 'three/addons/postprocessing/Pass.js';
+import { FullScreenQuad } from '@kmamal/three/addons/postprocessing/Pass.js';
 
 import { UISpan, UIDiv, UIRow, UIButton, UICheckbox, UIText, UINumber } from './ui.js';
 import { MoveObjectCommand } from '../commands/MoveObjectCommand.js';
@@ -77,7 +77,7 @@ class UITexture extends UISpan {
 
 					// assuming RGBE/Radiance HDR image format
 
-					const { HDRLoader } = await import( 'three/addons/loaders/HDRLoader.js' );
+					const { HDRLoader } = await import( '@kmamal/three/addons/loaders/HDRLoader.js' );
 
 					const loader = new HDRLoader();
 					loader.load( event.target.result, function ( hdrTexture ) {
@@ -96,7 +96,7 @@ class UITexture extends UISpan {
 
 				reader.addEventListener( 'load', async function ( event ) {
 
-					const { TGALoader } = await import( 'three/addons/loaders/TGALoader.js' );
+					const { TGALoader } = await import( '@kmamal/three/addons/loaders/TGALoader.js' );
 
 					const loader = new TGALoader();
 					loader.load( event.target.result, function ( texture ) {
@@ -116,7 +116,7 @@ class UITexture extends UISpan {
 
 				reader.addEventListener( 'load', async function ( event ) {
 
-					const { KTX2Loader } = await import( 'three/addons/loaders/KTX2Loader.js' );
+					const { KTX2Loader } = await import( '@kmamal/three/addons/loaders/KTX2Loader.js' );
 
 					const arrayBuffer = event.target.result;
 					const blobURL = URL.createObjectURL( new Blob( [ arrayBuffer ] ) );
@@ -143,7 +143,7 @@ class UITexture extends UISpan {
 
 				reader.addEventListener( 'load', async function ( event ) {
 
-					const { EXRLoader } = await import( 'three/addons/loaders/EXRLoader.js' );
+					const { EXRLoader } = await import( '@kmamal/three/addons/loaders/EXRLoader.js' );
 
 					const arrayBuffer = event.target.result;
 					const blobURL = URL.createObjectURL( new Blob( [ arrayBuffer ] ) );

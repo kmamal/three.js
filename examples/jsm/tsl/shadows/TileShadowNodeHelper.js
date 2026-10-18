@@ -1,11 +1,11 @@
-import { Group, NodeMaterial, Mesh, PlaneGeometry, DoubleSide, CameraHelper } from 'three/webgpu';
-import { Fn, vec4, vec3, texture, uv, positionLocal, vec2, float, int, screenSize } from 'three/tsl';
+import { Group, NodeMaterial, Mesh, PlaneGeometry, DoubleSide, CameraHelper } from '@kmamal/three/webgpu';
+import { Fn, vec4, vec3, texture, uv, positionLocal, vec2, float, int, screenSize } from '@kmamal/three/tsl';
 
 /**
  * Helper class to manage and display debug visuals for TileShadowNode.
  *
  * @augments Group
- * @three_import import { TileShadowNodeHelper } from 'three/addons/tsl/shadows/TileShadowNodeHelper.js';
+ * @three_import import { TileShadowNodeHelper } from '@kmamal/three/addons/tsl/shadows/TileShadowNodeHelper.js';
  */
 class TileShadowNodeHelper extends Group {
 

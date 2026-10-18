@@ -12,7 +12,7 @@ import {
 	Uint32BufferAttribute,
 	Color,
 	SRGBColorSpace
-} from 'three';
+} from '@kmamal/three';
 
 const _color = new Color();
 
@@ -30,7 +30,7 @@ const _color = new Color();
  * ```
  *
  * @augments Loader
- * @three_import import { PLYLoader } from 'three/addons/loaders/PLYLoader.js';
+ * @three_import import { PLYLoader } from '@kmamal/three/addons/loaders/PLYLoader.js';
  */
 class PLYLoader extends Loader {
 

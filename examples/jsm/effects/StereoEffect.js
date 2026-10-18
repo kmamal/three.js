@@ -1,7 +1,7 @@
 import {
 	StereoCamera,
 	Vector2
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * A class that creates an stereo effect.
@@ -9,7 +9,7 @@ import {
  * Note that this class can only be used with {@link WebGLRenderer}.
  * When using {@link WebGPURenderer}, use {@link StereoPassNode}.
  *
- * @three_import import { StereoEffect } from 'three/addons/effects/StereoEffect.js';
+ * @three_import import { StereoEffect } from '@kmamal/three/addons/effects/StereoEffect.js';
  */
 class StereoEffect {
 

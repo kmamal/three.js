@@ -1,5 +1,5 @@
-import { AdditiveBlending, Color, Vector2, PassNode, QuadMesh, NodeMaterial } from 'three/webgpu';
-import { uniform, mrt, texture, getTextureIndex, unpremultiplyAlpha } from 'three/tsl';
+import { AdditiveBlending, Color, Vector2, PassNode, QuadMesh, NodeMaterial } from '@kmamal/three/webgpu';
+import { uniform, mrt, texture, getTextureIndex, unpremultiplyAlpha } from '@kmamal/three/tsl';
 
 const _size = /*@__PURE__*/ new Vector2();
 const _clearColor = /*@__PURE__*/ new Color();
@@ -14,7 +14,7 @@ const _clearColor = /*@__PURE__*/ new Color();
  * Reference: {@link https://en.wikipedia.org/wiki/Supersampling}
  *
  * @augments PassNode
- * @three_import import { ssaaPass } from 'three/addons/tsl/display/SSAAPassNode.js';
+ * @three_import import { ssaaPass } from '@kmamal/three/addons/tsl/display/SSAAPassNode.js';
  */
 class SSAAPassNode extends PassNode {
 

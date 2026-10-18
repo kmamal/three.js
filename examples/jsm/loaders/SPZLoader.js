@@ -2,7 +2,7 @@ import {
 	DataUtils,
 	FileLoader,
 	Loader
-} from 'three';
+} from '@kmamal/three';
 
 import { gunzipSync } from '../libs/fflate.module.js';
 import { ZSTDDecoder } from '../libs/zstddec.module.js';
@@ -61,7 +61,7 @@ const _quaternion = [ 0, 0, 0, 0 ];
  * ```
  *
  * @augments Loader
- * @three_import import { SPZLoader } from 'three/addons/loaders/SPZLoader.js';
+ * @three_import import { SPZLoader } from '@kmamal/three/addons/loaders/SPZLoader.js';
  */
 class SPZLoader extends Loader {
 

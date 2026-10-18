@@ -1,4 +1,4 @@
-import { float, Fn, fract, int, vec2, vec4 } from 'three/tsl';
+import { float, Fn, fract, int, vec2, vec4 } from '@kmamal/three/tsl';
 
 /**
  * Returns a TSL function that samples texture-free analytic R² noise.

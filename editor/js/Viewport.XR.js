@@ -1,9 +1,9 @@
-import * as THREE from 'three';
+import * as THREE from '@kmamal/three';
 
-import { HTMLMesh } from 'three/addons/interactive/HTMLMesh.js';
-import { InteractiveGroup } from 'three/addons/interactive/InteractiveGroup.js';
+import { HTMLMesh } from '@kmamal/three/addons/interactive/HTMLMesh.js';
+import { InteractiveGroup } from '@kmamal/three/addons/interactive/InteractiveGroup.js';
 
-import { XRControllerModelFactory } from 'three/addons/webxr/XRControllerModelFactory.js';
+import { XRControllerModelFactory } from '@kmamal/three/addons/webxr/XRControllerModelFactory.js';
 
 class XR {
 

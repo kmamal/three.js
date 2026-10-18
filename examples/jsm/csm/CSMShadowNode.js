@@ -7,10 +7,10 @@ import {
 	Object3D,
 	WebGLCoordinateSystem,
 	ShadowBaseNode
-} from 'three/webgpu';
+} from '@kmamal/three/webgpu';
 
 import { CSMFrustum } from './CSMFrustum.js';
-import { viewZToOrthographicDepth, reference, uniform, float, vec4, vec2, If, Fn, min, renderGroup, positionView, shadow } from 'three/tsl';
+import { viewZToOrthographicDepth, reference, uniform, float, vec4, vec2, If, Fn, min, renderGroup, positionView, shadow } from '@kmamal/three/tsl';
 
 const _cameraToLightMatrix = new Matrix4();
 const _lightSpaceFrustum = new CSMFrustum();
@@ -42,7 +42,7 @@ class LwLight extends Object3D {
  * use {@link CSM} instead.
  *
  * @augments ShadowBaseNode
- * @three_import import { CSMShadowNode } from 'three/addons/csm/CSMShadowNode.js';
+ * @three_import import { CSMShadowNode } from '@kmamal/three/addons/csm/CSMShadowNode.js';
  */
 class CSMShadowNode extends ShadowBaseNode {
 

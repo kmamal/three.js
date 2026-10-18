@@ -7,7 +7,7 @@ import {
 	Sphere,
 	Vector3,
 	WireframeGeometry
-} from 'three';
+} from '@kmamal/three';
 
 const _box = new Box3();
 const _vector = new Vector3();
@@ -18,7 +18,7 @@ const _vector = new Vector3();
  * This is used in {@link LineSegments2} to describe the shape.
  *
  * @augments InstancedBufferGeometry
- * @three_import import { LineSegmentsGeometry } from 'three/addons/lines/LineSegmentsGeometry.js';
+ * @three_import import { LineSegmentsGeometry } from '@kmamal/three/addons/lines/LineSegmentsGeometry.js';
  */
 class LineSegmentsGeometry extends InstancedBufferGeometry {
 

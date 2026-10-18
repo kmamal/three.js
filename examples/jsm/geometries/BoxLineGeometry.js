@@ -1,7 +1,7 @@
 import {
 	BufferGeometry,
 	Float32BufferAttribute
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * A special type of box geometry intended for {@link LineSegments}.
@@ -14,7 +14,7 @@ import {
  * ```
  *
  * @augments BufferGeometry
- * @three_import import { BoxLineGeometry } from 'three/addons/geometries/BoxLineGeometry.js';
+ * @three_import import { BoxLineGeometry } from '@kmamal/three/addons/geometries/BoxLineGeometry.js';
  */
 class BoxLineGeometry extends BufferGeometry {
 

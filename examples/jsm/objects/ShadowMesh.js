@@ -4,7 +4,7 @@ import {
 	MeshBasicMaterial,
 	EqualStencilFunc,
 	IncrementStencilOp
-} from 'three';
+} from '@kmamal/three';
 
 const _shadowMatrix = new Matrix4();
 
@@ -23,7 +23,7 @@ const _shadowMatrix = new Matrix4();
  * ```
  *
  * @augments Mesh
- * @three_import import { ShadowMesh } from 'three/addons/objects/ShadowMesh.js';
+ * @three_import import { ShadowMesh } from '@kmamal/three/addons/objects/ShadowMesh.js';
  */
 class ShadowMesh extends Mesh {
 

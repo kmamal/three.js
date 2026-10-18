@@ -3,12 +3,12 @@ import {
 	NodeMaterial,
 	WebGPURenderer,
 	CanvasTexture
-} from 'three/webgpu';
-import { texture, uv } from 'three/tsl';
+} from '@kmamal/three/webgpu';
+import { texture, uv } from '@kmamal/three/tsl';
 
 /**
  * @module WebGPUTextureUtils
- * @three_import import * as WebGPUTextureUtils from 'three/addons/utils/WebGPUTextureUtils.js';
+ * @three_import import * as WebGPUTextureUtils from '@kmamal/three/addons/utils/WebGPUTextureUtils.js';
  */
 
 let _renderer;

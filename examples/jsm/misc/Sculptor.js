@@ -13,7 +13,7 @@ import {
 	Sphere,
 	Vector3,
 	WebGPUCoordinateSystem
-} from 'three';
+} from '@kmamal/three';
 
 import {
 	getMemory,
@@ -314,7 +314,7 @@ function compactDirtyVertices( vertices, vertexCount ) {
  * attributes may be replaced as capacity changes; do not cache them. Use
  * {@link Sculptor#getGeometry} for a compact copy for export or geometry processing.
  *
- * @three_import import { Sculptor } from 'three/addons/misc/Sculptor.js';
+ * @three_import import { Sculptor } from '@kmamal/three/addons/misc/Sculptor.js';
  */
 class Sculptor extends EventDispatcher {
 

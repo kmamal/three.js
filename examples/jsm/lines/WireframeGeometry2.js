@@ -1,6 +1,6 @@
 import {
 	WireframeGeometry
-} from 'three';
+} from '@kmamal/three';
 import { LineSegmentsGeometry } from './LineSegmentsGeometry.js';
 
 /**
@@ -14,7 +14,7 @@ import { LineSegmentsGeometry } from './LineSegmentsGeometry.js';
  * ```
  *
  * @augments LineSegmentsGeometry
- * @three_import import { WireframeGeometry2 } from 'three/addons/lines/WireframeGeometry2.js';
+ * @three_import import { WireframeGeometry2 } from '@kmamal/three/addons/lines/WireframeGeometry2.js';
  */
 class WireframeGeometry2 extends LineSegmentsGeometry {
 

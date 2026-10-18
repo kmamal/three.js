@@ -21,7 +21,7 @@ import {
 	Vector3,
 	WebGLRenderTarget,
 	ZeroFactor
-} from 'three';
+} from '@kmamal/three';
 import { Pass, FullScreenQuad } from './Pass.js';
 import { SimplexNoise } from '../math/SimplexNoise.js';
 import { SSAOBlurShader, SSAODepthShader, SSAOShader } from '../shaders/SSAOShader.js';
@@ -39,7 +39,7 @@ import { CopyShader } from '../shaders/CopyShader.js';
  * ```
  *
  * @augments Pass
- * @three_import import { SSAOPass } from 'three/addons/postprocessing/SSAOPass.js';
+ * @three_import import { SSAOPass } from '@kmamal/three/addons/postprocessing/SSAOPass.js';
  */
 class SSAOPass extends Pass {
 

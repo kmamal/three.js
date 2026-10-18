@@ -1,4 +1,4 @@
-import { abs, color, float, Fn, Loop, mix, nodeObject, perspectiveDepthToViewZ, reference, textureSize, uv, vec2, vec4, viewZToOrthographicDepth, int, If, array, ivec2 } from 'three/tsl';
+import { abs, color, float, Fn, Loop, mix, nodeObject, perspectiveDepthToViewZ, reference, textureSize, uv, vec2, vec4, viewZToOrthographicDepth, int, If, array, ivec2 } from '@kmamal/three/tsl';
 
 /**
  * Performs a depth-aware blend between a base scene and a secondary effect (like godrays).

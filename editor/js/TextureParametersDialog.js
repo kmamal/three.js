@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import * as THREE from '@kmamal/three';
 
 import { UIButton, UICheckbox, UIDiv, UINumber, UIRow, UISelect, UIText } from './libs/ui.js';
 import { renderToCanvas } from './libs/ui.three.js';

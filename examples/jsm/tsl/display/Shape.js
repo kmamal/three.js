@@ -1,4 +1,4 @@
-import { Fn, float, length, smoothstep, uv } from 'three/tsl';
+import { Fn, float, length, smoothstep, uv } from '@kmamal/three/tsl';
 
 /**
  * Returns a radial gradient from center (white) to edges (black).

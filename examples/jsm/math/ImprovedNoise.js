@@ -1,4 +1,4 @@
-import { MathUtils } from 'three';
+import { MathUtils } from '@kmamal/three';
 
 const { lerp } = MathUtils;
 
@@ -39,7 +39,7 @@ function grad( hash, x, y, z ) {
  * The code is based on [IMPROVED NOISE](https://cs.nyu.edu/~perlin/noise/)
  * by Ken Perlin, 2002.
  *
- * @three_import import { ImprovedNoise } from 'three/addons/math/ImprovedNoise.js';
+ * @three_import import { ImprovedNoise } from '@kmamal/three/addons/math/ImprovedNoise.js';
  */
 class ImprovedNoise {
 

@@ -2,7 +2,7 @@ import {
 	Group,
 	Raycaster,
 	Vector2
-} from 'three';
+} from '@kmamal/three';
 
 const _pointer = new Vector2();
 const _event = { type: '', data: _pointer };
@@ -34,7 +34,7 @@ const _raycaster = new Raycaster();
  * group.add( mesh1, mesh2, mesh3 );
  * ```
  * @augments Group
- * @three_import import { InteractiveGroup } from 'three/addons/interactive/InteractiveGroup.js';
+ * @three_import import { InteractiveGroup } from '@kmamal/three/addons/interactive/InteractiveGroup.js';
  */
 class InteractiveGroup extends Group {
 

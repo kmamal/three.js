@@ -93,7 +93,7 @@ import {
 	not as tslNot,
 	Fn,
 	Loop,
-} from 'three/tsl';
+} from '@kmamal/three/tsl';
 import { normalizeSpaceName, toBooleanNode, toVec3Channels } from './MaterialXUtils.js';
 
 const createMXElement = ( name, nodeFunc, params = [], defaults = {}, usesNode = false ) => ( { name, nodeFunc, params, defaults, usesNode } );

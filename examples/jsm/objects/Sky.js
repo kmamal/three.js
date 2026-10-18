@@ -5,7 +5,7 @@ import {
 	ShaderMaterial,
 	UniformsUtils,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * Represents a skydome for scene backgrounds. Based on [A Practical Analytic Model for Daylight](https://www.researchgate.net/publication/220720443_A_Practical_Analytic_Model_for_Daylight)
@@ -37,7 +37,7 @@ import {
  * ```
  *
  * @augments Mesh
- * @three_import import { Sky } from 'three/addons/objects/Sky.js';
+ * @three_import import { Sky } from '@kmamal/three/addons/objects/Sky.js';
  */
 class Sky extends Mesh {
 

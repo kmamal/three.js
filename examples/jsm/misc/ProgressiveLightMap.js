@@ -1,4 +1,4 @@
-import { DoubleSide, FloatType, HalfFloatType, Mesh, MeshBasicMaterial, MeshPhongMaterial, PlaneGeometry, Scene, WebGLRenderTarget } from 'three';
+import { DoubleSide, FloatType, HalfFloatType, Mesh, MeshBasicMaterial, MeshPhongMaterial, PlaneGeometry, Scene, WebGLRenderTarget } from '@kmamal/three';
 import { potpack } from '../libs/potpack.module.js';
 
 /**
@@ -17,7 +17,7 @@ import { potpack } from '../libs/potpack.module.js';
  * This class can only be used with {@link WebGLRenderer}.
  * When using {@link WebGPURenderer}, import from `ProgressiveLightMapGPU.js`.
  *
- * @three_import import { ProgressiveLightMap } from 'three/addons/misc/ProgressiveLightMap.js';
+ * @three_import import { ProgressiveLightMap } from '@kmamal/three/addons/misc/ProgressiveLightMap.js';
  */
 class ProgressiveLightMap {
 

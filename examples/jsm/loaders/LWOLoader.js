@@ -25,7 +25,7 @@ import {
 	TextureLoader,
 	Vector2,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 import { IFFParser } from './lwo/IFFParser.js';
 
@@ -49,7 +49,7 @@ let _lwoTree;
  * ```
  *
  * @augments Loader
- * @three_import import { LWOLoader } from 'three/addons/loaders/LWOLoader.js';
+ * @three_import import { LWOLoader } from '@kmamal/three/addons/loaders/LWOLoader.js';
  * @deprecated since r185.
  */
 class LWOLoader extends Loader {

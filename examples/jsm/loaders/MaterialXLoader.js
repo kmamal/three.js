@@ -1,4 +1,4 @@
-import { FileLoader, Loader } from 'three/webgpu';
+import { FileLoader, Loader } from '@kmamal/three/webgpu';
 
 import { MaterialXDocument } from './materialx/MaterialXDocument.js';
 import { MaterialXLog } from './materialx/MaterialXLog.js';
@@ -28,7 +28,7 @@ function getResourcePath( loaderPath, url ) {
  * ```
  *
  * @augments Loader
- * @three_import import { MaterialXLoader } from 'three/addons/loaders/MaterialXLoader.js';
+ * @three_import import { MaterialXLoader } from '@kmamal/three/addons/loaders/MaterialXLoader.js';
  */
 class MaterialXLoader extends Loader {
 

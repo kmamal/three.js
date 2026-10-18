@@ -8,7 +8,7 @@ import {
 	ShaderMaterial,
 	Vector3,
 	WebGLRenderTarget
-} from 'three';
+} from '@kmamal/three';
 import { FullScreenQuad } from '../postprocessing/Pass.js';
 import { frameCorners } from '../utils/CameraUtils.js';
 
@@ -37,7 +37,7 @@ const _forward = /*@__PURE__*/ new Vector3();
  * Note that this class can only be used with {@link WebGLRenderer}.
  * When using {@link WebGPURenderer}, use {@link AnaglyphPassNode}.
  *
- * @three_import import { AnaglyphEffect } from 'three/addons/effects/AnaglyphEffect.js';
+ * @three_import import { AnaglyphEffect } from '@kmamal/three/addons/effects/AnaglyphEffect.js';
  */
 class AnaglyphEffect {
 

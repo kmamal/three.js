@@ -1,5 +1,5 @@
-import { Color, Node } from 'three/webgpu';
-import { NodeUpdateType, renderGroup, uniform } from 'three/tsl';
+import { Color, Node } from '@kmamal/three/webgpu';
+import { NodeUpdateType, renderGroup, uniform } from '@kmamal/three/tsl';
 
 /**
  * Batched data node for ambient lights in dynamic lighting mode.

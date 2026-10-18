@@ -1,8 +1,8 @@
-import { Fn, float, positionView, viewportDepthTexture, perspectiveDepthToViewZ, cameraNear, cameraFar } from 'three/tsl';
+import { Fn, float, positionView, viewportDepthTexture, perspectiveDepthToViewZ, cameraNear, cameraFar } from '@kmamal/three/tsl';
 
 /**
  * @module SoftParticles
- * @three_import import { softParticles } from 'three/addons/tsl/utils/SoftParticles.js';
+ * @three_import import { softParticles } from '@kmamal/three/addons/tsl/utils/SoftParticles.js';
  */
 
 /**

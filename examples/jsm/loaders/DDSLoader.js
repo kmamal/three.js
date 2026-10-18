@@ -7,7 +7,7 @@ import {
 	RGB_S3TC_DXT1_Format,
 	RGB_BPTC_SIGNED_Format,
 	RGB_BPTC_UNSIGNED_Format
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * A loader for the S3TC texture compression format.
@@ -20,7 +20,7 @@ import {
  * ```
  *
  * @augments CompressedTextureLoader
- * @three_import import { DDSLoader } from 'three/addons/loaders/DDSLoader.js';
+ * @three_import import { DDSLoader } from '@kmamal/three/addons/loaders/DDSLoader.js';
  */
 class DDSLoader extends CompressedTextureLoader {
 

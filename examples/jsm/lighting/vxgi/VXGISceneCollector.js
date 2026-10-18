@@ -1,4 +1,4 @@
-import { Box3, Color, Matrix4, Vector2, Vector3, BackSide, DoubleSide, SRGBColorSpace } from 'three/webgpu';
+import { Box3, Color, Matrix4, Vector2, Vector3, BackSide, DoubleSide, SRGBColorSpace } from '@kmamal/three/webgpu';
 
 const _matrix = /*@__PURE__*/ new Matrix4();
 const _box = /*@__PURE__*/ new Box3();

@@ -3,7 +3,7 @@ import {
 	Plane,
 	Triangle,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 const Visible = 0;
 const Deleted = 1;
@@ -21,7 +21,7 @@ const _triangle = new Triangle();
  * This Quickhull 3D implementation is a port of [quickhull3d](https://github.com/maurizzzio/quickhull3d/)
  * by Mauricio Poppe.
  *
- * @three_import import { ConvexHull } from 'three/addons/math/ConvexHull.js';
+ * @three_import import { ConvexHull } from '@kmamal/three/addons/math/ConvexHull.js';
  */
 class ConvexHull {
 

@@ -10,13 +10,13 @@ import {
 	MeshBasicMaterial,
 	BufferAttribute,
 	DoubleSide
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * A helper for visualizing the cascades of a CSM instance.
  *
  * @augments Group
- * @three_import import { CSMHelper } from 'three/addons/csm/CSMHelper.js';
+ * @three_import import { CSMHelper } from '@kmamal/three/addons/csm/CSMHelper.js';
  */
 class CSMHelper extends Group {
 

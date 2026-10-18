@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import * as THREE from '@kmamal/three';
 
 import { UIPanel, UIRow, UIText, UIInput, UIButton, UISpan, UITextArea, UINumber, UIDiv, UIBreak } from './libs/ui.js';
 
@@ -7,7 +7,7 @@ import { SetGeometryValueCommand } from './commands/SetGeometryValueCommand.js';
 import { SidebarGeometryBufferGeometry } from './Sidebar.Geometry.BufferGeometry.js';
 import { SidebarGeometryModifiers } from './Sidebar.Geometry.Modifiers.js';
 
-import { VertexNormalsHelper } from 'three/addons/helpers/VertexNormalsHelper.js';
+import { VertexNormalsHelper } from '@kmamal/three/addons/helpers/VertexNormalsHelper.js';
 
 function SidebarGeometry( editor ) {
 

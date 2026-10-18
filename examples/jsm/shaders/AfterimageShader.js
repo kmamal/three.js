@@ -1,6 +1,6 @@
 /**
  * @module AfterimageShader
- * @three_import import { AfterimageShader } from 'three/addons/shaders/AfterimageShader.js';
+ * @three_import import { AfterimageShader } from '@kmamal/three/addons/shaders/AfterimageShader.js';
  */
 
 /**

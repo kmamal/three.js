@@ -6,7 +6,7 @@ import {
 	Matrix4,
 	Mesh,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * This class can be used to create a decal mesh that serves different kinds of purposes e.g.
@@ -25,7 +25,7 @@ import {
  * ```
  *
  * @augments BufferGeometry
- * @three_import import { DecalGeometry } from 'three/addons/geometries/DecalGeometry.js';
+ * @three_import import { DecalGeometry } from '@kmamal/three/addons/geometries/DecalGeometry.js';
  */
 class DecalGeometry extends BufferGeometry {
 

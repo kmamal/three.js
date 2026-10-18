@@ -10,7 +10,7 @@ import {
 	InterleavedBuffer,
 	InterleavedBufferAttribute,
 	LoaderUtils
-} from 'three';
+} from '@kmamal/three';
 
 const _taskCache = new WeakMap();
 
@@ -51,7 +51,7 @@ const DRACO_GLTF_CONFIG = {
  * ```
  *
  * @augments Loader
- * @three_import import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+ * @three_import import { DRACOLoader } from '@kmamal/three/addons/loaders/DRACOLoader.js';
  */
 class DRACOLoader extends Loader {
 

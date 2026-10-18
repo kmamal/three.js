@@ -16,7 +16,7 @@ import {
 	Vector2,
 	WebGLRenderTarget,
 	ZeroFactor
-} from 'three';
+} from '@kmamal/three';
 import { Pass, FullScreenQuad } from './Pass.js';
 import { SAOShader } from '../shaders/SAOShader.js';
 import { BlurShaderUtils, DepthLimitedBlurShader } from '../shaders/DepthLimitedBlurShader.js';
@@ -33,7 +33,7 @@ import { CopyShader } from '../shaders/CopyShader.js';
  * ```
  *
  * @augments Pass
- * @three_import import { SAOPass } from 'three/addons/postprocessing/SAOPass.js';
+ * @three_import import { SAOPass } from '@kmamal/three/addons/postprocessing/SAOPass.js';
  */
 class SAOPass extends Pass {
 

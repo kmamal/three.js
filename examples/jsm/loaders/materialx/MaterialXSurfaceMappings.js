@@ -1,6 +1,6 @@
-import { DoubleSide } from 'three/webgpu';
+import { DoubleSide } from '@kmamal/three/webgpu';
 import { MaterialXLogCodes } from './MaterialXLog.js';
-import { Fn, float, vec3, color, mul, clamp, vec2, cos, sin, pow, mix, element, transformNormalToView, positionLocal, normalLocal, tangentLocal, bitangentLocal } from 'three/tsl';
+import { Fn, float, vec3, color, mul, clamp, vec2, cos, sin, pow, mix, element, transformNormalToView, positionLocal, normalLocal, tangentLocal, bitangentLocal } from '@kmamal/three/tsl';
 
 const mappedStandardSurfaceInputs = new Set( [
 	'base',

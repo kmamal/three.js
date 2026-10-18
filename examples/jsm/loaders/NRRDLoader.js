@@ -3,7 +3,7 @@ import {
 	Loader,
 	Matrix4,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 import { gunzipSync } from '../libs/fflate.module.js';
 import { Volume } from '../misc/Volume.js';
 
@@ -16,7 +16,7 @@ import { Volume } from '../misc/Volume.js';
  * ```
  *
  * @augments Loader
- * @three_import import { NRRDLoader } from 'three/addons/loaders/NRRDLoader.js';
+ * @three_import import { NRRDLoader } from '@kmamal/three/addons/loaders/NRRDLoader.js';
  */
 class NRRDLoader extends Loader {
 

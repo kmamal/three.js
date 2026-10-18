@@ -1,4 +1,4 @@
-import { EventDispatcher } from 'three';
+import { EventDispatcher } from '@kmamal/three';
 import { Style } from './Style.js';
 import { Graph } from './Graph.js';
 import { getItem, setItem } from '../Storage.js';

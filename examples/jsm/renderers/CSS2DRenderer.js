@@ -3,13 +3,13 @@ import {
 	Object3D,
 	Vector2,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * The only type of 3D object that is supported by {@link CSS2DRenderer}.
  *
  * @augments Object3D
- * @three_import import { CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js';
+ * @three_import import { CSS2DObject } from '@kmamal/three/addons/renderers/CSS2DRenderer.js';
  */
 class CSS2DObject extends Object3D {
 
@@ -117,7 +117,7 @@ const _b = new Vector3();
  *
  * `CSS2DRenderer` only supports 100% browser and display zoom.
  *
- * @three_import import { CSS2DRenderer } from 'three/addons/renderers/CSS2DRenderer.js';
+ * @three_import import { CSS2DRenderer } from '@kmamal/three/addons/renderers/CSS2DRenderer.js';
  */
 class CSS2DRenderer {
 

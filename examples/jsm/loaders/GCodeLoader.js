@@ -6,7 +6,7 @@ import {
 	LineBasicMaterial,
 	LineSegments,
 	Loader
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * A loader for the GCode format.
@@ -20,7 +20,7 @@ import {
  * ```
  *
  * @augments Loader
- * @three_import import { GCodeLoader } from 'three/addons/loaders/GCodeLoader.js';
+ * @three_import import { GCodeLoader } from '@kmamal/three/addons/loaders/GCodeLoader.js';
  */
 class GCodeLoader extends Loader {
 

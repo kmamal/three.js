@@ -4,7 +4,7 @@ import {
 	MeshBasicMaterial,
 	SphereGeometry,
 	Scene
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * This class represents a scene with a uniform color that can be used as
@@ -21,7 +21,7 @@ import {
  * ```
  *
  * @augments Scene
- * @three_import import { ColorEnvironment } from 'three/addons/environments/ColorEnvironment.js';
+ * @three_import import { ColorEnvironment } from '@kmamal/three/addons/environments/ColorEnvironment.js';
  */
 class ColorEnvironment extends Scene {
 

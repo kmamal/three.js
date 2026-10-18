@@ -1,7 +1,7 @@
 import {
 	FileLoader,
 	Loader
-} from 'three';
+} from '@kmamal/three';
 
 import { PLYLoader } from './PLYLoader.js';
 import {
@@ -60,7 +60,7 @@ const _restPropertyPattern = /^f_rest_\d+$/;
  * ```
  *
  * @augments Loader
- * @three_import import { GaussianSplatPLYLoader } from 'three/addons/loaders/GaussianSplatPLYLoader.js';
+ * @three_import import { GaussianSplatPLYLoader } from '@kmamal/three/addons/loaders/GaussianSplatPLYLoader.js';
  */
 class GaussianSplatPLYLoader extends Loader {
 

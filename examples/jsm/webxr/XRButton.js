@@ -12,7 +12,7 @@
  * support this type of session, it uses an immersive VR session.
  *
  * @hideconstructor
- * @three_import import { XRButton } from 'three/addons/webxr/XRButton.js';
+ * @three_import import { XRButton } from '@kmamal/three/addons/webxr/XRButton.js';
  */
 class XRButton {
 

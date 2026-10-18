@@ -8,7 +8,7 @@ import {
 	Mesh,
 	MeshStandardMaterial,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * @classdesc This module can be used to paint tube-like meshes
@@ -22,7 +22,7 @@ import {
  *
  * @name TubePainter
  * @class
- * @three_import import { TubePainter } from 'three/addons/misc/TubePainter.js';
+ * @three_import import { TubePainter } from '@kmamal/three/addons/misc/TubePainter.js';
  */
 function TubePainter() {
 

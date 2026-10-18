@@ -5,7 +5,7 @@ import {
 	Matrix4,
 	Vector3,
 	SRGBColorSpace
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * Utility functions for parsing

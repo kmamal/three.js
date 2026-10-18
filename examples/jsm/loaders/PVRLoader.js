@@ -4,7 +4,7 @@ import {
 	RGBA_PVRTC_4BPPV1_Format,
 	RGB_PVRTC_2BPPV1_Format,
 	RGB_PVRTC_4BPPV1_Format
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * A loader for the PVRTC texture compression format.
@@ -17,7 +17,7 @@ import {
  * ```
  *
  * @augments CompressedTextureLoader
- * @three_import import { PVRLoader } from 'three/addons/loaders/PVRLoader.js';
+ * @three_import import { PVRLoader } from '@kmamal/three/addons/loaders/PVRLoader.js';
  */
 class PVRLoader extends CompressedTextureLoader {
 

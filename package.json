@@ -1,7 +1,7 @@
 {
-  "name": "three",
-  "version": "0.186.0",
-  "description": "JavaScript 3D library",
+  "name": "@kmamal/three",
+  "version": "0.1.0",
+  "description": "Fork of three.js that can render to windows",
   "type": "module",
   "main": "./src/Three.js",
   "module": "./src/Three.js",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mrdoob/three.js"
+    "url": "https://github.com/kmamal/three.js"
   },
   "sideEffects": [
     "./src/nodes/**/*"
@@ -26,8 +26,8 @@
     "examples/jsm",
     "LICENSE",
     "package.json",
-    "README.md",
-    "src"
+    "src",
+    "README.md"
   ],
   "directories": {
     "example": "examples",
@@ -58,7 +58,7 @@
     "make-tsl-reference": "node test/unit/tsl/make.js"
   },
   "keywords": [
-    "three",
+    "@kmamal/three",
     "three.js",
     "javascript",
     "3d",
@@ -68,17 +68,14 @@
     "webgl2",
     "webaudio",
     "webgpu",
-    "webxr",
-    "canvas",
-    "svg",
-    "html5"
+    "webxr"
   ],
   "author": "mrdoob",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mrdoob/three.js/issues"
+    "url": "https://github.com/kmamal/three.js/issues"
   },
-  "homepage": "https://threejs.org/",
+  "homepage": "https://github.com/kmamal/three.js#README.md",
   "devDependencies": {
     "@eslint/js": "^9.0.0",
     "eslint": "^10.8.0",
@@ -89,7 +86,8 @@
     "globals": "^17.0.0",
     "jpeg-js": "^0.4.4",
     "pngjs": "^7.0.0",
-    "puppeteer": "^25.0.0"
+    "puppeteer": "^25.0.0",
+    "three": "file:utils/three-alias"
   },
   "allowScripts": {
     "puppeteer": true,

@@ -1,5 +1,5 @@
-import { Box3, Vector3, Vector4, Matrix4, Layers, Storage3DTexture, StorageBufferAttribute, StorageTexture3DNode, CubeTextureNode, RendererUtils, HalfFloatType, UnsignedByteType, RGBAFormat, LinearFilter, LinearMipmapLinearFilter, ClampToEdgeWrapping, MathUtils } from 'three/webgpu';
-import { Fn, If, Loop, nodeObject, uniform, uniformArray, storage, instanceIndex, textureStore, texture3D, texture, float, int, uint, vec2, vec3, vec4, ivec3, uvec3, max, min, abs, dot, cross, normalize, floor, sign, select, countOneBits, atomicOr, smoothstep, hash, fract, sqrt, cos, sin, length, PI, getDistanceAttenuation, viewZToPerspectiveDepth, viewZToReversedPerspectiveDepth } from 'three/tsl';
+import { Box3, Vector3, Vector4, Matrix4, Layers, Storage3DTexture, StorageBufferAttribute, StorageTexture3DNode, CubeTextureNode, RendererUtils, HalfFloatType, UnsignedByteType, RGBAFormat, LinearFilter, LinearMipmapLinearFilter, ClampToEdgeWrapping, MathUtils } from '@kmamal/three/webgpu';
+import { Fn, If, Loop, nodeObject, uniform, uniformArray, storage, instanceIndex, textureStore, texture3D, texture, float, int, uint, vec2, vec3, vec4, ivec3, uvec3, max, min, abs, dot, cross, normalize, floor, sign, select, countOneBits, atomicOr, smoothstep, hash, fract, sqrt, cos, sin, length, PI, getDistanceAttenuation, viewZToPerspectiveDepth, viewZToReversedPerspectiveDepth } from '@kmamal/three/tsl';
 
 import { collectSceneTriangles, computeSceneBounds, TRIANGLE_STRIDE } from './VXGISceneCollector.js';
 import { createConeTracer } from './VXGIConeTracer.js';
@@ -94,7 +94,7 @@ class PlainCubeTextureNode extends CubeTextureNode {
  *
  * Note: This class can only be used with `WebGPURenderer` and a WebGPU backend.
  *
- * @three_import import { VXGIVolume } from 'three/addons/lighting/vxgi/VXGIVolume.js';
+ * @three_import import { VXGIVolume } from '@kmamal/three/addons/lighting/vxgi/VXGIVolume.js';
  */
 class VXGIVolume {
 

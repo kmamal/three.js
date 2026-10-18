@@ -34,7 +34,7 @@ import {
 	pow,
 	sqrt,
 	sign,
-} from 'three/tsl';
+} from '@kmamal/three/tsl';
 import {
 	getComponentCountForType,
 	normalizeSpaceName,

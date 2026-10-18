@@ -1,6 +1,6 @@
 import {
 	CompressedTextureLoader
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * A loader for the KTX texture compression format.
@@ -17,7 +17,7 @@ import {
  * ```
  *
  * @augments CompressedTextureLoader
- * @three_import import { KTXLoader } from 'three/addons/loaders/KTXLoader.js';
+ * @three_import import { KTXLoader } from '@kmamal/three/addons/loaders/KTXLoader.js';
  */
 class KTXLoader extends CompressedTextureLoader {
 

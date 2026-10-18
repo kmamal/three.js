@@ -5,7 +5,7 @@ import {
 	Quaternion,
 	Vector2,
 	Vector3
-} from 'three';
+} from '@kmamal/three';
 
 /**
  * Fires when the camera has been transformed by the controls.
@@ -51,7 +51,7 @@ const _moveDirection = new Vector3();
  * to stay "right side up".
  *
  * @augments Controls
- * @three_import import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
+ * @three_import import { TrackballControls } from '@kmamal/three/addons/controls/TrackballControls.js';
  */
 class TrackballControls extends Controls {
 
