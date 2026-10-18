@@ -1,4 +1,4 @@
-import { createFile, DataStream } from 'https://cdn.jsdelivr.net/npm/mp4box@2.3.0/+esm';
+import { createFile, DataStream } from 'mp4box';
 
 // From: https://w3c.github.io/webcodecs/samples/video-decode-display/
 

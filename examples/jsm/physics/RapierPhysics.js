@@ -1,6 +1,6 @@
 import { Timer, Vector3, Quaternion, Matrix4 } from '@kmamal/three';
 
-const RAPIER_PATH = 'https://cdn.skypack.dev/@dimforge/rapier3d-compat@0.17.3';
+const RAPIER_PATH = '@dimforge/rapier3d-compat/rapier.es.js';
 
 const frameRate = 60;
 

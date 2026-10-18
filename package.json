@@ -74,6 +74,7 @@
   },
   "homepage": "https://github.com/kmamal/three.js#README.md",
   "devDependencies": {
+    "@dimforge/rapier3d-compat": "0.17.3",
     "@eslint/js": "^9.0.0",
     "eslint": "^10.8.0",
     "eslint-config-mdcs": "^5.0.0",
@@ -81,7 +82,10 @@
     "eslint-plugin-html": "^8.1.3",
     "eslint-plugin-jsdoc": "^64.0.0",
     "globals": "^17.0.0",
+    "jolt-physics": "1.0.0",
     "jpeg-js": "^0.4.4",
+    "mp4box": "2.3.0",
+    "opentype.js": "1.3.4",
     "pngjs": "^7.0.0",
     "puppeteer": "^25.0.0",
     "three": "file:utils/three-alias"
@@ -97,12 +101,19 @@
     "node": ">=22.15.0"
   },
   "peerDependencies": {
+    "@dimforge/rapier3d-compat": "0.17.3",
     "@kmamal/audio": ">=0.0.0",
     "@kmamal/gl": ">=10.0.0-1",
     "@kmamal/gpu": ">=1.0.0-4",
-    "@kmamal/sdl": ">=1.0.0-3"
+    "@kmamal/sdl": ">=1.0.0-3",
+    "jolt-physics": "1.0.0",
+    "mp4box": "2.3.0",
+    "opentype.js": "1.3.4"
   },
   "peerDependenciesMeta": {
+    "@dimforge/rapier3d-compat": {
+      "optional": true
+    },
     "@kmamal/audio": {
       "optional": true
     },
@@ -113,6 +124,15 @@
       "optional": true
     },
     "@kmamal/sdl": {
+      "optional": true
+    },
+    "jolt-physics": {
+      "optional": true
+    },
+    "mp4box": {
+      "optional": true
+    },
+    "opentype.js": {
       "optional": true
     }
   },

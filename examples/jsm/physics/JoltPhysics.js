@@ -1,6 +1,6 @@
 import { Timer, Vector3, Quaternion, Matrix4 } from '@kmamal/three';
 
-const JOLT_PATH = 'https://cdn.jsdelivr.net/npm/jolt-physics@1.0.0/dist/jolt-physics.wasm-compat.js';
+const JOLT_PATH = 'jolt-physics/wasm-compat';
 
 const frameRate = 60;
 
