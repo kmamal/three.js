@@ -41,6 +41,8 @@ void main() {
 
 	#endif
 
+	gl_PointSize = max( gl_PointSize, 1.0 );
+
 	#include <logdepthbuf_vertex>
 	#include <clipping_planes_vertex>
 	#include <worldpos_vertex>
