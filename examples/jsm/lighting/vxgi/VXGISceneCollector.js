@@ -1,4 +1,4 @@
-import { Box3, Color, Matrix4, Vector2, Vector3, BackSide, DoubleSide, SRGBColorSpace } from '@kmamal/three/webgpu';
+import { Box3, Color, Matrix4, Vector2, Vector3, BackSide, DoubleSide, SRGBColorSpace, platform } from '@kmamal/three/webgpu';
 
 const _matrix = /*@__PURE__*/ new Matrix4();
 const _box = /*@__PURE__*/ new Box3();
@@ -105,7 +105,7 @@ function getImageSampler( texture, cache ) {
 			try {
 
 				const size = IMAGE_SAMPLE_SIZE;
-				const canvas = ( typeof OffscreenCanvas !== 'undefined' ) ? new OffscreenCanvas( size, size ) : document.createElement( 'canvas' );
+				const canvas = ( platform.OffscreenCanvas !== undefined ) ? new platform.OffscreenCanvas( size, size ) : platform.createElement( 'canvas' );
 				canvas.width = size;
 				canvas.height = size;
 

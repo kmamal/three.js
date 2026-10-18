@@ -1,5 +1,6 @@
 import {
-	Vector2
+	Vector2,
+	platform
 } from '@kmamal/three';
 
 /**
@@ -34,7 +35,7 @@ function UVsDebug( geometry, size = 1024 ) {
 
 	const face = [];
 
-	const canvas = document.createElement( 'canvas' );
+	const canvas = platform.createElement( 'canvas' );
 	const width = size; // power of 2 required for wrapping
 	const height = size;
 	canvas.width = width;

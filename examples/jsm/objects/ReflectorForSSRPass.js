@@ -12,7 +12,8 @@ import {
 	UnsignedShortType,
 	NearestFilter,
 	Plane,
-	HalfFloatType
+	HalfFloatType,
+	platform
 } from '@kmamal/three';
 
 /**
@@ -55,7 +56,7 @@ class ReflectorForSSRPass extends Mesh {
 		scope.maxDistance = ReflectorForSSRPass.ReflectorShader.uniforms.maxDistance.value;
 		scope.opacity = ReflectorForSSRPass.ReflectorShader.uniforms.opacity.value;
 		scope.color = color;
-		scope.resolution = options.resolution || new Vector2( window.innerWidth, window.innerHeight );
+		scope.resolution = options.resolution || new Vector2( platform.window.innerWidth, platform.window.innerHeight );
 
 
 		scope._distanceAttenuation = ReflectorForSSRPass.ReflectorShader.defines.DISTANCE_ATTENUATION;

@@ -9,7 +9,8 @@ import {
 	HalfFloatType,
 	DataUtils,
 	WebGLCoordinateSystem,
-	FloatType
+	FloatType,
+	platform
 } from '@kmamal/three';
 
 /**
@@ -51,7 +52,7 @@ class LightProbeGenerator {
 			const width = image.width;
 			const height = image.height;
 
-			const canvas = document.createElement( 'canvas' );
+			const canvas = platform.createElement( 'canvas' );
 
 			canvas.width = width;
 			canvas.height = height;

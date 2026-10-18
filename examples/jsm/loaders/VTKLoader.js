@@ -5,7 +5,8 @@ import {
 	FileLoader,
 	Float32BufferAttribute,
 	Loader,
-	SRGBColorSpace
+	SRGBColorSpace,
+	platform
 } from '@kmamal/three';
 import { unzlibSync } from '../libs/fflate.module.js';
 
@@ -960,7 +961,7 @@ class VTKLoader extends Loader {
 
 			// Main part
 			// Get Dom
-			const dom = new DOMParser().parseFromString( stringFile, 'application/xml' );
+			const dom = new platform.DOMParser().parseFromString( stringFile, 'application/xml' );
 
 			// Get the doc
 			const doc = dom.documentElement;

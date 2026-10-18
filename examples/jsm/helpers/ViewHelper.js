@@ -14,7 +14,8 @@ import {
 	SRGBColorSpace,
 	Vector2,
 	Vector3,
-	Vector4
+	Vector4,
+	platform
 } from '@kmamal/three';
 
 /**
@@ -445,7 +446,7 @@ class ViewHelper extends Object3D {
 
 				// this check has been adapted from WebGLTextures
 
-				result = typeof OffscreenCanvas !== 'undefined' && ( new OffscreenCanvas( 1, 1 ).getContext( '2d' ) ) !== null;
+				result = platform.OffscreenCanvas !== undefined && ( new platform.OffscreenCanvas( 1, 1 ).getContext( '2d' ) ) !== null;
 
 			} catch ( err ) {
 
@@ -463,11 +464,11 @@ class ViewHelper extends Object3D {
 
 			if ( useOffscreenCanvas() ) {
 
-				canvas = new OffscreenCanvas( width, height );
+				canvas = new platform.OffscreenCanvas( width, height );
 
 			} else {
 
-				canvas = document.createElement( 'canvas' );
+				canvas = platform.createElement( 'canvas' );
 				canvas.width = width;
 				canvas.height = height;
 

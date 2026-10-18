@@ -1,8 +1,10 @@
-let isAvailable = ( typeof navigator !== 'undefined' && navigator.gpu !== undefined );
+import { platform } from '@kmamal/three';
 
-if ( typeof window !== 'undefined' && isAvailable ) {
+let isAvailable = ( platform.gpu !== undefined );
 
-	isAvailable = Boolean( await navigator.gpu.requestAdapter() );
+if ( isAvailable ) {
+
+	isAvailable = Boolean( await platform.gpu.requestAdapter() );
 
 }
 
@@ -35,7 +37,7 @@ class WebGPU {
 
 		const message = 'Your browser does not support <a href="https://gpuweb.github.io/gpuweb/" style="color:blue">WebGPU</a> yet';
 
-		const element = document.createElement( 'div' );
+		const element = platform.createElement( 'div' );
 		element.id = 'webgpumessage';
 		element.style.fontFamily = 'monospace';
 		element.style.fontSize = '13px';

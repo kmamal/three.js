@@ -6,7 +6,8 @@ import {
 	Group,
 	Loader,
 	Mesh,
-	MeshPhongMaterial
+	MeshPhongMaterial,
+	platform
 } from '@kmamal/three';
 import { unzipSync } from '../libs/fflate.module.js';
 
@@ -134,7 +135,7 @@ class AMFLoader extends Loader {
 			}
 
 			const fileText = new TextDecoder().decode( view );
-			const xmlData = new DOMParser().parseFromString( fileText, 'application/xml' );
+			const xmlData = new platform.DOMParser().parseFromString( fileText, 'application/xml' );
 
 			if ( xmlData.documentElement.nodeName.toLowerCase() !== 'amf' ) {
 

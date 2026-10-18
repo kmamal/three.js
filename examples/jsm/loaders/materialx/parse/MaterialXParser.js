@@ -1,3 +1,5 @@
+import { platform } from '@kmamal/three';
+
 function parseMaterialXNodeTree( nodeXML, createNode, addNode, nodePath = '' ) {
 
 	const materialXNode = createNode( nodeXML, nodePath );
@@ -20,7 +22,7 @@ function parseMaterialXNodeTree( nodeXML, createNode, addNode, nodePath = '' ) {
 
 function parseMaterialXText( text, createNode, addNode ) {
 
-	const rootXML = new DOMParser().parseFromString( text, 'application/xml' ).documentElement;
+	const rootXML = new platform.DOMParser().parseFromString( text, 'application/xml' ).documentElement;
 	return parseMaterialXNodeTree( rootXML, createNode, addNode );
 
 }

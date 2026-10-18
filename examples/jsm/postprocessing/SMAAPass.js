@@ -5,7 +5,8 @@ import {
 	ShaderMaterial,
 	Texture,
 	UniformsUtils,
-	WebGLRenderTarget
+	WebGLRenderTarget,
+	platform
 } from '@kmamal/three';
 import { Pass, FullScreenQuad } from './Pass.js';
 import { SMAABlendShader, SMAAEdgesShader, SMAAWeightsShader } from '../shaders/SMAAShader.js';
@@ -48,7 +49,7 @@ class SMAAPass extends Pass {
 		// textures
 		const scope = this;
 
-		const areaTextureImage = new Image();
+		const areaTextureImage = new platform.Image();
 		areaTextureImage.src = this._getAreaTexture();
 		areaTextureImage.onload = function () {
 
@@ -64,7 +65,7 @@ class SMAAPass extends Pass {
 		this._areaTexture.generateMipmaps = false;
 		this._areaTexture.flipY = false;
 
-		const searchTextureImage = new Image();
+		const searchTextureImage = new platform.Image();
 		searchTextureImage.src = this._getSearchTexture();
 		searchTextureImage.onload = function () {
 

@@ -2,7 +2,8 @@ import {
 	FileLoader,
 	Group,
 	Loader,
-	LoadingManager
+	LoadingManager,
+	platform
 } from '@kmamal/three';
 import { ColladaLoader } from '../loaders/ColladaLoader.js';
 import { unzipSync } from '../libs/fflate.module.js';
@@ -123,7 +124,7 @@ class KMZLoader extends Loader {
 
 		if ( zip[ 'doc.kml' ] ) {
 
-			const xml = new DOMParser().parseFromString( new TextDecoder().decode( zip[ 'doc.kml' ] ), 'application/xml' );
+			const xml = new platform.DOMParser().parseFromString( new TextDecoder().decode( zip[ 'doc.kml' ] ), 'application/xml' );
 
 			const model = xml.querySelector( 'Placemark Model Link href' );
 

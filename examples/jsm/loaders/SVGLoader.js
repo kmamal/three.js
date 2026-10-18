@@ -17,7 +17,8 @@ import {
 	ShapeUtils,
 	SRGBColorSpace,
 	Vector2,
-	Vector3
+	Vector3,
+	platform
 } from '@kmamal/three';
 
 const COLOR_SPACE_SVG = SRGBColorSpace;
@@ -2145,7 +2146,7 @@ class SVGLoader extends Loader {
 
 		const currentTransform = new Matrix3();
 
-		const xml = new DOMParser().parseFromString( text, 'image/svg+xml' ); // application/xml
+		const xml = new platform.DOMParser().parseFromString( text, 'image/svg+xml' ); // application/xml
 
 		parseGradients( xml );
 
@@ -3165,7 +3166,7 @@ function buildGradientTexture( gradient, shapePath, resolution = 256 ) {
 
 	}
 
-	const canvas = document.createElement( 'canvas' );
+	const canvas = platform.createElement( 'canvas' );
 	let textureMatrix;
 
 	if ( gradient.type === 'linearGradient' ) {

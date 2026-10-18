@@ -1,3 +1,5 @@
+import { platform } from '@kmamal/three';
+
 /**
  * Utility class for generating a flakes texture image. This image might be used
  * as a normal map to produce a car paint like effect.
@@ -16,7 +18,7 @@ class FlakesTexture {
 	 */
 	constructor( width = 512, height = 512 ) {
 
-		const canvas = document.createElement( 'canvas' );
+		const canvas = platform.createElement( 'canvas' );
 		canvas.width = width;
 		canvas.height = height;
 

@@ -6,6 +6,7 @@ import {
 	UnsignedByteType,
 	ClampToEdgeWrapping,
 	LinearFilter,
+	platform
 } from '@kmamal/three';
 
 /**
@@ -138,7 +139,7 @@ export class LUTImageLoader extends Loader {
 		const width = texture.image.width;
 		const height = texture.image.height;
 
-		const canvas = document.createElement( 'canvas' );
+		const canvas = platform.createElement( 'canvas' );
 		canvas.width = width;
 		canvas.height = height;
 
@@ -162,7 +163,7 @@ export class LUTImageLoader extends Loader {
 		const width = texture.image.height;
 		const height = texture.image.width;
 
-		const canvas = document.createElement( 'canvas' );
+		const canvas = platform.createElement( 'canvas' );
 		canvas.width = width;
 		canvas.height = height;
 

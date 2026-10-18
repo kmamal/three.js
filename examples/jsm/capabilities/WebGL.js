@@ -1,3 +1,5 @@
+import { platform } from '@kmamal/three';
+
 /**
  * A utility module with basic WebGL 2 capability testing.
  *
@@ -15,8 +17,7 @@ class WebGL {
 
 		try {
 
-			const canvas = document.createElement( 'canvas' );
-			return !! ( window.WebGL2RenderingContext && canvas.getContext( 'webgl2' ) );
+			return platform.WebGL2RenderingContext !== undefined;
 
 		} catch ( e ) {
 
@@ -37,10 +38,7 @@ class WebGL {
 
 		try {
 
-			const canvas = document.createElement( 'canvas' );
-			const ctx = window.WebGL2RenderingContext && canvas.getContext( 'webgl2' );
-			ctx.drawingBufferColorSpace = colorSpace;
-			return ctx.drawingBufferColorSpace === colorSpace; // deepscan-disable-line SAME_OPERAND_VALUE
+			return platform.WebGL2RenderingContext !== undefined && colorSpace === 'srgb';
 
 		} catch ( e ) {
 
@@ -72,13 +70,13 @@ class WebGL {
 		};
 
 		const contexts = {
-			1: window.WebGLRenderingContext,
-			2: window.WebGL2RenderingContext
+			1: platform.WebGLRenderingContext,
+			2: platform.WebGL2RenderingContext
 		};
 
 		let message = 'Your $0 does not seem to support <a href="http://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation" style="color:#000">$1</a>';
 
-		const element = document.createElement( 'div' );
+		const element = platform.createElement( 'div' );
 		element.id = 'webglmessage';
 		element.style.fontFamily = 'monospace';
 		element.style.fontSize = '13px';

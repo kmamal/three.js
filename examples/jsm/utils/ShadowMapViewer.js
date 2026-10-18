@@ -6,7 +6,8 @@ import {
 	OrthographicCamera,
 	PlaneGeometry,
 	Scene,
-	ShaderMaterial
+	ShaderMaterial,
+	platform
 } from '@kmamal/three';
 
 /**
@@ -50,7 +51,7 @@ class ShadowMapViewer {
 			height: 256
 		};
 
-		const camera = new OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 10 );
+		const camera = new OrthographicCamera( platform.window.innerWidth / - 2, platform.window.innerWidth / 2, platform.window.innerHeight / 2, platform.window.innerHeight / - 2, 1, 10 );
 		camera.position.set( 0, 0, 2 );
 		const scene = new Scene();
 
@@ -90,7 +91,7 @@ class ShadowMapViewer {
 
 		if ( doRenderLabel ) {
 
-			labelCanvas = document.createElement( 'canvas' );
+			labelCanvas = platform.createElement( 'canvas' );
 
 			const context = labelCanvas.getContext( '2d' );
 			context.font = 'Bold 20px Arial';
@@ -170,7 +171,7 @@ class ShadowMapViewer {
 				const width = scope.size.width;
 				const height = scope.size.height;
 
-				mesh.position.set( - window.innerWidth / 2 + width / 2 + this.x, window.innerHeight / 2 - height / 2 - this.y, 0 );
+				mesh.position.set( - platform.window.innerWidth / 2 + width / 2 + this.x, platform.window.innerHeight / 2 - height / 2 - this.y, 0 );
 
 				if ( doRenderLabel ) labelMesh.position.set( mesh.position.x, mesh.position.y - scope.size.height / 2 + labelCanvas.height / 2, 0 );
 
@@ -211,10 +212,10 @@ class ShadowMapViewer {
 
 			if ( this.enabled ) {
 
-				 camera.left = window.innerWidth / - 2;
-				 camera.right = window.innerWidth / 2;
-				 camera.top = window.innerHeight / 2;
-				 camera.bottom = window.innerHeight / - 2;
+				 camera.left = platform.window.innerWidth / - 2;
+				 camera.right = platform.window.innerWidth / 2;
+				 camera.top = platform.window.innerHeight / 2;
+				 camera.bottom = platform.window.innerHeight / - 2;
 				 camera.updateProjectionMatrix();
 
 				 this.update();

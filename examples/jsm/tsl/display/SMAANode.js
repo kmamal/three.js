@@ -1,4 +1,4 @@
-import { HalfFloatType, LinearFilter, NearestFilter, RenderTarget, Texture, Vector2, QuadMesh, NodeMaterial, Node, RendererUtils } from '@kmamal/three/webgpu';
+import { HalfFloatType, LinearFilter, NearestFilter, RenderTarget, Texture, Vector2, QuadMesh, NodeMaterial, Node, RendererUtils, platform } from '@kmamal/three/webgpu';
 import { abs, Fn, NodeUpdateType, uv, uniform, convertToTexture, vec2, vec4, passTexture, max, step, dot, float, texture, If, Loop, int, Break, sqrt, sign, mix, context } from '@kmamal/three/tsl';
 
 const _quadMesh = /*@__PURE__*/ new QuadMesh();
@@ -81,7 +81,7 @@ class SMAANode extends Node {
 
 		const scope = this;
 
-		const areaTextureImage = new Image();
+		const areaTextureImage = new platform.Image();
 		areaTextureImage.src = this._getAreaTexture();
 		areaTextureImage.onload = function () {
 
@@ -103,7 +103,7 @@ class SMAANode extends Node {
 		this._areaTexture.generateMipmaps = false;
 		this._areaTexture.flipY = false;
 
-		const searchTextureImage = new Image();
+		const searchTextureImage = new platform.Image();
 		searchTextureImage.src = this._getSearchTexture();
 		searchTextureImage.onload = function () {
 

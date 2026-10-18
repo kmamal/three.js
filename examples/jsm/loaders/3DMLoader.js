@@ -26,7 +26,8 @@ import {
 	Sprite,
 	SpriteMaterial,
 	TextureLoader,
-	EquirectangularReflectionMapping
+	EquirectangularReflectionMapping,
+	platform
 } from '@kmamal/three';
 
 import { EXRLoader } from '../loaders/EXRLoader.js';
@@ -840,13 +841,13 @@ class Rhino3dmLoader extends Loader {
 
 				geometry = obj.geometry;
 
-				const ctx = document.createElement( 'canvas' ).getContext( '2d' );
+				const ctx = platform.createElement( 'canvas' ).getContext( '2d' );
 				const font = `${geometry.fontHeight}px ${geometry.fontFace}`;
 				ctx.font = font;
 				const width = ctx.measureText( geometry.text ).width + 10;
 				const height = geometry.fontHeight + 10;
 
-				const r = window.devicePixelRatio;
+				const r = platform.devicePixelRatio;
 
 				ctx.canvas.width = width * r;
 				ctx.canvas.height = height * r;
@@ -1015,7 +1016,7 @@ class Rhino3dmLoader extends Loader {
 
 			if ( this.workerPool.length < this.workerLimit ) {
 
-				const worker = new Worker( this.workerSourceURL );
+				const worker = new platform.Worker( this.workerSourceURL );
 
 				worker._callbacks = {};
 				worker._taskCosts = {};

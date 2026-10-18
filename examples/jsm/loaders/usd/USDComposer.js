@@ -36,7 +36,8 @@ import {
 	Texture,
 	Vector2,
 	Vector3,
-	VectorKeyframeTrack
+	VectorKeyframeTrack,
+	platform
 } from '@kmamal/three';
 
 // Pre-compiled regex patterns for performance
@@ -3914,7 +3915,7 @@ class USDComposer {
 
 		}
 
-		const image = new Image();
+		const image = new platform.Image();
 
 		this.texturePromises.push( new Promise( ( resolve ) => {
 

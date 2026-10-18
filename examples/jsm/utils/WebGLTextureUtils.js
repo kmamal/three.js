@@ -5,9 +5,10 @@ import {
 	Mesh,
 	PerspectiveCamera,
 	Scene,
-	WebGLRenderer,
+	WebGLRenderTarget,
 	CanvasTexture,
-	SRGBColorSpace
+	SRGBColorSpace,
+	platform
 } from '@kmamal/three';
 
 /**
@@ -15,7 +16,6 @@ import {
  * @three_import import * as WebGLTextureUtils from '@kmamal/three/addons/utils/WebGLTextureUtils.js';
  */
 
-let _renderer;
 let fullscreenQuadGeometry;
 let fullscreenQuadMaterial;
 let fullscreenQuad;
@@ -74,24 +74,41 @@ export function decompress( texture, maxTextureSize = Infinity, renderer = null 
 
 	if ( renderer === null ) {
 
-		renderer = _renderer = new WebGLRenderer( { antialias: false } );
+		throw new Error( 'WebGLTextureUtils: Under SDL decompress() needs a renderer.' );
 
 	}
 
 	const width = Math.min( texture.image.width, maxTextureSize );
 	const height = Math.min( texture.image.height, maxTextureSize );
 
-	renderer.setSize( width, height );
+	const renderTarget = new WebGLRenderTarget( width, height );
+	const previousTarget = renderer.getRenderTarget();
+
+	renderer.setRenderTarget( renderTarget );
 	renderer.clear();
 	renderer.render( _scene, _camera );
+	renderer.setRenderTarget( previousTarget );
 
-	const canvas = document.createElement( 'canvas' );
+	const pixels = new Uint8Array( width * height * 4 );
+	renderer.readRenderTargetPixels( renderTarget, 0, 0, width, height, pixels );
+	renderTarget.dispose();
+
+	const canvas = platform.createElement( 'canvas' );
 	const context = canvas.getContext( '2d' );
 
 	canvas.width = width;
 	canvas.height = height;
 
-	context.drawImage( renderer.domElement, 0, 0, width, height );
+	const imageData = context.createImageData( width, height );
+	const rowLength = width * 4;
+
+	for ( let y = 0; y < height; y ++ ) {
+
+		imageData.data.set( pixels.subarray( ( height - 1 - y ) * rowLength, ( height - y ) * rowLength ), y * rowLength );
+
+	}
+
+	context.putImageData( imageData, 0, 0 );
 
 	const readableTexture = new CanvasTexture( canvas );
 
@@ -101,14 +118,6 @@ export function decompress( texture, maxTextureSize = Infinity, renderer = null 
 	readableTexture.wrapT = texture.wrapT;
 	readableTexture.colorSpace = texture.colorSpace;
 	readableTexture.name = texture.name;
-
-	if ( _renderer ) {
-
-		_renderer.forceContextLoss();
-		_renderer.dispose();
-		_renderer = null;
-
-	}
 
 	return readableTexture;
 

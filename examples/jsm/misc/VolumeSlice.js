@@ -6,7 +6,8 @@ import {
 	MeshBasicMaterial,
 	PlaneGeometry,
 	Texture,
-	SRGBColorSpace
+	SRGBColorSpace,
+	platform
 } from '@kmamal/three';
 
 /**
@@ -70,7 +71,7 @@ class VolumeSlice {
 		 *
 		 * @type {HTMLCanvasElement}
 		 */
-		this.canvas = document.createElement( 'canvas' );
+		this.canvas = platform.createElement( 'canvas' );
 
 		/**
 		 * The rendering context of the canvas.
@@ -84,7 +85,7 @@ class VolumeSlice {
 		 *
 		 * @type {HTMLCanvasElement}
 		 */
-		this.canvasBuffer = document.createElement( 'canvas' );
+		this.canvasBuffer = platform.createElement( 'canvas' );
 
 		/**
 		 * The rendering context of the canvas buffer,

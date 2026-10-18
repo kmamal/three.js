@@ -9,7 +9,8 @@ import {
 	SRGBColorSpace,
 	InterleavedBuffer,
 	InterleavedBufferAttribute,
-	LoaderUtils
+	LoaderUtils,
+	platform
 } from '@kmamal/three';
 
 const _taskCache = new WeakMap();
@@ -437,7 +438,7 @@ class DRACOLoader extends Loader {
 
 			if ( this.workerPool.length < this.workerLimit ) {
 
-				const worker = new Worker( this.workerSourceURL );
+				const worker = new platform.Worker( this.workerSourceURL );
 
 				worker._callbacks = {};
 				worker._taskCosts = {};

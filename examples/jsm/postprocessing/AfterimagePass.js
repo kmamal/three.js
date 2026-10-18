@@ -4,7 +4,8 @@ import {
 	NoBlending,
 	ShaderMaterial,
 	UniformsUtils,
-	WebGLRenderTarget
+	WebGLRenderTarget,
+	platform
 } from '@kmamal/three';
 import { Pass, FullScreenQuad } from './Pass.js';
 import { CopyShader } from '../shaders/CopyShader.js';
@@ -74,13 +75,13 @@ class AfterimagePass extends Pass {
 
 		// internals
 
-		this._textureComp = new WebGLRenderTarget( window.innerWidth, window.innerHeight, {
+		this._textureComp = new WebGLRenderTarget( platform.window.innerWidth, platform.window.innerHeight, {
 			magFilter: NearestFilter,
 			type: HalfFloatType,
 			depthBuffer: false
 		} );
 
-		this._textureOld = new WebGLRenderTarget( window.innerWidth, window.innerHeight, {
+		this._textureOld = new WebGLRenderTarget( platform.window.innerWidth, platform.window.innerHeight, {
 			magFilter: NearestFilter,
 			type: HalfFloatType,
 			depthBuffer: false

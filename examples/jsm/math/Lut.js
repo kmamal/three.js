@@ -1,7 +1,8 @@
 import {
 	Color,
 	LinearSRGBColorSpace,
-	MathUtils
+	MathUtils,
+	platform
 } from '@kmamal/three';
 
 /**
@@ -238,7 +239,7 @@ class Lut {
 	 */
 	createCanvas() {
 
-		const canvas = document.createElement( 'canvas' );
+		const canvas = platform.createElement( 'canvas' );
 		canvas.width = 1;
 		canvas.height = this.n;
 

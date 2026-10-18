@@ -63,7 +63,8 @@ import {
 	Vector3,
 	VectorKeyframeTrack,
 	SRGBColorSpace,
-	InstancedBufferAttribute
+	InstancedBufferAttribute,
+	platform
 } from '@kmamal/three';
 import { toTrianglesDrawMode } from '../utils/BufferGeometryUtils.js';
 import { clone } from '../utils/SkeletonUtils.js';
@@ -2705,7 +2706,7 @@ class GLTFParser {
 
 		}
 
-		if ( typeof createImageBitmap === 'undefined' || ( isSafari && safariVersion < 17 ) || ( isFirefox && firefoxVersion < 98 ) ) {
+		if ( platform.createImageBitmap === undefined || ( isSafari && safariVersion < 17 ) || ( isFirefox && firefoxVersion < 98 ) ) {
 
 			this.textureLoader = new TextureLoader( this.options.manager );
 
@@ -3406,7 +3407,7 @@ class GLTFParser {
 
 		const sourceDef = json.images[ sourceIndex ];
 
-		const URL = self.URL || self.webkitURL;
+		const URL = globalThis.URL || globalThis.webkitURL;
 
 		let sourceURI = sourceDef.uri || '';
 		let isObjectURL = false;

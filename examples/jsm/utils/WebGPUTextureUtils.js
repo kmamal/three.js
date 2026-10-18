@@ -1,8 +1,9 @@
 import {
 	QuadMesh,
 	NodeMaterial,
-	WebGPURenderer,
-	CanvasTexture
+	RenderTarget,
+	CanvasTexture,
+	platform
 } from '@kmamal/three/webgpu';
 import { texture, uv } from '@kmamal/three/tsl';
 
@@ -11,7 +12,6 @@ import { texture, uv } from '@kmamal/three/tsl';
  * @three_import import * as WebGPUTextureUtils from '@kmamal/three/addons/utils/WebGPUTextureUtils.js';
  */
 
-let _renderer;
 const _quadMesh = /*@__PURE__*/ new QuadMesh();
 
 /**
@@ -30,8 +30,7 @@ export async function decompress( blitTexture, maxTextureSize = Infinity, render
 
 	if ( renderer === null ) {
 
-		renderer = _renderer = new WebGPURenderer();
-		await renderer.init();
+		throw new Error( 'WebGPUTextureUtils: Under SDL decompress() needs a renderer.' );
 
 	}
 
@@ -42,23 +41,41 @@ export async function decompress( blitTexture, maxTextureSize = Infinity, render
 	const width = Math.min( blitTexture.image.width, maxTextureSize );
 	const height = Math.min( blitTexture.image.height, maxTextureSize );
 
-	const currentOutputColorSpace = renderer.outputColorSpace;
+	const renderTarget = new RenderTarget( width, height );
+	renderTarget.texture.colorSpace = blitTexture.colorSpace;
 
-	renderer.setSize( width, height );
-	renderer.outputColorSpace = blitTexture.colorSpace;
+	const previousTarget = renderer.getRenderTarget();
+
+	renderer.setRenderTarget( renderTarget );
 
 	_quadMesh.material = material;
 	_quadMesh.render( renderer );
 
-	renderer.outputColorSpace = currentOutputColorSpace;
+	renderer.setRenderTarget( previousTarget );
 
-	const canvas = document.createElement( 'canvas' );
+	const pixels = await renderer.readRenderTargetPixelsAsync( renderTarget, 0, 0, width, height );
+
+	renderTarget.dispose();
+	material.dispose();
+
+	const canvas = platform.createElement( 'canvas' );
 	const context = canvas.getContext( '2d' );
 
 	canvas.width = width;
 	canvas.height = height;
 
-	context.drawImage( renderer.domElement, 0, 0, width, height );
+	const imageData = context.createImageData( width, height );
+	const rowLength = width * 4;
+	const bytesPerRow = Math.ceil( rowLength / 256 ) * 256;
+	const bytes = new Uint8Array( pixels.buffer, pixels.byteOffset, pixels.byteLength );
+
+	for ( let y = 0; y < height; y ++ ) {
+
+		imageData.data.set( bytes.subarray( y * bytesPerRow, y * bytesPerRow + rowLength ), y * rowLength );
+
+	}
+
+	context.putImageData( imageData, 0, 0 );
 
 	const readableTexture = new CanvasTexture( canvas );
 
@@ -68,13 +85,6 @@ export async function decompress( blitTexture, maxTextureSize = Infinity, render
 	readableTexture.wrapT = blitTexture.wrapT;
 	readableTexture.colorSpace = blitTexture.colorSpace;
 	readableTexture.name = blitTexture.name;
-
-	if ( _renderer !== null ) {
-
-		_renderer.dispose();
-		_renderer = null;
-
-	}
 
 	return readableTexture;
 

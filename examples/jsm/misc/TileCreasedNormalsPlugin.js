@@ -1,4 +1,4 @@
-import { BufferAttribute } from '@kmamal/three';
+import { BufferAttribute, platform } from '@kmamal/three';
 
 /**
  * A plugin for `3d-tiles-renderer` that computes creased vertex normals for the
@@ -49,7 +49,7 @@ class TileCreasedNormalsPlugin {
 
 		`;
 
-		this._worker = new Worker( URL.createObjectURL( new Blob( [ workerCode ] ) ) );
+		this._worker = new platform.Worker( URL.createObjectURL( new Blob( [ workerCode ] ) ) );
 		this._worker.onmessage = ( { data } ) => {
 
 			this._pending.get( data.id )( data );

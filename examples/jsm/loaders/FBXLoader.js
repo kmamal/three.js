@@ -41,7 +41,8 @@ import {
 	Vector2,
 	Vector3,
 	Vector4,
-	VectorKeyframeTrack
+	VectorKeyframeTrack,
+	platform
 } from '@kmamal/three';
 
 import { unzlibSync } from '../libs/fflate.module.js';
@@ -1194,8 +1195,8 @@ class FBXTreeParser {
 			}
 
 
-			let width = window.innerWidth;
-			let height = window.innerHeight;
+			let width = platform.window.innerWidth;
+			let height = platform.window.innerHeight;
 
 			if ( cameraAttribute.AspectWidth !== undefined && cameraAttribute.AspectHeight !== undefined ) {
 

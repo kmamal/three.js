@@ -21,7 +21,8 @@ import {
 	SphereGeometry,
 	TextureLoader,
 	SRGBColorSpace,
-	Vector3
+	Vector3,
+	platform
 } from '@kmamal/three';
 import { unzipSync } from '../libs/fflate.module.js';
 import { mergeGeometries } from '../utils/BufferGeometryUtils.js';
@@ -221,7 +222,7 @@ class ThreeMFLoader extends Loader {
 				const view = zip[ modelPart ];
 
 				const fileText = textDecoder.decode( view );
-				const xmlData = new DOMParser().parseFromString( fileText, 'application/xml' );
+				const xmlData = new platform.DOMParser().parseFromString( fileText, 'application/xml' );
 
 				if ( xmlData.documentElement.nodeName.toLowerCase() !== 'model' ) {
 
@@ -279,7 +280,7 @@ class ThreeMFLoader extends Loader {
 
 			const relationships = [];
 
-			const relsXmlData = new DOMParser().parseFromString( relsFileText, 'application/xml' );
+			const relsXmlData = new platform.DOMParser().parseFromString( relsFileText, 'application/xml' );
 
 			const relsNodes = relsXmlData.querySelectorAll( 'Relationship' );
 

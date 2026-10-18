@@ -3,6 +3,7 @@ import {
 	DoubleSide,
 	Color,
 	PropertyBinding,
+	platform
 } from '@kmamal/three';
 
 import {
@@ -393,18 +394,15 @@ function getTextureExtension( texture ) {
 function imageToCanvas( image, flipY, maxTextureSize ) {
 
 	if (
-		( typeof HTMLImageElement !== 'undefined' &&
-			image instanceof HTMLImageElement ) ||
-		( typeof HTMLCanvasElement !== 'undefined' &&
-			image instanceof HTMLCanvasElement ) ||
-		( typeof OffscreenCanvas !== 'undefined' &&
-			image instanceof OffscreenCanvas ) ||
-		( typeof ImageBitmap !== 'undefined' && image instanceof ImageBitmap )
+		platform.isImage( image ) ||
+		platform.isCanvas( image ) ||
+		platform.isOffscreenCanvas( image ) ||
+		platform.isImageBitmap( image )
 	) {
 
 		const scale = maxTextureSize / Math.max( image.width, image.height );
 
-		const canvas = document.createElement( 'canvas' );
+		const canvas = platform.createElement( 'canvas' );
 		canvas.width = image.width * Math.min( 1, scale );
 		canvas.height = image.height * Math.min( 1, scale );
 

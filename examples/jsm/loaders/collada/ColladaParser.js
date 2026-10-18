@@ -4,7 +4,8 @@ import {
 	MathUtils,
 	Matrix4,
 	Vector3,
-	SRGBColorSpace
+	SRGBColorSpace,
+	platform
 } from '@kmamal/three';
 
 /**
@@ -89,7 +90,7 @@ class ColladaParser {
 
 		}
 
-		const xml = new DOMParser().parseFromString( text, 'application/xml' );
+		const xml = new platform.DOMParser().parseFromString( text, 'application/xml' );
 
 		const collada = getElementsByTagName( xml, 'COLLADA' )[ 0 ];
 
@@ -183,7 +184,7 @@ class ColladaParser {
 
 			const node = stack.shift();
 
-			if ( node.nodeType === Node.TEXT_NODE ) {
+			if ( node.nodeType === node.TEXT_NODE ) {
 
 				parts.push( node.textContent );
 

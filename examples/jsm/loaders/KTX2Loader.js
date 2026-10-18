@@ -43,7 +43,8 @@ import {
 	UnsignedByteType,
 	UnsignedInt5999Type,
 	UnsignedInt101111Type,
-	UnsignedShortType
+	UnsignedShortType,
+	platform
 } from '@kmamal/three';
 import { WorkerPool } from '../utils/WorkerPool.js';
 import {
@@ -331,7 +332,7 @@ class KTX2Loader extends Loader {
 
 					this.workerPool.setWorkerCreator( () => {
 
-						const worker = new Worker( this.workerSourceURL );
+						const worker = new platform.Worker( this.workerSourceURL );
 						const transcoderBinary = this.transcoderBinary.slice( 0 );
 
 						worker.postMessage( { type: 'init', config: this.workerConfig, transcoderBinary }, [ transcoderBinary ] );

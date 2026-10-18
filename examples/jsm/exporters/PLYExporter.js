@@ -3,7 +3,8 @@ import {
 	Vector3,
 	Color,
 	ColorManagement,
-	SRGBColorSpace
+	SRGBColorSpace,
+	platform
 } from '@kmamal/three';
 
 /**
@@ -686,7 +687,7 @@ class PLYExporter {
 
 		}
 
-		if ( typeof onDone === 'function' ) requestAnimationFrame( () => onDone( result ) );
+		if ( typeof onDone === 'function' ) platform.animationContext.requestAnimationFrame( () => onDone( result ) );
 
 		return result;
 

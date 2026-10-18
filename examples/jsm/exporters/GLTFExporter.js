@@ -25,7 +25,8 @@ import {
 	Vector3,
 	Quaternion,
 	REVISION,
-	ImageUtils
+	ImageUtils,
+	platform
 } from '@kmamal/three';
 
 /**
@@ -532,19 +533,19 @@ function getPaddedArrayBuffer( arrayBuffer, paddingByte = 0 ) {
 
 function getCanvas() {
 
-	if ( typeof document === 'undefined' && typeof OffscreenCanvas !== 'undefined' ) {
+	if ( typeof document === 'undefined' && platform.OffscreenCanvas !== undefined ) {
 
-		return new OffscreenCanvas( 1, 1 );
+		return new platform.OffscreenCanvas( 1, 1 );
 
 	}
 
-	return document.createElement( 'canvas' );
+	return platform.createElement( 'canvas' );
 
 }
 
 function getToBlobPromise( canvas, mimeType ) {
 
-	if ( typeof OffscreenCanvas !== 'undefined' && canvas instanceof OffscreenCanvas ) {
+	if ( platform.isOffscreenCanvas( canvas ) ) {
 
 		let quality;
 
@@ -694,7 +695,7 @@ class GLTFWriter {
 
 			// https://github.com/KhronosGroup/glTF/blob/master/specification/2.0/README.md#glb-file-format-specification
 
-			const reader = new FileReader();
+			const reader = new platform.FileReader();
 			reader.readAsArrayBuffer( blob );
 			reader.onloadend = function () {
 
@@ -728,7 +729,7 @@ class GLTFWriter {
 					binaryChunk
 				], { type: 'application/octet-stream' } );
 
-				const glbReader = new FileReader();
+				const glbReader = new platform.FileReader();
 				glbReader.readAsArrayBuffer( glbBlob );
 				glbReader.onloadend = function () {
 
@@ -742,7 +743,7 @@ class GLTFWriter {
 
 			if ( json.buffers && json.buffers.length > 0 ) {
 
-				const reader = new FileReader();
+				const reader = new platform.FileReader();
 				reader.readAsDataURL( blob );
 				reader.onloadend = function () {
 
@@ -1303,7 +1304,7 @@ class GLTFWriter {
 
 		return new Promise( function ( resolve ) {
 
-			const reader = new FileReader();
+			const reader = new platform.FileReader();
 			reader.readAsArrayBuffer( blob );
 			reader.onloadend = function () {
 
@@ -1468,7 +1469,7 @@ class GLTFWriter {
 
 			}
 
-			if ( image.data !== undefined ) { // THREE.DataTexture
+			if ( image.data !== undefined && ! platform.isImage( image ) && ! platform.isImageBitmap( image ) ) { // THREE.DataTexture
 
 				if ( format !== RGBAFormat ) {
 
@@ -1493,14 +1494,14 @@ class GLTFWriter {
 
 				}
 
-				ctx.putImageData( new ImageData( data, image.width, image.height ), 0, 0 );
+				ctx.putImageData( new platform.ImageData( data, image.width, image.height ), 0, 0 );
 
 			} else {
 
-				if ( ( typeof HTMLImageElement !== 'undefined' && image instanceof HTMLImageElement ) ||
-					( typeof HTMLCanvasElement !== 'undefined' && image instanceof HTMLCanvasElement ) ||
-					( typeof ImageBitmap !== 'undefined' && image instanceof ImageBitmap ) ||
-					( typeof OffscreenCanvas !== 'undefined' && image instanceof OffscreenCanvas ) ) {
+				if ( platform.isImage( image ) ||
+					platform.isCanvas( image ) ||
+					platform.isImageBitmap( image ) ||
+					platform.isOffscreenCanvas( image ) ) {
 
 					ctx.drawImage( image, 0, 0, canvas.width, canvas.height );
 

@@ -10,6 +10,7 @@ import {
 	Loader,
 	RGBAFormat,
 	UVMapping,
+	platform
 } from '@kmamal/three';
 
 /**
@@ -537,7 +538,7 @@ class UltraHDRLoader extends Loader {
 
 	_parseXMPMetadata( xmpDataString, metadata ) {
 
-		const domParser = new DOMParser();
+		const domParser = new platform.DOMParser();
 
 		const xmpXml = domParser.parseFromString(
 			xmpDataString.substring(
@@ -618,7 +619,7 @@ class UltraHDRLoader extends Loader {
 		onError
 	) {
 
-		const decodeImage = ( data ) => createImageBitmap( new Blob( [ data ], { type: 'image/jpeg' } ) );
+		const decodeImage = ( data ) => platform.createImageBitmap( new Blob( [ data ], { type: 'image/jpeg' } ) );
 
 		Promise.all( [ decodeImage( sdrBuffer ), decodeImage( gainmapBuffer ) ] )
 			.then( ( [ sdrImage, gainmapImage ] ) => {
@@ -638,7 +639,7 @@ class UltraHDRLoader extends Loader {
 
 				}
 
-				const canvas = document.createElement( 'canvas' );
+				const canvas = platform.createElement( 'canvas' );
 				const ctx = canvas.getContext( '2d', {
 					willReadFrequently: true,
 					colorSpace: 'srgb',
