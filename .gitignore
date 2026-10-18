@@ -1,6 +1,5 @@
 **/node_modules/
 npm-debug.log
 
-test/e2e/chromium
-test/e2e/output-screenshots
+test/e2e/output
 test/unit/build

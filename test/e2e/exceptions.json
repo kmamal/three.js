@@ -1,0 +1,180 @@
+{
+	"Take too long": [
+		"webgpu_cubemap_mix",
+		"webgl_loader_texture_ultrahdr",
+		"webgl_marchingcubes",
+		"webgl_materials_cubemap_dynamic",
+		"webgl_materials_displacementmap",
+		"webgl_materials_envmaps_hdr",
+		"webgpu_water"
+	],
+	"Requires HTML-in-Canvas API": [
+		"webgl_materials_texture_html",
+		"webgpu_materials_texture_html"
+	],
+	"Black screen": [
+		"webgpu_postprocessing_ao",
+		"webgpu_postprocessing_dof",
+		"webgpu_postprocessing_ssgi",
+		"webgpu_postprocessing_ssgi_ballpool",
+		"webgpu_postprocessing_sss",
+		"webgpu_postprocessing_traa",
+		"webgpu_tsl_vfx_linkedparticles",
+		"webgpu_volume_lighting_traa"
+	],
+	"Timming issues?": [
+		"physics_rapier_instancing",
+		"webgl_shadowmap",
+		"webaudio_visualizer",
+		"webgpu_compute_audio",
+		"webgpu_compute_cloth",
+		"webgpu_compute_particles_fluid",
+		"webgpu_compute_rasterizer_ibl",
+		"webgpu_compute_sort_bitonic",
+		"webgpu_storage_buffer",
+		"webgpu_tsl_editor",
+		"webxr_vr_video",
+		"webgpu_tsl_transpiler",
+		"webgpu_rendertarget_2d-array_3d",
+		"webgpu_volume_fire"
+	],
+	"Need more time to render": [
+		"css3d_mixed",
+		"webgl_loader_3dtiles",
+		"webgl_loader_texture_lottie",
+		"webgl_morphtargets_face",
+		"webgl_shadowmap_progressive",
+		"webgpu_materials_matcap",
+		"webgpu_morphtargets_face",
+		"webgpu_shadowmap_progressive",
+		"webgpu_postprocessing_ssr_denoise",
+		"webgpu_renderer_pathtracer",
+		"webgpu_vxgi",
+		"webgpu_vxgi_sponza"
+	],
+	"Incremental light probe baking": [
+		"webgl_lightprobes_sponza",
+		"webgpu_generator_city",
+		"webgpu_lightprobes_sponza"
+	],
+	"Video hangs the CI?": [
+		"css3d_youtube",
+		"webgpu_materials_video",
+		"webgl_video_kinect",
+		"webgl_video_panorama_equirectangular"
+	],
+	"Timeout": [
+		"webgl_test_memory2"
+	],
+	"Webcam": [
+		"webgl_materials_video_webcam",
+		"webgl_morphtargets_webcam"
+	],
+	"CSS page background (no SDL equivalent)": [
+		"misc_controls_arcball"
+	],
+	"HTML overlay (no SDL equivalent)": [
+		"misc_controls_pointerlock"
+	],
+	"DOM-only page (no renderer)": [
+		"misc_uv_tests"
+	],
+	"Wall-clock driven simulation": [
+		"physics_jolt_instancing"
+	],
+	"DOM output renderer (SVGRenderer, AsciiEffect)": [
+		"svg_lines",
+		"svg_sandbox",
+		"webgl_effects_ascii"
+	],
+	"WEBGL_multi_draw missing in @kmamal/gl (native work)": [
+		"webgl_batch_lod_bvh",
+		"webgl_mesh_batch"
+	],
+	"Multiple renderers in separate SDL windows (single-window capture)": [
+		"webgl_camera_logarithmicdepthbuffer",
+		"webgpu_camera_logarithmicdepthbuffer",
+		"webgl_reversed_depth_buffer",
+		"webgpu_reversed_depth_buffer",
+		"webgpu_centroid_sampling",
+		"webgpu_compute_sort_bitonic",
+		"webgpu_compute_reduce",
+		"webgpu_texturegather",
+		"webgpu_texturegrad",
+		"webgpu_storage_buffer",
+		"webgpu_multiple_canvas"
+	],
+	"WebGL extension missing in @kmamal/gl (native work)": [
+		"webgl_clipculldistance"
+	],
+	"Remote assets fetched at runtime": [
+		"webgl_loader_gltf_progressive_lod",
+		"webgpu_loader_gltf",
+		"webgpu_loader_materialx"
+	],
+	"CSS2D/CSS3D renderers (DOM, out of scope)": [
+		"webgl_loader_pdb"
+	],
+	"Different extension support than the reference browser": [
+		"webgl_loader_texture_ktx",
+		"webgl_loader_texture_pvrtc"
+	],
+	"HTML page layout with embedded views (DOM-driven)": [
+		"webgl_loader_texture_ktx2",
+		"webgpu_loader_texture_ktx2",
+		"webgl_multiple_elements",
+		"webgl_multiple_elements_text",
+		"webgpu_multiple_elements",
+		"webgl_multisampled_renderbuffers",
+		"webgpu_multisampled_renderbuffers"
+	],
+	"HTML elements behind/around a transparent canvas": [
+		"webgl_materials_physical_transmission_alpha"
+	],
+	"Transparent canvas composited over HTML page background (needs window alpha compositing)": [
+		"webgl_postprocessing_fxaa",
+		"webgpu_textures_anisotropy"
+	],
+	"Per-frame random state (frame count differs from the reference run)": [
+		"webgl_postprocessing_glitch",
+		"webgl_postprocessing_procedural",
+		"webgpu_compute_birds",
+		"webgpu_compute_particles_rain",
+		"webgpu_compute_particles_snow",
+		"webgpu_compute_texture_pingpong",
+		"webgpu_instancing_morph",
+		"webgpu_mesh_batch",
+		"webgpu_particles_soft",
+		"webgpu_performance_renderbundle",
+		"webgpu_postprocessing",
+		"webgpu_postprocessing_afterimage",
+		"webgpu_postprocessing_direct",
+		"webgpu_postprocessing_ssaa",
+		"webgpu_shadowmap_array",
+		"webgpu_test_memory",
+		"webgpu_tsl_compute_attractors_particles",
+		"webgpu_tsl_galaxy"
+	],
+	"Worker + OffscreenCanvas rendering": [
+		"webgl_worker_offscreencanvas"
+	],
+	"HDR (HalfFloat) canvas output unsupported by the SDL surface": [
+		"webgpu_hdr"
+	],
+	"Too slow to build (1600 node materials) and random/time-driven colors": [
+		"webgpu_materials_node_proxy"
+	],
+	"Unexplained rendering differences (to investigate)": [
+		"webgpu_materials_texture_manualmipmap"
+	],
+	"compileAsync of a huge scene does not finish in time (known blank)": [
+		"webgpu_performance",
+		"webgl_performance"
+	],
+	"Chaotic/precision-dependent shader output differs between GPUs": [
+		"webgpu_shadertoy"
+	],
+	"Video / webcam / WebCodecs (out of scope)": [
+		"webgpu_video_frame"
+	]
+}

@@ -149,6 +149,7 @@ npm test                       # lint, upstream unit tests, platform unit tests
 npm run test-platform          # the SDL platform layer and the GUI, no display or GPU needed
 npm run test-platform-window   # real windows: resizing, controls driven by SDL events, context loss
 npm run test-unit-gpu          # the TSL/GPU unit tests, on WebGPU and the WebGL2 fallback in hidden windows
+npm run test-e2e               # every example against its browser screenshot, see test/e2e/README.md
 ```
 
 The window tests need a display and a GPU, and skip themselves otherwise.

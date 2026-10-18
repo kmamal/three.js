@@ -1,44 +1,20 @@
-# Three.js end-to-end testing
+# End-to-end tests
 
-### Motivation
-Simplify code reviews with quick pixel testing inside CI. The same screenshots are used for thumbnails.
-
-### Local usage
-If you get an error in e2e test after PR and you sure that all is correct,
-just make a new screenshot to example. As a last resort increase timeouts or add it to exception list.
+Every ported example in `examples/*.mjs` is run in an SDL window and its first frames are compared against the browser screenshot in `examples/screenshots`.
 
 ```shell
-# generate new screenshots for exact examples
-npm run make-screenshot <example1_name> ... <exampleN_name>
-
-# check exact examples
-npm run test-e2e <example1_name> ... <exampleN_name>
-
-# check all examples
-npm run test-e2e
+npm run test-e2e                                     # every example not listed in exceptions.json
+npm run test-e2e -- webgl_animation_keyframes ...    # just these examples, even if they are listed
+npm run test-e2e -- --exceptions                     # only the listed ones, reporting those that pass now
+npm run test-e2e -- --resume                         # skip the examples that passed in the previous run
 ```
 
-Merge only those commits that pass the tests, otherwise all next commits will also fail.
+Other flags: `--bail` stops at the first failure, `--webgpu` keeps only the `webgpu_` examples, `--shard=i/n` runs one part of the list, `--max-diff=<percent>`, `--threshold=<0..1>` and `--timeout=<seconds>` tune the comparison.
 
-### How it works
-- ci configs with parallelism
-- deterministic random and clocks in pages and workers
-- deterministic page rAF and video for screenshots
-- ignores browser input while preserving scripted DOM clicks
-- freezes video playback, preserves explicit seeks, and waits for decoded frames
-- increased robustness with hided text, datgui, different flags and timeouts.
-- pipeline: turn off rAF -> 'networkidle0' -> video readiness -> networkTax -> turn on rAF -> render promise
-- added 3 progressive attempts for robustness
+## How it works
 
-### Development progress
-
-|           Travis                        |               Attempts               |
-|-----------------------------------------|--------------------------------------|
-| 61 from 362 failed, time=21:14          | networkidle0 timeout                 |
-| 26 from 362 failed, time=16:22          | with rAF hook                        |
-| 13=1+1+7+4 failed, time=4:26            | with render promise and parallelism  |
-| 4=0+0+2+2 failed, time=5:13             | with network tax and other settings  |
-| 4=0+0+2+2 failed, time=3:26             | with progressive attempts            |
-
-### Status
-97% examples are covered with tests. Check exception list for more information.
+* `run.js` starts each example as a child process with `--import inject.js`.
+* `inject.js` makes the run deterministic (seeded `Math.random`, `Date.now` and `performance.now` frozen at 0, see also `hooks.js`), opens the first window at 800x500, and drives `requestAnimationFrame` itself: it waits until loading has settled (`track.js` watches `fetch` and file reads), runs frames until one is presented, and then reads that frame back from the renderer (`readPixels` for `WebGLRenderer`, a texture copy for `WebGPURenderer`) into a PNG.
+* Uncaught exceptions, unhandled rejections, `console.error` and Dawn validation messages fail the example.
+* `run.js` downscales the frame to 400x250 and compares it with `image.js`. Failures leave the actual, expected and diff images in `output/`.
+* `exceptions.json` lists the examples that are not expected to match, grouped by reason. `tolerances.json` raises the allowed percentage of different pixels for individual examples (the default is 1%).
