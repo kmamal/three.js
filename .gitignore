@@ -11,14 +11,6 @@ npm-debug.log
 
 test/e2e/chromium
 test/e2e/output-screenshots
-test/treeshake/index.bundle.js
-test/treeshake/index.bundle.min.js
-test/treeshake/index.webgpu.bundle.js
-test/treeshake/index.webgpu.bundle.min.js
-test/treeshake/index.webgpu.nodes.bundle.js
-test/treeshake/index.webgpu.nodes.bundle.min.js
-test/treeshake/index.webgpu.tsl.bundle.js
-test/treeshake/index.webgpu.tsl.bundle.min.js
 test/unit/build
 
 **/node_modules
