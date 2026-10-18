@@ -1,3 +1,4 @@
+import { platform } from '../platform/Platform.js';
 import { ImageUtils } from '../extras/ImageUtils.js';
 import { generateUUID } from '../math/MathUtils.js';
 import { warn, warnOnce } from '../utils.js';
@@ -195,9 +196,9 @@ class TextureSource {
 
 function serializeImage( image ) {
 
-	if ( ( typeof HTMLImageElement !== 'undefined' && image instanceof HTMLImageElement ) ||
-		( typeof HTMLCanvasElement !== 'undefined' && image instanceof HTMLCanvasElement ) ||
-		( typeof ImageBitmap !== 'undefined' && image instanceof ImageBitmap ) ) {
+	if ( platform.isImage( image ) ||
+		platform.isCanvas( image ) ||
+		platform.isImageBitmap( image ) ) {
 
 		// default images
 

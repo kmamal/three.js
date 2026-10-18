@@ -1,3 +1,4 @@
+import { platform } from './platform/Platform.js';
 import { AlwaysDepth, EqualDepth, GreaterDepth, GreaterEqualDepth, LessDepth, LessEqualDepth, NeverDepth, NotEqualDepth } from './constants.js';
 
 /**
@@ -130,7 +131,7 @@ function isTypedArray( array ) {
  */
 function createElementNS( name ) {
 
-	return document.createElementNS( 'http://www.w3.org/1999/xhtml', name );
+	return platform.createElement( name );
 
 }
 
@@ -143,11 +144,9 @@ function createElementNS( name ) {
  *
  * @return {HTMLCanvasElement} A canvas element with display set to 'block'.
  */
-function createCanvasElement() {
+function createCanvasElement( parameters ) {
 
-	const canvas = createElementNS( 'canvas' );
-	canvas.style.display = 'block';
-	return canvas;
+	return platform.createCanvas( parameters );
 
 }
 
@@ -363,7 +362,7 @@ function yieldToMain() {
 
 	return new Promise( resolve => {
 
-		requestAnimationFrame( resolve );
+		platform.animationContext.requestAnimationFrame( resolve );
 
 	} );
 

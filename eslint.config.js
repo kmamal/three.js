@@ -77,6 +77,7 @@ export default [
 			},
 		},
 		settings: {
+			targets: [ 'node >= 22.15' ],
 			polyfills: [
 				'WebGL2RenderingContext'
 			],

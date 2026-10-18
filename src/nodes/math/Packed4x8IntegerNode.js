@@ -1,4 +1,5 @@
 import Node from '../core/Node.js';
+import { platform } from '../../platform/Platform.js';
 import { nodeProxyIntent, Fn, uint, int, ivec4, uvec4 } from '../tsl/TSLCore.js';
 import { clamp } from './MathNode.js';
 
@@ -128,8 +129,8 @@ class Packed4x8IntegerNode extends Node {
 		// check for native language support
 
 		if ( builder.renderer.backend.isWebGPUBackend === true &&
-			typeof navigator !== 'undefined' && navigator.gpu !== undefined &&
-			navigator.gpu.wgslLanguageFeatures !== undefined && navigator.gpu.wgslLanguageFeatures.has( 'packed_4x8_integer_dot_product' )
+			platform.gpu !== undefined &&
+			platform.gpu.wgslLanguageFeatures !== undefined && platform.gpu.wgslLanguageFeatures.has( 'packed_4x8_integer_dot_product' )
 		) {
 
 			return super.setup( builder );

@@ -161,6 +161,7 @@ export { DataUtils } from './extras/DataUtils.js';
 export { ImageUtils } from './extras/ImageUtils.js';
 export { ShapeUtils } from './extras/ShapeUtils.js';
 export { TextureUtils } from './extras/TextureUtils.js';
+export { platform } from './platform/Platform.js';
 export { createCanvasElement, setConsoleFunction, getConsoleFunction, log, warn, error, warnOnce } from './utils.js';
 export * from './constants.js';
 export * from './Three.Legacy.js';

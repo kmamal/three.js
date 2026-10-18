@@ -1,3 +1,4 @@
+import { platform } from '../../platform/Platform.js';
 
 /**
  * This module manages the internal animation loop of the renderer.
@@ -42,7 +43,7 @@ class Animation {
 		 *
 		 * @type {?(Window|XRSession)}
 		 */
-		this._context = typeof self !== 'undefined' ? self : null;
+		this._context = platform.animationContext;
 
 		/**
 		 * The user-defined animation loop.

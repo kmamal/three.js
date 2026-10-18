@@ -1,3 +1,4 @@
+import { platform } from '../../../platform/Platform.js';
 import { LinearFilter, LinearMipmapLinearFilter, LinearMipmapNearestFilter, NearestFilter, NearestMipmapLinearFilter, NearestMipmapNearestFilter, FloatType, MirroredRepeatWrapping, ClampToEdgeWrapping, RepeatWrapping, NeverCompare, AlwaysCompare, LessCompare, LessEqualCompare, EqualCompare, GreaterEqualCompare, GreaterCompare, NotEqualCompare, NoColorSpace, LinearTransfer, SRGBTransfer } from '../../../constants.js';
 import { ColorManagement } from '../../../math/ColorManagement.js';
 import { getByteLength } from '../../../extras/TextureUtils.js';
@@ -1365,10 +1366,10 @@ function getImage( source ) {
 
 		return source.image.data;
 
-	} else if ( ( typeof HTMLImageElement !== 'undefined' && source instanceof HTMLImageElement ) ||
-		( typeof HTMLCanvasElement !== 'undefined' && source instanceof HTMLCanvasElement ) ||
-		( typeof ImageBitmap !== 'undefined' && source instanceof ImageBitmap ) ||
-		( typeof OffscreenCanvas !== 'undefined' && source instanceof OffscreenCanvas ) ) {
+	} else if ( platform.isImage( source ) ||
+		platform.isCanvas( source ) ||
+		platform.isImageBitmap( source ) ||
+		platform.isOffscreenCanvas( source ) ) {
 
 		return source;
 

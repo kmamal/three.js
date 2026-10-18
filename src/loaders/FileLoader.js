@@ -1,3 +1,4 @@
+import { platform } from '../platform/Platform.js';
 import { Cache } from './Cache.js';
 import { Loader } from './Loader.js';
 import { warn } from '../utils.js';
@@ -127,18 +128,18 @@ class FileLoader extends Loader {
 		} );
 
 		// create request
-		const req = new Request( url, {
+		const requestInit = {
 			headers: new Headers( this.requestHeader ),
 			credentials: this.withCredentials ? 'include' : 'same-origin',
 			signal: ( typeof AbortSignal.any === 'function' ) ? AbortSignal.any( [ this._abortController.signal, this.manager.abortController.signal ] ) : this._abortController.signal
-		} );
+		};
 
 		// record states ( avoid data race )
 		const mimeType = this.mimeType;
 		const responseType = this.responseType;
 
 		// start the fetch
-		fetch( req )
+		platform.fetch( url, requestInit )
 			.then( response => {
 
 				if ( response.status === 200 || response.status === 0 ) {
@@ -188,7 +189,7 @@ class FileLoader extends Loader {
 
 										loaded += value.byteLength;
 
-										const event = new ProgressEvent( 'progress', { lengthComputable, loaded, total } );
+										const event = new platform.ProgressEvent( 'progress', { lengthComputable, loaded, total } );
 										for ( let i = 0, il = callbacks.length; i < il; i ++ ) {
 
 											const callback = callbacks[ i ];

@@ -33,9 +33,6 @@
     "example": "examples",
     "test": "test"
   },
-  "browserslist": [
-    "> 1%, not dead, not ie 11, not op_mini all"
-  ],
   "scripts": {
     "test": "npm run lint && npm run test-unit && npm run test-unit-addons",
     "lint-core": "eslint src",
@@ -88,6 +85,29 @@
     "pngjs": "^7.0.0",
     "puppeteer": "^25.0.0",
     "three": "file:utils/three-alias"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "1.0.10",
+    "sharp": "0.35.5"
+  },
+  "engines": {
+    "node": ">=22.15.0"
+  },
+  "peerDependencies": {
+    "@kmamal/gl": ">=10.0.0-1",
+    "@kmamal/gpu": ">=1.0.0-4",
+    "@kmamal/sdl": ">=1.0.0-3"
+  },
+  "peerDependenciesMeta": {
+    "@kmamal/gl": {
+      "optional": true
+    },
+    "@kmamal/gpu": {
+      "optional": true
+    },
+    "@kmamal/sdl": {
+      "optional": true
+    }
   },
   "allowScripts": {
     "puppeteer": true,

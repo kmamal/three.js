@@ -37,6 +37,7 @@ import { reference } from '../../nodes/accessors/ReferenceNode.js';
 import { highpModelNormalViewMatrix, highpModelViewMatrix } from '../../nodes/accessors/ModelNode.js';
 import { context } from '../../nodes/core/ContextNode.js';
 import { error, warn, warnOnce, yieldToMain } from '../../utils.js';
+import { platform } from '../../platform/Platform.js';
 
 const _scene = /*@__PURE__*/ new Scene();
 const _drawingBufferSize = /*@__PURE__*/ new Vector2();
@@ -1111,7 +1112,7 @@ class Renderer {
 
 			if ( onProgress !== null ) {
 
-				onProgress( new ProgressEvent( 'progress', { lengthComputable: true, loaded, total } ) );
+				onProgress( new platform.ProgressEvent( 'progress', { lengthComputable: true, loaded, total } ) );
 
 			}
 
@@ -1236,7 +1237,7 @@ class Renderer {
 
 			if ( onProgress !== null ) {
 
-				onProgress( new ProgressEvent( 'progress', { lengthComputable: true, loaded, total } ) );
+				onProgress( new platform.ProgressEvent( 'progress', { lengthComputable: true, loaded, total } ) );
 
 			}
 
@@ -1559,6 +1560,8 @@ class Renderer {
 		}
 
 		this._renderScene( scene, camera );
+
+		if ( this._callDepth === - 1 && this._renderTarget === null ) platform.present( this.domElement );
 
 	}
 

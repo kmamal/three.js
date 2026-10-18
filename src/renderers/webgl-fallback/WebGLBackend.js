@@ -1,3 +1,4 @@
+import { platform } from '../../platform/Platform.js';
 import GLSLNodeBuilder from './nodes/GLSLNodeBuilder.js';
 import Backend from '../common/Backend.js';
 import { getCacheKey } from '../common/RenderContext.js';
@@ -676,7 +677,7 @@ class WebGLBackend extends Backend {
 
 				if ( completed === false ) {
 
-					requestAnimationFrame( check );
+					platform.animationContext.requestAnimationFrame( check );
 
 				} else {
 
@@ -1563,7 +1564,7 @@ class WebGLBackend extends Backend {
 
 					} else {
 
-						requestAnimationFrame( checkStatus );
+						platform.animationContext.requestAnimationFrame( checkStatus );
 
 					}
 
@@ -1855,7 +1856,7 @@ class WebGLBackend extends Backend {
 
 					} else {
 
-						requestAnimationFrame( checkStatus );
+						platform.animationContext.requestAnimationFrame( checkStatus );
 
 					}
 

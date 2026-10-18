@@ -17,6 +17,7 @@ import { WebGPUCoordinateSystem, TimestampQuery, REVISION, HalfFloatType, Compat
 import { Color } from '../../math/Color.js';
 import WebGPUTimestampQueryPool from './utils/WebGPUTimestampQueryPool.js';
 import { error, warnOnce } from '../../utils.js';
+import { platform } from '../../platform/Platform.js';
 
 import GPUBufferDescriptor from './descriptors/GPUBufferDescriptor.js';
 import GPUCommandEncoderDescriptor from './descriptors/GPUCommandEncoderDescriptor.js';
@@ -218,7 +219,7 @@ class WebGPUBackend extends Backend {
 				xrCompatible: renderer.xr.enabled
 			};
 
-			const adapter = ( typeof navigator !== 'undefined' ) ? await navigator.gpu.requestAdapter( adapterOptions ) : null;
+			const adapter = ( platform.gpu !== undefined ) ? await platform.gpu.requestAdapter( adapterOptions ) : null;
 
 			if ( adapter === null ) {
 
@@ -2325,7 +2326,7 @@ class WebGPUBackend extends Backend {
 
 				// Handle occlusion queries
 
-				if ( renderContextData.currentPass instanceof GPURenderBundleEncoder ) {
+				if ( renderContextData.currentPass instanceof platform.GPURenderBundleEncoder ) {
 
 					if ( object.occlusionTest === true ) {
 

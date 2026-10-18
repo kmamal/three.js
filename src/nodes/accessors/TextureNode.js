@@ -1,3 +1,4 @@
+import { platform } from '../../platform/Platform.js';
 import UniformNode, { uniform } from '../core/UniformNode.js';
 import { uv } from './UV.js';
 import { textureSize } from './TextureSizeNode.js';
@@ -394,7 +395,7 @@ class TextureNode extends UniformNode {
 
 					const texture = baseNode.value;
 
-					return ( texture.image instanceof ImageBitmap && texture.flipY === true ) || texture.isRenderTargetTexture === true || texture.isFramebufferTexture === true || texture.isDepthTexture === true;
+					return ( platform.isImageBitmap( texture.image ) && texture.flipY === true ) || texture.isRenderTargetTexture === true || texture.isFramebufferTexture === true || texture.isDepthTexture === true;
 
 				} );
 

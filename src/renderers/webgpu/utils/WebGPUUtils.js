@@ -1,4 +1,5 @@
 import { HalfFloatType, UnsignedByteType } from '../../../constants.js';
+import { platform } from '../../../platform/Platform.js';
 import { GPUIndexFormat, GPUPrimitiveTopology, GPUTextureFormat } from './WebGPUConstants.js';
 
 const _commandList = [ null ];
@@ -288,7 +289,7 @@ class WebGPUUtils {
 
 			if ( this._preferredCanvasFormat === null ) {
 
-				this._preferredCanvasFormat = navigator.gpu.getPreferredCanvasFormat();
+				this._preferredCanvasFormat = platform.gpu.getPreferredCanvasFormat();
 
 			}
 

@@ -1,3 +1,4 @@
+import { platform } from '../platform/Platform.js';
 import {
 	UVMapping,
 	CubeReflectionMapping,
@@ -232,7 +233,7 @@ class ObjectLoader extends Loader {
 
 			for ( const uuid in images ) {
 
-				if ( images[ uuid ].data instanceof HTMLImageElement ) {
+				if ( platform.isImage( images[ uuid ].data ) ) {
 
 					hasImages = true;
 					break;
@@ -531,7 +532,7 @@ class ObjectLoader extends Loader {
 
 						if ( deserializedImage !== null ) {
 
-							if ( deserializedImage instanceof HTMLImageElement ) {
+							if ( platform.isImage( deserializedImage ) ) {
 
 								imageArray.push( deserializedImage );
 
@@ -628,7 +629,7 @@ class ObjectLoader extends Loader {
 
 						if ( deserializedImage !== null ) {
 
-							if ( deserializedImage instanceof HTMLImageElement ) {
+							if ( platform.isImage( deserializedImage ) ) {
 
 								imageArray.push( deserializedImage );
 

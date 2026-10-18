@@ -1,3 +1,4 @@
+import { platform } from '../platform/Platform.js';
 import { Cache } from './Cache.js';
 import { Loader } from './Loader.js';
 import { warn } from '../utils.js';
@@ -52,13 +53,13 @@ class ImageBitmapLoader extends Loader {
 		 */
 		this.isImageBitmapLoader = true;
 
-		if ( typeof createImageBitmap === 'undefined' ) {
+		if ( platform.createImageBitmap === undefined ) {
 
 			warn( 'ImageBitmapLoader: createImageBitmap() not supported.' );
 
 		}
 
-		if ( typeof fetch === 'undefined' ) {
+		if ( platform.fetch === undefined ) {
 
 			warn( 'ImageBitmapLoader: fetch() not supported.' );
 
@@ -170,13 +171,13 @@ class ImageBitmapLoader extends Loader {
 		fetchOptions.headers = this.requestHeader;
 		fetchOptions.signal = ( typeof AbortSignal.any === 'function' ) ? AbortSignal.any( [ this._abortController.signal, this.manager.abortController.signal ] ) : this._abortController.signal;
 
-		const promise = fetch( url, fetchOptions ).then( function ( res ) {
+		const promise = platform.fetch( url, fetchOptions ).then( function ( res ) {
 
 			return res.blob();
 
 		} ).then( function ( blob ) {
 
-			return createImageBitmap( blob, Object.assign( {}, scope.options, { colorSpaceConversion: 'none' } ) );
+			return platform.createImageBitmap( blob, Object.assign( {}, scope.options, { colorSpaceConversion: 'none' } ) );
 
 		} ).then( function ( imageBitmap ) {
 

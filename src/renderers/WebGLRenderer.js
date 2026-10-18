@@ -1,3 +1,4 @@
+import { platform } from '../platform/Platform.js';
 import {
 	REVISION,
 	BackSide,
@@ -71,7 +72,7 @@ class WebGLRenderer {
 	constructor( parameters = {} ) {
 
 		const {
-			canvas = createCanvasElement(),
+			canvas = createCanvasElement( parameters ),
 			context = null,
 			depth = true,
 			stencil = false,
@@ -1601,7 +1602,7 @@ class WebGLRenderer {
 		const animation = new WebGLAnimation();
 		animation.setAnimationLoop( onAnimationFrame );
 
-		if ( typeof self !== 'undefined' ) animation.setContext( self );
+		animation.setContext( platform.animationContext );
 
 		/**
 		 * Applications are advised to always define the animation loop
@@ -1867,6 +1868,8 @@ class WebGLRenderer {
 				_nodesHandler.renderEnd();
 
 			}
+
+			if ( currentRenderState === null && _currentRenderTarget === null ) platform.present( canvas );
 
 		};
 

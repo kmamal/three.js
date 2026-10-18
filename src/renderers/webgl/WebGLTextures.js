@@ -1,3 +1,4 @@
+import { platform } from '../../platform/Platform.js';
 import { LinearFilter, LinearMipmapLinearFilter, LinearMipmapNearestFilter, NearestFilter, NearestMipmapLinearFilter, NearestMipmapNearestFilter, RGBAFormat, DepthFormat, DepthStencilFormat, UnsignedIntType, FloatType, MirroredRepeatWrapping, ClampToEdgeWrapping, RepeatWrapping, UnsignedByteType, NoColorSpace, LinearSRGBColorSpace, NeverCompare, AlwaysCompare, LessCompare, LessEqualCompare, EqualCompare, GreaterEqualCompare, GreaterCompare, NotEqualCompare, SRGBTransfer, LinearTransfer, UnsignedShortType, UnsignedInt248Type } from '../../constants.js';
 import { createElementNS, warn, error } from '../../utils.js';
 import { ColorManagement } from '../../math/ColorManagement.js';
@@ -27,8 +28,8 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 	try {
 
-		useOffscreenCanvas = typeof OffscreenCanvas !== 'undefined'
-			&& ( new OffscreenCanvas( 1, 1 ).getContext( '2d' ) ) !== null;
+		useOffscreenCanvas = platform.OffscreenCanvas !== undefined
+			&& ( new platform.OffscreenCanvas( 1, 1 ).getContext( '2d' ) ) !== null;
 
 
 	} catch ( err ) {
@@ -42,7 +43,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 		// Use OffscreenCanvas when available. Specially needed in web workers
 
 		return useOffscreenCanvas ?
-			new OffscreenCanvas( width, height ) : createElementNS( 'canvas' );
+			new platform.OffscreenCanvas( width, height ) : createElementNS( 'canvas' );
 
 	}
 
@@ -66,9 +67,9 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 			// only perform resize for certain image types
 
-			if ( ( typeof HTMLImageElement !== 'undefined' && image instanceof HTMLImageElement ) ||
-				( typeof HTMLCanvasElement !== 'undefined' && image instanceof HTMLCanvasElement ) ||
-				( typeof ImageBitmap !== 'undefined' && image instanceof ImageBitmap ) ||
+			if ( platform.isImage( image ) ||
+				platform.isCanvas( image ) ||
+				platform.isImageBitmap( image ) ||
 				( typeof VideoFrame !== 'undefined' && image instanceof VideoFrame ) ) {
 
 				const width = Math.floor( scale * dimensions.width );
@@ -977,7 +978,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 			state.activeTexture( _gl.TEXTURE0 + slot );
 
-			const isImageBitmap = ( typeof ImageBitmap !== 'undefined' && texture.image instanceof ImageBitmap );
+			const isImageBitmap = platform.isImageBitmap( texture.image );
 
 			if ( isImageBitmap === false ) {
 
@@ -2528,7 +2529,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 	function getDimensions( image ) {
 
-		if ( typeof HTMLImageElement !== 'undefined' && image instanceof HTMLImageElement ) {
+		if ( platform.isImage( image ) ) {
 
 			// if intrinsic data are not available, fallback to width/height
 

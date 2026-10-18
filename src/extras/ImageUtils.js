@@ -1,3 +1,4 @@
+import { platform } from '../platform/Platform.js';
 import { createElementNS, warn } from '../utils.js';
 import { SRGBToLinear } from '../math/ColorManagement.js';
 
@@ -25,15 +26,9 @@ class ImageUtils {
 
 		}
 
-		if ( typeof HTMLCanvasElement === 'undefined' ) {
-
-			return image.src;
-
-		}
-
 		let canvas;
 
-		if ( image instanceof HTMLCanvasElement ) {
+		if ( platform.isCanvas( image ) ) {
 
 			canvas = image;
 
@@ -46,7 +41,7 @@ class ImageUtils {
 
 			const context = _canvas.getContext( '2d' );
 
-			if ( image instanceof ImageData ) {
+			if ( image instanceof platform.ImageData ) {
 
 				context.putImageData( image, 0, 0 );
 
@@ -72,9 +67,9 @@ class ImageUtils {
 	 */
 	static sRGBToLinear( image ) {
 
-		if ( ( typeof HTMLImageElement !== 'undefined' && image instanceof HTMLImageElement ) ||
-			( typeof HTMLCanvasElement !== 'undefined' && image instanceof HTMLCanvasElement ) ||
-			( typeof ImageBitmap !== 'undefined' && image instanceof ImageBitmap ) ) {
+		if ( platform.isImage( image ) ||
+			platform.isCanvas( image ) ||
+			platform.isImageBitmap( image ) ) {
 
 			const canvas = createElementNS( 'canvas' );
 
