@@ -7,6 +7,7 @@ import { sdlFetch, setFetchRoot } from './SDLFetch.js';
 import { SDLWorker } from './SDLWorker.js';
 import { SDLDOMParser } from './SDLDOMParser.js';
 import * as canvas2D from './SDLCanvas2D.js';
+import { SDLFileReader } from './SDLFileReader.js';
 
 const require = createRequire( import.meta.url );
 
@@ -156,6 +157,8 @@ const sdlPlatform = {
 	ImageBitmap: SDLImageBitmap,
 
 	DOMParser: SDLDOMParser,
+
+	FileReader: SDLFileReader,
 
 	Worker: SDLWorker,
 
