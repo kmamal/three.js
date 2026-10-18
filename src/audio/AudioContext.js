@@ -1,3 +1,5 @@
+import { platform } from '../platform/Platform.js';
+
 let _context;
 
 /**
@@ -16,7 +18,7 @@ class AudioContext {
 
 		if ( _context === undefined ) {
 
-			_context = new ( window.AudioContext || window.webkitAudioContext )();
+			_context = new platform.AudioContext();
 
 		}
 

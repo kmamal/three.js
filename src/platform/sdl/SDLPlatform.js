@@ -14,6 +14,7 @@ const require = createRequire( import.meta.url );
 let gpuModule;
 let gpuInstance = null;
 let glModule;
+let audioModule = null;
 
 const loadGL = () => {
 
@@ -54,6 +55,19 @@ const loadGPU = () => {
 	}
 
 	return gpuModule;
+
+};
+
+const loadAudio = () => {
+
+	if ( audioModule === null ) {
+
+		audioModule = require( '@kmamal/audio' );
+		audioModule.configure( { fetch: sdlFetch } );
+
+	}
+
+	return audioModule;
 
 };
 
@@ -171,6 +185,24 @@ const sdlPlatform = {
 	createImageBitmap: createImageBitmapFromBlob,
 
 	animationContext,
+
+	get audio() {
+
+		return loadAudio();
+
+	},
+
+	get AudioContext() {
+
+		return loadAudio().AudioContext;
+
+	},
+
+	get Audio() {
+
+		return loadAudio().Audio;
+
+	},
 
 	createElement( name ) {
 
